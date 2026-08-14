@@ -1,0 +1,829 @@
+{
+  "version": "2.0",
+  "document": {
+    "title": "Aerospace Engineer | Technical Founder | Deep-Tech Researcher | Academic Educator",
+    "contact": {
+      "name": "Brian Lembuss",
+      "email": "brianlembuss@gmail.com",
+      "phone": "+254 705 875103",
+      "location": "Nairobi, Kenya",
+      "linkedin": "https://www.linkedin.com/in/brian-kipchumba-lembuss-kirwa/",
+      "github": "https://github.com/lembuss/"
+    },
+    "profile": "Aerospace Systems Engineer, Technical Founder and Deep-Tech Researcher with six years of progressive experience spanning manned aircraft maintenance, UAV systems engineering, eVTOL flight test management, cloud software architecture, and university instruction. Holds a B.Sc. in Aerospace Engineering with honours from METU and 73 ECTS toward an M.Sc. in Aerospace at TU Munich (degree completion pending). Career includes commercial MRO on turboprop/turbofan aircraft (ALS Ltd); GCS serial production and server-rack HIL test rig builds for commercial UAVs (Amazilia Aerospace); aerodynamic design loop engineering and successful transition flight testing on a 25kg MTOW eVTOL (HORYZN); published airspace throughput research (AIAA 2024); flight simulator instruction (TUM); and founding leadership of Kipepeo Aerospace covering platform CAD, embedded C++ software, GCP cloud microservices, and SAFE equity fundraising. Brings experience across the hardware/software boundary, combining physical aircraft systems lifecycle ownership with cloud, AI, and embedded software architectures.",
+    "tracks": {
+      "aircraft_systems_aerospace_engineering": {
+        "label": "Aircraft Systems & Aerospace Engineering",
+        "enabled": true
+      },
+      "venture_building_entrepreneurial_leadership": {
+        "label": "Venture Building & Entrepreneurial Leadership",
+        "enabled": true
+      },
+      "deep_tech_research_computational_capability": {
+        "label": "Deep-Tech Research & Computational Capability",
+        "enabled": true
+      },
+      "teaching_mentorship_academic_service": {
+        "label": "Teaching, Mentorship & Academic Service",
+        "enabled": true
+      }
+    },
+    "core_competencies": [
+      {
+        "track": "aircraft_systems_aerospace_engineering",
+        "label": "Aircraft Systems & Aerospace Engineering",
+        "items": [
+          "Systems engineering lifecycle",
+          "Requirements engineering",
+          "Functional decomposition",
+          "System architecture",
+          "Interface definition",
+          "Hardware/software integration",
+          "Avionics",
+          "Flight controls",
+          "Embedded systems",
+          "HIL testing",
+          "Verification & validation",
+          "Flight testing",
+          "MRO",
+          "UAS",
+          "eVTOL",
+          "Rotorcraft",
+          "Fixed-wing aircraft",
+          "Aircraft design",
+          "Ground control systems",
+          "MBSE"
+        ]
+      },
+      {
+        "track": "venture_building_entrepreneurial_leadership",
+        "label": "Venture Building & Entrepreneurial Leadership",
+        "items": [
+          "Technical venture creation",
+          "Company incorporation",
+          "Corporate governance",
+          "Cap Table structuring",
+          "Fundraising",
+          "SAFE financing",
+          "Grant acquisition",
+          "Commercial partnerships",
+          "MoU negotiation",
+          "Accelerator programmes",
+          "Market discovery",
+          "Product development",
+          "Technical leadership",
+          "Recruitment"
+        ]
+      },
+      {
+        "track": "deep_tech_research_computational_capability",
+        "label": "Deep-Tech Research & Computational Capability",
+        "items": [
+          "Applied aerospace research",
+          "Computational modelling",
+          "UAM simulation",
+          "Aerodynamic CFD",
+          "Embedded C++",
+          "Test-driven development",
+          "Autonomous systems",
+          "ROS",
+          "3D perception",
+          "MBSE",
+          "AI/ML",
+          "Cloud systems",
+          "Data pipelines",
+          "Photogrammetry",
+          "OpenFOAM",
+          "ANSYS CFX",
+          "MATLAB",
+          "Python",
+          "C++",
+          "TypeScript/Node.js/React"
+        ]
+      },
+      {
+        "track": "teaching_mentorship_academic_service",
+        "label": "Teaching, Mentorship & Academic Service",
+        "items": [
+          "University instruction",
+          "Flight simulator instruction",
+          "Examining",
+          "Numerical methods",
+          "SI-PASS tutoring",
+          "STEM mentorship",
+          "Curriculum support",
+          "Academic administration",
+          "Student organisation leadership"
+        ]
+      }
+    ],
+    "experiences": [
+      {
+        "id": "kipepeo-aerospace",
+        "company": "Kipepeo Aerospace",
+        "role": "Founding CEO & Lead Systems Engineer",
+        "location": "Nairobi, Kenya",
+        "type": "Startup",
+        "dates": "Oct 2024 – Present",
+        "summary": "Founding CEO and Lead Systems Engineer driving the full-stack design, hardware fabrication, software architecture, and commercial strategy for autonomous UAV platforms, multispectral payload hardware, cloud photogrammetry pipelines, and AI intelligence systems across precision agriculture and defense verticals.",
+        "tracks": [
+          "aircraft_systems_aerospace_engineering",
+          "venture_building_entrepreneurial_leadership",
+          "deep_tech_research_computational_capability"
+        ],
+        "projects": [
+          {
+            "name": "TAI UAS - Tactical Aerial Intelligence Platform (R&D)",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering",
+              "deep_tech_research_computational_capability"
+            ],
+            "bullets": [
+              "Executed the initial aircraft design lifecycle for the TAI UAS, capturing system-level requirements and conducting preliminary aerodynamic and sizing trade studies for a 2-meter delta-wing hybrid VTOL platform.",
+              "Authored the complete system architecture for the TAI UAS, translating high-level mission requirements into functional allocations, subsystem definitions, and a detailed electrical/control schematic.",
+              "Modeled the 3D mechanical CAD assembly for the TAI delta-wing hybrid VTOL airframe in Autodesk Inventor, incorporating internal structural housing for avionics, propulsion mounts, and modular payload bays.",
+              "Conducted market trade studies, component matching, and cost estimations to compile the full Bill of Materials (BOM) for the TAI UAS platform."
+            ]
+          },
+          {
+            "name": "Kilimo Anga - Quadrotor Testbed & AngaCam Payload Integration",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering",
+              "deep_tech_research_computational_capability"
+            ],
+            "bullets": [
+              "Derived technical specifications and operational requirements for an agile, low-cost quadrotor testbed and multispectral payload based on farmer feedback from the Kilimo Anga initiative.",
+              "Engineered the electrical, power distribution, and flight control architecture for the F450-based quadrotor testbed.",
+              "Designed the 3D mechanical housing and optical mounting for the custom AngaCam multispectral payload in Autodesk Inventor.",
+              "Performed component trade studies and compiled the master Bill of Materials (BOM) for the quadrotor testbed and AngaCam payload."
+            ]
+          },
+          {
+            "name": "AngaStack V1 Platform Development (R&D)",
+            "tracks": [
+              "deep_tech_research_computational_capability",
+              "venture_building_entrepreneurial_leadership"
+            ],
+            "bullets": [
+              "Local Photogrammetry Pipeline Development & Algorithm Verification: Developed and verified a local Python photogrammetry engine capable of reliably stitching raw drone imagery into orthomosaics and producing vegetation index rasters.",
+              "Full-Stack Application Development (AngaView UI & AngaCloud Backend): Functional, integrated full-stack web application and REST API orchestrator capable of managing farm data, handling image uploads, and communicating locally with the processing pipeline.",
+              "Azure Cloud Infrastructure Provisioning & Live Platform Deployment: Production-grade, automated cloud infrastructure on Azure capable of ephemeral batch processing and live web deployment.",
+              "AngaDemo Digital Prototype Build & Field Usability Validation: Validated high farmer demand (93.9% stated interest), established a 325.56 KES/acre willingness-to-pay baseline, and identified critical UI/UX iterations that directly shaped the AngaStack V2 redesign."
+            ]
+          },
+          {
+            "name": "Kilimo Anga - Field Operations, Pre-Pilot Readiness & Business Model",
+            "tracks": [
+              "venture_building_entrepreneurial_leadership",
+              "aircraft_systems_aerospace_engineering"
+            ],
+            "bullets": [
+              "Farmer Persona Discovery: Established a validated market intelligence framework and persona matrix that defined Kilimo Anga's target customer segments, feature requirements, and price-sensitivity constraints.",
+              "Competitor Gap Analysis & Fail-Point Mapping: Delivered a comprehensive Competitor Study & Gap Analysis matrix establishing Kilimo Anga's market positioning, pricing advantages, and service-led delivery model.",
+              "Cost of Status Quo (CoSQ) Financial & Impact Modeling: Delivered a defensible financial model and proof-of-impact framework proving value recovery for farmers while establishing unit economics, breakeven thresholds, and investor returns.",
+              "Credit-in-Kind Business Model & Value Chain Offloading Design: Risk-mitigated, market-tailored payment-in-produce mechanism integrated with local grain distribution networks, expanding TAM accessibility without creating unhedged credit risk.",
+              "Pre-Pilot Ecosystem Partnerships, Governance & Investor Readiness: Finalized investment-ready corporate governance baseline, established $30K pre-seed investment positioning, established a 7+ partner execution ecosystem, and captured non-dilutive cloud credit grants from Microsoft and Google."
+            ]
+          },
+          {
+            "name": "AngaStack V2 Platform Development - GCP Cloud Migration, Mobile Ingestion & AngAi Engine (R&D)",
+            "tracks": [
+              "deep_tech_research_computational_capability",
+              "venture_building_entrepreneurial_leadership"
+            ],
+            "bullets": [
+              "GCP Infrastructure Provisioning & IAM Security Architecture: Production-grade GCP cloud infrastructure (europe-west1) establishing storage buckets, document database, container registry, authentication provider, and IAM security controls.",
+              "Photogrammetry Pipeline GCP Migration & Numerical Stats Extraction: Ephemeral, stateless batch-processing engine running on GCP Cloud Run Jobs that ingests raw drone imagery from GCS, generates orthomosaics/index maps, and writes numerical stats JSON directly to Firestore.",
+              "Backend Service Refactoring, Dual-Path Ingestion & Job Orchestration: Operational FastAPI backend service on GCP Cloud Run handling multi-source observation ingestion, GCS Signed URL map rendering, and Firebase token authentication.",
+              "AngAi Agronomic Reasoning Engine & RAG Microservice Build: Operational, authenticated RAG microservice on GCP Cloud Run capable of processing multi-source observation payloads and generating context-aware agronomic Action Cards in Firestore.",
+              "AngaView Mobile Ingestion, Firebase Hosting & Living Farm Health Record UI: Deployed, mobile-responsive web and Android application on Firebase Hosting featuring instant mobile photo diagnostics, interactive GCS-signed raster map rendering, and a unified longitudinal farm health record."
+            ]
+          },
+          {
+            "name": "Linda Nchi - Sovereign Tactical ISR Platform & K-DEMO-2.5 Cargo Demonstrator (R&D)",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering",
+              "deep_tech_research_computational_capability",
+              "venture_building_entrepreneurial_leadership"
+            ],
+            "bullets": [
+              "Defense Stakeholder Requirement Synthesis & Use-Case Mapping: Delivered a validated stakeholder use-case matrix, regulatory certification pathway, and privacy-compliant data governance framework for sovereign ISR operations.",
+              "Linda Nchi Tactical ISR System Architecture & Technical Roadmap Authoring: Completed a production-ready, 11-section system architecture and technical roadmap establishing subsystem boundaries, interface control targets, and air-gapped on-premise cloud infrastructure schemas.",
+              "Project K-DEMO-2.5 Heavy-Lift Cargo Hexacopter Mechanical Engineering & Stress Analysis: Delivered a fully calculated, production-ready engineering design dossier, CAD geometry layout, vertical CoG stack architecture, and local procurement BOM for the heavy-lift cargo demonstrator."
+            ]
+          },
+          {
+            "name": "Kipepeo Venture Building, Governance & Capital Strategy",
+            "tracks": [
+              "venture_building_entrepreneurial_leadership"
+            ],
+            "bullets": [
+              "Formulated the foundational vision, operational roadmap, and financial budget for establishing an indigenous drone technology hub at Konza Technopolis.",
+              "Executed formal business name registration and statutory setup to legally establish Kipepeo Aerospace in Nairobi, Kenya.",
+              "Applied for and secured non-dilutive cloud infrastructure grant funding through the Microsoft for Startups Founders Hub program and Google Cloud for Startups program.",
+              "Negotiated and executed three strategic Memorandums of Understanding (MoUs) with Stablegen Investment Ltd.",
+              "Registered core internet domains, established digital brand presence, and deployed web infrastructure for Kipepeo Aerospace and its flagship initiative Kilimo Anga.",
+              "Conducted talent acquisition campaigns, restructured executive roles, and established a specialized advisory board.",
+              "Applied for the MK-Africa #MyLittleBigThing Sustainable Venture Challenge with Kilimo Anga, securing selection into the Top 50 and completing the two-day Innovation Bootcamp and the 30-Day Build & Test Challenge.",
+              "Completed the Viktoria Ventures Startup360 Access to Finance (A2F) Programme and authored the $30,000 pre-seed investor readiness dossier and financial model for Kilimo Anga.",
+              "Authored and executed the binding Kipepeo Aerospace Pre-Incorporation Founders' Agreement, establishing legal governance, cap table ownership, reverse vesting, and operational decision hierarchies under Kenyan law.",
+              "Negotiated and executed the first formal early-stage investment agreement for Kipepeo Aerospace via a Simple Agreement for Future Equity (SAFE) with Zimbu Investments Limited ($1,000 investment at $1,000,000 valuation cap).",
+              "Applied for and onboarded into the 12-Month #MyLittleBigThing Investor Readiness Program (IRP) Pilot Cohort (2026–2027)."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "jasiri-fellow",
+        "company": "Jasiri4Africa",
+        "role": "Jasiri Fellow, Talent Investor Program",
+        "location": "Rwanda / Remote",
+        "dates": "Jan 2025 – May 2025",
+        "tracks": [
+          "venture_building_entrepreneurial_leadership"
+        ],
+        "projects": [
+          {
+            "name": "Jasiri Talent Investor Acceleration",
+            "tracks": [
+              "venture_building_entrepreneurial_leadership"
+            ],
+            "bullets": [
+              "Completed the Jasiri Jumpstart and 3-month Residential Intensive while executing field-level market discovery on smallholder agri-data adoption barriers in Kenya.",
+              "Formulated the dual-sided business model canvas and revenue architecture for the iCARUS precision agriculture concept.",
+              "Authored and delivered the iCARUS venture pitch deck at Jasiri Demo Day 1 in Bugesera, Rwanda."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "amazilia-aerospace",
+        "company": "Amazilia Aerospace GmbH",
+        "role": "Aerospace Systems Engineering (Working Student)",
+        "location": "Munich, Germany",
+        "dates": "Sep 2022 – Dec 2024",
+        "tracks": [
+          "aircraft_systems_aerospace_engineering",
+          "deep_tech_research_computational_capability"
+        ],
+        "projects": [
+          {
+            "name": "WfA MiniFreighter GCS -SN2 (R&D)",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering"
+            ],
+            "bullets": [
+              "Attended joint design evaluation session with Wings for Aid CEO and chief pilot alongside Amazilia CTO and senior systems engineer. Captured customer and pilot requirements directly and translated them into formal engineering specifications for the SN2 GCS redesign. Produced wiring diagrams, CAD renders and system architecture documentation.",
+              "Sourced alternative panel supplier through independent research, which reduced component costs. Redesigned front panels in Autodesk Inventor. Performed mechanical assembly including drilling connection holes on panels and GCS case, installing internal support structures, and routing the power architecture.",
+              "Performed stepwise electrical integration of all internal GCS components following the assembly procedure, conducting QA checks and functionality tests. Scheduled and conducted simulator testing in the lab to evaluate control software, internal wiring of controls, stick feedback and aircraft response time.",
+              "Serially produced four additional GCS units following customer acceptance of Unit 1. Delivered 5 units total to Wings for Aid for operational deployment with WFP in Africa."
+            ]
+          },
+          {
+            "name": "Amazilia Ground Control Station (R&D)",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering"
+            ],
+            "bullets": [
+              "Reviewed and cleaned up existing CAD files, wiring diagrams and system architecture documentation inherited from predecessor.",
+              "Performed mechanical assembly of three tabletop GCS units including mounting of three-monitor arrangement, mode control panel and internal structural components.",
+              "Performed electrical integration of all internal components across three units including power architecture, monitor connections, mode control panel wiring and communication interfaces.",
+              "Conducted functional testing of each completed unit, verifying correct operation of all three monitor feeds - camera, telemetry and engine parameters - across Pipistrel OPV, Nuuva and CTOL platforms."
+            ]
+          },
+          {
+            "name": "Aircraft Systems Hardware-in-the-Loop (HIL) Test Rig (R&D)",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering",
+              "deep_tech_research_computational_capability"
+            ],
+            "bullets": [
+              "Received system requirements defining the HIL rig scope. Developed the high-level wiring architecture covering OPS Panel and PSUs, CAN boxes, RPi and USB hub, FCCs and DCUs, ETH switch, LMUs, Panels A/B/C and BRS tray. Produced detailed wiring sheets and interface definitions across all components.",
+              "Designed the full server rack assembly in Autodesk Inventor, modelling the physical layout and component placement of the HIL rig.",
+              "Procured all components for the HIL rig. Performed mechanical assembly of the server rack.",
+              "Performed full electrical integration of all HIL rig components including power distribution, CAN bus wiring, Ethernet patch panel connections, and interface wiring between flight hardware.",
+              "Conducted extensive testing and verification of the completed HIL rig, validating correct operation of all interfaces, communication protocols and hardware components simulating aircraft systems."
+            ]
+          },
+          {
+            "name": "Aircraft Battery Charging Unit (ABCU) (R&D)",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering"
+            ],
+            "bullets": [
+              "Following a polarity reversal incident during field testing of a Pipistrel aircraft, conducted requirements capture to design a safe standalone aircraft battery charging unit (12V and 24V LiFePO4).",
+              "Developed system architecture for the ABCU covering power input, charging system selection, voltage switching between 12V and 24V configurations, polarity protection, and battery voltage indication.",
+              "Produced full wiring diagrams for the ABCU internal architecture. Designed enclosure panels and overall box layout in Autodesk Inventor.",
+              "Compiled and handed over the complete ABCU design package (architecture diagrams, wiring diagrams, component datasheets, BOM, panel CAD designs, and assembly guide) to the team upon departure."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "horyzn-project-manager",
+        "company": "HORYZN (TU Munich Student Aerospace Initiative)",
+        "role": "Project Manager - Systems Integration & Flight Testing",
+        "location": "Munich, Germany",
+        "dates": "Jul 2023 – Jul 2024",
+        "tracks": [
+          "aircraft_systems_aerospace_engineering",
+          "venture_building_entrepreneurial_leadership"
+        ],
+        "projects": [
+          {
+            "name": "Kolibri eVTOL — Systems Integration, Flight Testing & Project Completion",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering",
+              "venture_building_entrepreneurial_leadership"
+            ],
+            "bullets": [
+              "Appointed Project Manager for systems integration and flight testing phase of Kolibri hybrid lift-and-cruise eVTOL. Obtained EU A1/A3 drone pilot licence.",
+              "Served as the central coordination point between avionics, flight testing, CAD and structures teams. Identified and resolved physical integration conflicts.",
+              "Worked hands-on with the avionics and flight testing team on the integration of Kolibri's avionics systems including flight controller setup on PX4, ESC configuration, sensor integration and onboard electronics wiring.",
+              "Participated in ground testing and hover trial campaign for Kolibri. Built and operated a hover test bench to validate lift motor thrust ratios against design requirements for the 25kg MTOW aircraft. Tested the defibrillator payload delivery system. Analysed flight logs to drive corrective actions.",
+              "Supported preparation of regulatory documentation for Kolibri flight operations under the SORA framework.",
+              "Secured access to a TU Munich aerospace test facility (Oberpfaffenhofen) for the Kolibri flight test campaign, managing logistics, scheduling, and sponsor communications.",
+              "Participated in the final Kolibri transition flight test campaign at Oberpfaffenhofen test airport, achieving successful VTOL hover, transition to forward flight, and cruise phases-concluding Mission Pulse Phase 2."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "horyzn-aerodynamics",
+        "company": "HORYZN (TU Munich Student Aerospace Initiative)",
+        "role": "Aerodynamics Project Engineer",
+        "location": "Munich, Germany",
+        "dates": "Oct 2022 – Jun 2023",
+        "tracks": [
+          "aircraft_systems_aerospace_engineering",
+          "deep_tech_research_computational_capability"
+        ],
+        "projects": [
+          {
+            "name": "Kolibri eVTOL — Aerodynamics Module Development",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering",
+              "deep_tech_research_computational_capability"
+            ],
+            "bullets": [
+              "Participated in structured handover sessions with the outgoing Mission Pulse Phase 1 team to understand the design, shortcomings and failure modes of the Frankenstein prototype.",
+              "Led the aerodynamics team's contribution to the Kolibri configuration selection process. Identified the root cause of Frankenstein's transition failure and proposed a Cessna-type fixed-wing configuration with a front tractor propeller and lift motors mounted on the wing, successfully securing adoption.",
+              "Developed and maintained the aerodynamics module within the HORYZN multidisciplinary design loop, interfacing with CPACS via TiGL/TiXi libraries, using PAWAT within a MATLAB class-based architecture.",
+              "Participated in airfoil selection (XFLR5/Flow5) and ran iterative optimization of wing geometry (twist, span, chord, sweep).",
+              "Worked intensively within the RCE-based multidisciplinary design loop to achieve design convergence for Kolibri.",
+              "Prepared and delivered a comprehensive handover of the aerodynamics module to the incoming team (codebase, UML, I/O specifications)."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "kendrone",
+        "company": "Kendrone Ltd",
+        "role": "UAS Engineer, Pilot and Instructor",
+        "location": "Mtwapa, Nairobi, Naivasha",
+        "dates": "Jan 2021 – Jun 2021",
+        "tracks": [
+          "aircraft_systems_aerospace_engineering",
+          "deep_tech_research_computational_capability",
+          "teaching_mentorship_academic_service"
+        ],
+        "projects": [
+          {
+            "name": "Drone-Based Seedball Dispersal Mechanism (R&D)",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering",
+              "deep_tech_research_computational_capability"
+            ],
+            "bullets": [
+              "Captured mission requirements from CEO and Seedball Kenya and produced mechanical design of seedball container and servo-actuated release mechanism in Autodesk Inventor.",
+              "Fabricated mechanism components (3D printing) and integrated the dispersal payload onto the Tarot 650 airframe including servo power rail decoupling.",
+              "Prepared Tarot 650 platform for flight operations, resolving flight controller calibration/imbalance issues and configuring PX4 failsafes.",
+              "Executed 3-flight endurance test campaign proving optimal dual 6S parallel battery setup (~9 min endurance, ~2 km grid coverage per sortie). Authored formal test report.",
+              "Conducted a witnessed operational demonstration for Seedball Kenya and observers."
+            ]
+          },
+          {
+            "name": "UAS Pilot Training Programme Delivery",
+            "tracks": [
+              "teaching_mentorship_academic_service"
+            ],
+            "bullets": [
+              "Delivered a 32-slide technical presentation on BVLOS UAS operations to Kendrone leadership contributing to the Instructor Rating requirements.",
+              "Delivered full KCAA RPL ground school theory programme across three student cohorts covering seven subject domains (100% pass rate).",
+              "Delivered 15-lesson KCAA RPL practical flight instruction programme across three student cohorts on multirotor platforms (9.0 logged instructor flight hours)."
+            ]
+          },
+          {
+            "name": "Aerial Mapping & Agricultural Survey Operations",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering",
+              "deep_tech_research_computational_capability"
+            ],
+            "bullets": [
+              "Executed end-to-end aerial survey and agricultural mapping missions as PIC (DJI Phantom 4 Pro RGB/Multispectral), processing data in Pix4D/Pix4Dfields to produce orthomosaics, DSM/DTM, and vegetation index outputs.",
+              "Trained professional surveyors from external survey companies in UAS-based mapping workflows during live operational missions."
+            ]
+          },
+          {
+            "name": "UAS Avionics, Payload Integration & Fleet Maintenance",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering"
+            ],
+            "bullets": [
+              "Integrated avionics and sensor payloads across the Kendrone multirotor fleet.",
+              "Diagnosed and performed component-level hardware repairs (IMU, gimbals, motor/ESCs) on DJI platforms to restore airworthiness.",
+              "Conducted systematic pre- and post-flight airworthiness inspection routines across the Kendrone fleet with zero platform-related mission failures."
+            ]
+          },
+          {
+            "name": "IT Infrastructure, Digital Presence & Company Operations",
+            "tracks": [
+              "venture_building_entrepreneurial_leadership"
+            ],
+            "bullets": [
+              "Diagnosed and resolved company email deliverability failures (SPF/DKIM/DMARC) and optimised web infrastructure.",
+              "Reorganised company and student databases and maintained operational records.",
+              "Designed company marketing collateral (brochures, business cards, 3D printed placards) and managed digital marketing channels.",
+              "Led external stakeholder engagement across regulatory bodies, media, landowners, aviation doctors, and commercial clients."
+            ]
+          }
+        ]
+      },
+      {
+        "id": "als-ltd",
+        "company": "ALS Ltd",
+        "role": "Aircraft Maintenance Intern",
+        "location": "Nairobi, Kenya",
+        "dates": "Jul 2017 – Sep 2017",
+        "tracks": [
+          "aircraft_systems_aerospace_engineering"
+        ],
+        "projects": [
+          {
+            "name": "Aircraft Line, Base & C-Check Maintenance - ALS Ltd MRO",
+            "tracks": [
+              "aircraft_systems_aerospace_engineering"
+            ],
+            "bullets": [
+              "Assisted with fuel nozzle replacement, compressor wash, and propeller shaft greasing on the PT6A-65B turboprop engine (Beechcraft 1900C 200HR inspection).",
+              "Assisted with de-icer boot reinstallation and flap ball screw assembly lubrication on the DHC-8 during line maintenance.",
+              "Assisted with cabin seat removal, hook-and-loop fastener replacement, and nose landing gear servicing on the Embraer ERJ145MP during C-check."
+            ]
+          }
+        ]
+      }
+    ],
+    "additional_research_projects": [
+      {
+        "id": "tum-uam-throughput",
+        "name": "Generic Modeling of Slotneutral UAM Throughput at Commercial Airports (R&D)",
+        "institution": "Technical University of Munich",
+        "dates": "2023 – 2024",
+        "tracks": [
+          "deep_tech_research_computational_capability",
+          "aircraft_systems_aerospace_engineering"
+        ],
+        "bullets": [
+          "Processed 24-hour Flightradar24 traffic data (Munich Airport) showing 86.9% of arriving traffic falls into CAT-D/E. Formulated IFR PinS approach procedures allowing eVTOLs to transition without crossing active runways. Delivered a Python toolchain generating 3D KML trajectories, reducing approach detours from 66 km to ~15 km. Co-authored the resulting paper presented at AIAA 2024."
+        ]
+      },
+      {
+        "id": "tum-subterrain-uav",
+        "name": "Autonomous Sub-Terrain UAV Challenge (R&D)",
+        "institution": "Technical University of Munich",
+        "dates": "2023 – 2024",
+        "tracks": [
+          "deep_tech_research_computational_capability",
+          "aircraft_systems_aerospace_engineering"
+        ],
+        "bullets": [
+          "Engineered a depth-to-pointcloud perception engine and an OctoMap 3D voxel grid mapping pipeline in ROS/C++ for a simulated sub-terrain quadrotor executing fully autonomous cave transit and object localization."
+        ]
+      },
+      {
+        "id": "tum-acmu-logging",
+        "name": "Embedded Software Development of the Actuator Control and Monitoring Unit (ACMU) (R&D)",
+        "institution": "Technical University of Munich",
+        "dates": "2024",
+        "tracks": [
+          "deep_tech_research_computational_capability",
+          "aircraft_systems_aerospace_engineering"
+        ],
+        "bullets": [
+          "Refactored the embedded C++ data logging software pipeline for an aircraft ACMU using TDD. Implemented high-efficiency binary serialization over USB, achieving an 80% reduction in frame size (100 to 20 bytes)."
+        ]
+      },
+      {
+        "id": "tum-applied-cfd",
+        "name": "Applied CFD Channel & Cavity Flow Simulation (R&D)",
+        "institution": "Technical University of Munich",
+        "dates": "2022",
+        "tracks": [
+          "deep_tech_research_computational_capability"
+        ],
+        "bullets": [
+          "Executed 5 comparative CFD simulations in ANSYS CFX, demonstrating that SSG Reynolds Stress Models accurately capture flow separation and cavity recirculation where SST failed."
+        ]
+      },
+      {
+        "id": "tum-multirotor-cfd",
+        "name": "Simulation of the Flowfield of a Multirotor in Axial Flight (R&D)",
+        "institution": "Technical University of Munich",
+        "dates": "2022",
+        "tracks": [
+          "deep_tech_research_computational_capability"
+        ],
+        "bullets": [
+          "Modelled 3D flow fields of a quadrotor in axial descent using OpenFOAM, computing rotor thrust/torque via Blade Element Momentum Theory (BEMT) actuator disk source terms."
+        ]
+      },
+      {
+        "id": "tum-nakuru-gis",
+        "name": "Geospatial Analysis & Cartography - Nakuru County Geotourism Research (R&D)",
+        "institution": "Technical University of Munich / AGH University",
+        "dates": "2023",
+        "tracks": [
+          "deep_tech_research_computational_capability"
+        ],
+        "bullets": [
+          "Processed spatial datasets and generated all cartographic figures and geological mapping overlays using QGIS for a peer-reviewed research publication."
+        ]
+      },
+      {
+        "id": "metu-luxury-aircraft",
+        "name": "Conceptual Design of a Fixed-Wing Luxury Aircraft (Capstone I)",
+        "institution": "Middle East Technical University",
+        "dates": "2018 – 2019",
+        "tracks": [
+          "aircraft_systems_aerospace_engineering"
+        ],
+        "bullets": [
+          "Delivered a fully sized conceptual design (W0 = 20,600 kg) validated against performance constraints, with 1:150 scale 3-view CAD layouts."
+        ]
+      },
+      {
+        "id": "metu-vtol-pav",
+        "name": "Conceptual Design of a VTOL Personal Air Vehicle (Capstone II)",
+        "institution": "Middle East Technical University",
+        "dates": "2018 – 2019",
+        "tracks": [
+          "aircraft_systems_aerospace_engineering"
+        ],
+        "bullets": [
+          "Sized a light civil rotorcraft (TOGW = 2,014 kg) using BEMT, completing forward flight power analysis and generating a full configuration design."
+        ]
+      },
+      {
+        "id": "metu-numerical-solvers",
+        "name": "Numerical Methods Solvers (FORTRAN & MATLAB)",
+        "institution": "Middle East Technical University",
+        "dates": "2018 – 2019",
+        "tracks": [
+          "deep_tech_research_computational_capability"
+        ],
+        "bullets": [
+          "Developed FORTRAN solvers for finite volume potential flow and FDM heat/convection-diffusion. Developed MATLAB FDM solvers for aerodynamic PDEs (Lax-Wendroff, MacCormack)."
+        ]
+      },
+      {
+        "id": "metu-fea-composite",
+        "name": "FEA of Composite Cantilever Beam",
+        "institution": "Middle East Technical University",
+        "dates": "2018",
+        "tracks": [
+          "deep_tech_research_computational_capability"
+        ],
+        "bullets": [
+          "Conducted static structural and torsional FEA in ANSYS Mechanical APDL, extracting modal frequencies and harmonic responses."
+        ]
+      },
+      {
+        "id": "metu-piezo-sensor",
+        "name": "Simulation of a Piezoelectric d15 Torsion Sensor (R&D)",
+        "institution": "Middle East Technical University",
+        "dates": "2019",
+        "tracks": [
+          "deep_tech_research_computational_capability"
+        ],
+        "bullets": [
+          "Modelled a PIC255 piezoceramic sensor in Abaqus CAE to compute electromechanical coupling coefficients."
+        ]
+      },
+      {
+        "id": "metu-air-filter",
+        "name": "Design and Development of an Automated Air Filter",
+        "institution": "Middle East Technical University",
+        "dates": "2019",
+        "tracks": [
+          "aircraft_systems_aerospace_engineering"
+        ],
+        "bullets": [
+          "Designed, built, and tested an autonomous Arduino-based air filtration system detecting dust/smoke density."
+        ]
+      },
+      {
+        "id": "metu-turbofan-compressor",
+        "name": "Turbofan Compressor Performance Analysis (R&D)",
+        "institution": "Middle East Technical University",
+        "dates": "2019",
+        "tracks": [
+          "deep_tech_research_computational_capability"
+        ],
+        "bullets": [
+          "Conducted parametric analysis of compressor performance via MATLAB."
+        ]
+      },
+      {
+        "id": "cologne-mbse-uav",
+        "name": "MBSE Agricultural UAS Architecture (R&D)",
+        "institution": "University of Cologne / DAAD",
+        "dates": "2022 – 2023",
+        "tracks": [
+          "deep_tech_research_computational_capability",
+          "aircraft_systems_aerospace_engineering"
+        ],
+        "bullets": [
+          "Developed a comprehensive MBSE-structured UAS architecture for precision agriculture at the Galana Kulalu Irrigation Scheme, complete with payload definitions, WBS, and SWOT/PEST analyses. Graded Sehr gut (A)."
+        ]
+      },
+      {
+        "id": "emobilis-fadhili",
+        "name": "Fadhili - Android Carpool Application",
+        "institution": "eMobilis Technology Institute",
+        "dates": "2020",
+        "tracks": [
+          "venture_building_entrepreneurial_leadership",
+          "deep_tech_research_computational_capability"
+        ],
+        "bullets": [
+          "Designed and developed an end-to-end full-stack Android carpool application in Kotlin/Java with Firebase authentication and GeoFire real-time location. Co-founded the Coding Collective peer group."
+        ]
+      }
+    ],
+    "education": [
+      {
+        "institution": "Technical University of Munich (TUM)",
+        "location": "Munich, Germany",
+        "degree": "M.Sc. Aerospace Engineering",
+        "dates": "Oct 2021 – Present",
+        "status": "Degree completion pending (73 ECTS completed; 17 credits and thesis remaining).",
+        "focus": "Aircraft Systems, Control, and UAS Integration.",
+        "tracks": [
+          "aircraft_systems_aerospace_engineering",
+          "deep_tech_research_computational_capability",
+          "teaching_mentorship_academic_service"
+        ]
+      },
+      {
+        "institution": "University of Cologne",
+        "location": "Cologne, Germany",
+        "degree": "LEAD! Leadership for Africa (DAAD Scholar)",
+        "dates": "Feb 2022 – Jan 2023",
+        "status": "260 units / 195 hours. Grade: Sehr gut (A), 8 ECTS.",
+        "tracks": [
+          "deep_tech_research_computational_capability",
+          "venture_building_entrepreneurial_leadership"
+        ]
+      },
+      {
+        "institution": "Middle East Technical University (METU)",
+        "location": "Northern Cyprus Campus",
+        "degree": "B.Sc. Aerospace Engineering",
+        "dates": "Sep 2015 – Jun 2019",
+        "status": "Graduation Honors: Şeref / Honour Classification (CGPA: 3.12/4.00, 259.5 ECTS).",
+        "tracks": [
+          "aircraft_systems_aerospace_engineering",
+          "deep_tech_research_computational_capability",
+          "teaching_mentorship_academic_service"
+        ]
+      }
+    ],
+    "publications": [
+      {
+        "title": "Conceptualization and simulation of Advanced Air Mobility (AAM) operations within Controlled Airspaces of airports running independent parallel runway operations",
+        "venue": "AIAA 2024 Aviation Forum",
+        "role": "Co-Author",
+        "tracks": [
+          "deep_tech_research_computational_capability",
+          "aircraft_systems_aerospace_engineering"
+        ]
+      },
+      {
+        "title": "Geotourism Potential of Geological Resources in Selected Regions of Nakuru County, along the Gregory Rift, Kenya",
+        "venue": "Peer-reviewed journal article",
+        "role": "Co-Author",
+        "tracks": [
+          "deep_tech_research_computational_capability"
+        ]
+      }
+    ],
+    "teaching": [
+      {
+        "role": "Student Assistant - IFR Simulator Instructor & Examiner",
+        "institution": "TUM Institute for Rotorcraft and Vertical Flight",
+        "location": "Munich, Germany",
+        "dates": "Apr 2023 – Sep 2024",
+        "details": "Instructed student cohorts across three semesters (8 weekly 5-hour sessions) in practical helicopter IFR operations on an EC135 fixed-base flight simulator. Served as official course examiner for 5-hour final oral and practical examinations.",
+        "tracks": [
+          "teaching_mentorship_academic_service"
+        ]
+      },
+      {
+        "role": "Student Assistant - ASE301 Numerical Methods for Aerospace Engineers",
+        "institution": "Middle East Technical University",
+        "location": "Northern Cyprus",
+        "dates": "Feb 2019 – Jun 2019",
+        "details": "Conducted 5 consultation sessions and graded 3 major computational assignments (MATLAB ODE/PDE solvers) for 30+ undergraduate students.",
+        "tracks": [
+          "teaching_mentorship_academic_service",
+          "deep_tech_research_computational_capability"
+        ]
+      },
+      {
+        "role": "SI-PASS Leader & Instructor - MAT119 & MAT120 (Calculus)",
+        "institution": "Middle East Technical University",
+        "location": "Northern Cyprus",
+        "dates": "Sep 2018 – May 2019",
+        "details": "Completed formal SI-PASS Leadership Training and facilitated weekly peer-assisted calculus problem-solving sessions.",
+        "tracks": [
+          "teaching_mentorship_academic_service"
+        ]
+      },
+      {
+        "role": "STEM Project Mentor",
+        "institution": "Young Scientists Kenya (YSK)",
+        "location": "Nairobi, Kenya",
+        "dates": "Jan 2020 – Dec 2021",
+        "details": "Mentored a secondary-school hydrogen-hybrid engine project achieving a 43.6% fuel efficiency increase at the national exhibition. Mentored a portable aircraft refueling rig project resulting in a functional automated dispenser bench prototype.",
+        "tracks": [
+          "teaching_mentorship_academic_service"
+        ]
+      }
+    ],
+    "leadership": [
+      {
+        "role": "Vice President",
+        "organisation": "Aerospace Society, METU",
+        "dates": "Sep 2017 – Jun 2018",
+        "details": "Co-managed administrative operations, launched the model aircraft project team, and facilitated MATLAB/Inventor technical courses.",
+        "tracks": [
+          "teaching_mentorship_academic_service",
+          "aircraft_systems_aerospace_engineering"
+        ]
+      },
+      {
+        "role": "President",
+        "organisation": "Model United Nations Society, METU",
+        "dates": "Sep 2017 – Jun 2018",
+        "details": "Revived the dormant campus MUN chapter, designed weekly training curricula, and led a 17-member student delegation to MUNTR 2018 in Antalya.",
+        "tracks": [
+          "teaching_mentorship_academic_service",
+          "venture_building_entrepreneurial_leadership"
+        ]
+      },
+      {
+        "role": "Secretary General",
+        "organisation": "International Students Association, METU",
+        "dates": "Sep 2016 – Jan 2018",
+        "details": "Managed daily operations across 8 directorates and served as executive representative for the international student body, directing flagship campus-wide festivals.",
+        "tracks": [
+          "teaching_mentorship_academic_service",
+          "venture_building_entrepreneurial_leadership"
+        ]
+      }
+    ],
+    "certifications": [
+      "Private Pilot Licence - Aeroplane (YK-9469-PL) | KCAA / Skylink Flight Services (2015)",
+      "Flight Radio Telephony Operator's Licence (YK-9469-RL) | KCAA (2015)",
+      "English Language Proficiency Rating (Level 5) | KCAA (2015)",
+      "Remote Pilot Licence - Multirotor (YK-RPL-00013A) | KCAA / Kendrone Ltd (2021)",
+      "Instructor Rating | KCAA / Kendrone Ltd (2021)",
+      "EU A1/A3 Drone Pilot Licence | EASA (2023)",
+      "Full Stack Software Development Certificate | eMobilis Technology Institute (2020)"
+    ],
+    "languages": [
+      {
+        "language": "English",
+        "level": "Native / Fluent"
+      },
+      {
+        "language": "Swahili",
+        "level": "Native / Fluent"
+      },
+      {
+        "language": "German",
+        "level": "B2"
+      }
+    ]
+  },
+  "build": {
+    "default_track": "aircraft_systems_aerospace_engineering",
+    "track_order": [
+      "aircraft_systems_aerospace_engineering",
+      "venture_building_entrepreneurial_leadership",
+      "deep_tech_research_computational_capability",
+      "teaching_mentorship_academic_service"
+    ]
+  }
+}

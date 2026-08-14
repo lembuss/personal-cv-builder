@@ -7,8 +7,7 @@ Nairobi, Kenya | brianlembuss@gmail.com | +254 705 875103
 ---
 
 ## PROFESSIONAL PROFILE
-Aerospace Engineer, Technical Founder, Deep-Tech Researcher, and Academic Educator with six years of progressive experience spanning manned aircraft maintenance, UAV OEM systems engineering, eVTOL flight test management, cloud software architecture, and university instruction. Holds a B.Sc. in Aerospace Engineering with honours from METU and 73 ECTS toward an M.Sc. in Aerospace Engineering at TU Munich (degree completion pending). Career includes commercial MRO on turboprop/turbofan aircraft (ALS Ltd); GCS serial production and server-rack HIL test rig builds for commercial UAVs (Amazilia Aerospace); aerodynamic design loop engineering and successful transition flight testing on a 25kg MTOW eVTOL (HORYZN); published airspace throughput research (AIAA 2024); flight simulator instruction and examining (TUM); and founding leadership of an Kipepeo Aerospace covering platform CAD, embedded C++ software, GCP cloud microservices, and SAFE equity fundraising. Brings experience across the hardware/software boundary, combining physical aircraft systems lifecycle ownership with cloud, AI, and embedded software architectures.
-
+Aerospace Systems Engineer, Technical Founder and Deep-Tech Researcher with six years of progressive experience spanning manned aircraft maintenance, UAV systems engineering, eVTOL flight test management, cloud software architecture, and university instruction. Holds a B.Sc. in Aerospace Engineering with honours from METU and 73 ECTS toward an M.Sc. in Aerospace at TU Munich (degree completion pending). Career includes commercial MRO on turboprop/turbofan aircraft (ALS Ltd); GCS serial production and server-rack HIL test rig builds for commercial UAVs (Amazilia Aerospace); aerodynamic design loop engineering and successful transition flight testing on a 25kg MTOW eVTOL (HORYZN); published airspace throughput research (AIAA 2024); flight simulator instruction (TUM); and founding leadership of Kipepeo Aerospace covering platform CAD, embedded C++ software, GCP cloud microservices, and SAFE equity fundraising. Brings experience across the hardware/software boundary, combining physical aircraft systems lifecycle ownership with cloud, AI, and embedded software architectures.
 ---
 
 ## CORE COMPETENCIES
@@ -259,7 +258,7 @@ Aerospace Engineer, Technical Founder, Deep-Tech Researcher, and Academic Educat
 * **Flight Radio Telephony Operator's Licence (YK-9469-RL)** | KCAA (2015)
 * **English Language Proficiency Rating (Level 5)** | KCAA (2015)
 * **Remote Pilot Licence - Multirotor (YK-RPL-00013A)** | KCAA / Kendrone Ltd (2021)
-* **Instructor Rating** | KCAA / Kendrone Ltd (2021)
+* **RPL Instructor Rating** | KCAA / Kendrone Ltd (2021)
 * **EU A1/A3 Drone Pilot Licence** | EASA (2023)
 * **Full Stack Software Development Certificate** | eMobilis Technology Institute (2020)
 
