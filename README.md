@@ -17,7 +17,7 @@ career-db/server/prisma/dev.db
 db_to_markdown.py
       │
       ▼
-data/master-cv-content-pool.md
+data/master-content-pool.md
       │
       ▼
 markdown_to_json.py

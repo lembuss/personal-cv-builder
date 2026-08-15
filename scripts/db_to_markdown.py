@@ -1,7 +1,7 @@
 import sqlite3
 from collections import defaultdict
 
-conn = sqlite3.connect('/mnt/user-data/uploads/dev.db')
+conn = sqlite3.connect('/career-db/server/prisma/dev.db')
 conn.row_factory = sqlite3.Row
 cur = conn.cursor()
 
@@ -257,7 +257,7 @@ output = (
     footer
 )
 
-with open('/home/claude/work/MASTER-CONTENT-POOL-GENERATED.md', 'w') as f:
+with open('/data/markdown/MASTER-CONTENT-POOL-GENERATED.md', 'w') as f:
     f.write(output)
 
 print(f"Done. Total activities written: {total_acts}")
