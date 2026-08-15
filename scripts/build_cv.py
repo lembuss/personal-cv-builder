@@ -23,7 +23,7 @@ from reportlab.platypus import (
 )
 from reportlab.lib import colors
 
-DATA_FILE = "mastercv_multitrack.json"
+DATA_FILE = "mastercv_generated_multitrack.json"
 
 TRACK_ALIASES = {
     "A": "aircraft_systems_aerospace_engineering",

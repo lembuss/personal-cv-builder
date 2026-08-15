@@ -1,7 +1,7 @@
 # MASTER CONTENT POOL — Brian Lembuss Kirwa
 ## Phase 6C — Complete Un-Pruned Career Database Compilation (v3)
 
-*Source of truth: `dev.db` (SQLite). This document contains 100% of database content — {n_exps} Experiences, {n_projs} Projects, {n_acts} Activities — with no pruning, condensing, page-limit, or omission, per CAREER-CV-ROADMAP-HANDOVER-V3.md §0, §1, §5. It is the un-pruned Master Content Pool from which all 8 downstream application tracks (industry, UAS/eVTOL/AAM, R&D, PhD admissions, TUM MSc scholarships, further education, entrepreneurial/founder-track, and teaching/academic roles) will be derived.*
+*Source of truth: `dev.db` (SQLite). This document contains 100% of database content — 20 Experiences, 40 Projects, 163 Activities — with no pruning, condensing, page-limit, or omission, per CAREER-CV-ROADMAP-HANDOVER-V3.md §0, §1, §5. It is the un-pruned Master Content Pool from which all 8 downstream application tracks (industry, UAS/eVTOL/AAM, R&D, PhD admissions, TUM MSc scholarships, further education, entrepreneurial/founder-track, and teaching/academic roles) will be derived.*
 
 ---
 
@@ -579,1254 +579,6 @@ Founding CEO and Lead Systems Engineer driving the full-stack design, hardware f
 
 ---
 
-### Technical University of Munich — M.Sc Aerospace
-*Graduate Student | Munich, Germany | 2021-10 – Present*
-
-Master of Science degree program in Aerospace Engineering at the TUM School of Engineering and Design, specializing in Aircraft Systems, Control, and UAS Integration. Completed 73 ECTS of advanced coursework, research practice, and practical labs covering rotorcraft engineering, electric aircraft, flight guidance, avionics safety, autonomous systems, non-linear control, and CFD simulation. Achieved a provisional overall grade of 2.6, with supplementary requirement courses passed in Automatic Control and CAD/Machine Elements. Degree completion is pending the submission of the Master's thesis
-
-**Projects under this experience (6):**
-
-#### Project: Generic Modeling of Slotneutral UAM Throughput at Commercial Airports
-- **System:** Munich Airport (EDDM) Terminal Airspace & eVTOL Point-in-Space (PinS) Approach System
-- **Objective:** Eliminate operationally unfeasible eVTOL detours (~66 km) and maximize slot-neutral UAM throughput at commercial airports without disrupting conventional air traffic operations.
-- **Description:** Research project conducted at the Chair of Aircraft Design (LLS), TUM, in collaboration with Airbus Urban Mobility and Munich Airport International under the AMI-AirShuttle project. Developed a generic Python toolchain to model and evaluate slot-neutral eVTOL approach trajectories into Munich Airport (EDDM), enabling dynamic airspace reconfiguration based on live traffic data and wake turbulence categories.
-- **Outcome:** Developed and delivered a fully functional Python toolchain generating 2D/3D KML trajectories for Google Earth Pro and the Airbus USim environment. Reduced approach detours from 66 km to ~15 km (direct approach) or ~23 km (with holding pattern). Co-authored and published the research paper at AIAA 2024.
-- **R&D Project:** Yes
-- **Project Tags:** Academic Publication, Advanced Air Mobility, Aircraft Systems, Architecture, Avionics, CONOPS, Design, GIS Tools, Git, Microsoft Office, Python, QGIS, Research, Simulation, Systems Engineering, Verification, eVTOL
-- **Notes:** Supervised by Prof. Dr.-Ing. Mirko Hornung and Johannes Michelmann, M.Sc. Processed 24-hour Flightradar24 traffic data across RECAT-EU categories (CAT-A through CAT-F), calculated 3-degree ILS glideslope separation trigger points ($1000\text{ ft}$ threshold), and integrated T-bar Point-in-Space (PinS) approach geometry.
-
-**Activity 1 — What:** Traffic Categorization & Glideslope Separation Analysis
-
-**How:** xtracted and processed 24-hour Flightradar24 arrival and departure traffic data at Munich Airport (EDDM) and calculated the ILS glideslope vertical separation profile to establish dynamic trigger points for restricted airspace activation. Mapped ICAO aircraft type designators to RECAT-EU wake turbulence categories (CAT-A through CAT-F) using custom Python data processing scripts (traffic_data_manipulation.py) and Microsoft Excel. Calculated 3° ILS glideslope geometry on Runway 26L/08R to identify points where vertical separation between arriving conventional aircraft (5000 ft AMSL at FAF) and cruising eVTOLs (2500 ft AMSL) drops below the 1000 ft ICAO Doc 4444 threshold
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Established empirical proof that 86.9% of EDDM arriving traffic falls into CAT-D (62.37%) and CAT-E (24.53%), proving that static CAT-B (7 NM separation) assumptions were overly conservative. Formulated exact glideslope trigger locations (6.40 NM start, 3.25 NM end from threshold) where wake turbulence separation becomes active/inactive
-
-**Tags:** Academic Publication, Advanced Air Mobility, Aircraft Systems, CONOPS, Data Processing, Design, MATLAB, Microsoft Office, Operations, Python, Requirements, Research, Simulation
-
-**Notes:** Supervised by Johannes Michelmann, M.Sc.. Traffic dataset retrieved for September 26, 2023. Showed that CAT-D requires 5 NM and CAT-E requires 4 NM separation, offering significant airspace volume reductions compared to static 7 NM CAT-B assumptions
-
-**Activity 2 — What:** PinS Approach Procedure & Holding Pattern Trajectory Design
-
-**How:** Designed Instrument Meteorological Conditions (IMC) Point-in-Space (PinS) instrument approach procedures, T-bar transition fixes, and 1-minute holding patterns for eVTOL traffic operating in a triple parallel independent approach configuration at Munich Airport. Applied ICAO Doc 8168 (PANS-OPS), Doc 9643 (SOIR), and FAA Order JO 7110.65X regulatory criteria to construct a 540 m wide Normal Operating Zone (NOZ) between active runway centerlines (2300 m spacing). Calculated 3.0 NM Intermediate Approach Segments (IF), 4.0 NM Initial Approach Segments (IAF), 1250 m radius-to-fix (RF) turns, and 1-minute right-turn holding patterns (2 km leg, 700 m turn radius at 25° bank angle) for 120 km/h cruise speed.
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Formulated complete, regulatory-compliant IFR approach procedure geometry allowing eVTOLs to transition from instrument guidance at the MAPt (500 ft AGL OCH) to visual vertiport descent without crossing active conventional runways or violating No Transgression Zones (NTZ).
-
-**Tags:** Academic Publication, Advanced Air Mobility, Aircraft Systems, AutoCAD, CONOPS, Design, Interface Definition, MATLAB, Operations, Python, Requirements, Safety, Systems Engineering
-
-**Notes:** Adapted procedures from Reinisch (2023) master thesis. Addressed IMC resiliency while conforming to EASA PTS-VPT-DSN vertiport guidelines
-
-**Activity 3 — What:** Python Throughput Modeling Toolchain & KML Trajectory Generation
-
-**How:** Designed and implemented an object-oriented Python software toolchain that dynamically recalculates restricted airspace volumes and generates 2D/3D flight trajectories for Google Earth Pro and the Airbus USim simulation environment. Developed a modular Python engine (main.py, approach.py, trajectory_design.py, glideslope_visualization.py, functions.py) using class inheritance structures (Approach -> TrafficApproach / eVTOLApproach). Programmed algorithms to compute 3D corner coordinates for dynamic restricted volumes, generate RF turns with 5° arc steps, construct detour headings, and format output geometry into Keyhole Markup Language (KML) LineString and Polygon files.
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Delivered a generic, airport-agnostic toolchain that reduced eVTOL approach detour tracks from 66 km down to ~14.9 km for direct approaches (7.5 min flight time) or ~23 km when combining a 1-minute holding pattern with a direct approach (12 min flight time)
-
-**Tags:** Academic Publication, Advanced Air Mobility, Aircraft Systems, Architecture, CONOPS, Data Processing, GIS Tools, Git, Implementation, MATLAB, Python, QGIS, Research, Simulation, Software, Systems Engineering, Verification
-
-**Notes:** Delivered to the Chair of Aircraft Design (LLS) and Air Mobility Initiative (AMI) industry partners. Output KML files verified in Google Earth Pro
-
-**Activity 4 — What:** AIAA 2024 Research Contribution — Airspace Geometry Dynamization
-
-**How:** Co-authored and published research on Advanced Air Mobility integration in controlled airport terminal airspaces, delivering the core geometry dynamization methodology and empirical traffic findings for the AIAA 2024 Aviation Forum paper. Synthesized thesis findings into Section IV.B.2 ("Airspace re-configuration based on aircraft classes") of the joint publication with Airbus Urban Mobility and LLS TUM. Formulated comparative trade studies contrasting static CAT-B restricted volumes against dynamic RECAT-EU class-based volumes, demonstrating significant track length and flight time reductions. 
-
-**Responsibility:** Contributed
-
-**Result:** Co-authored paper titled "Conceptualization and simulation of Advanced Air Mobility (AAM) operations within Controlled Airspaces of airports running independent parallel runway operations", presented to the global aerospace community at AIAA 2024.
-
-**Tags:** Academic Publication, Advanced Air Mobility, Aircraft Systems, GIS Tools, Git, Python, QGIS, Research, Simulation, Systems Engineering, Verification
-
-**Notes:** oint work with Dominik von Mengden (Airbus Urban Mobility), Felix Reinisch, Johannes Michelmann, Xueqing Nies (LLS TUM), and Philipp Stute. Directly translated thesis Python toolchain insights into industry dissemination.
-
-#### Project: Embedded Software Development of the Actuator Control and Monitoring Unit (ACMU)
-- **System:** Actuator Control and Monitoring Unit (ACMU)
-- **Objective:** Optimize logging throughput, reduce memory overhead, eliminate SD card data corruption risk, and establish high-integrity UAV-CAN communication between the ACMU and Pixhawk flight control computers
-- **Description:** Embedded software R&D project conducted at the Chair of Aircraft Design (LLS), TUM, focusing on C++ software performance optimization, double-buffer log file management, binary USB data streaming, and OpenCyphal CAN bus integration for a standalone electromechanical actuator control unit
-- **Outcome:** Refactored logging architecture using C++ TDD and Dependency Injection, successfully implementing binary USB data streaming that achieved a 5x data reduction (from 100 bytes to 20 bytes per log frame) verified on target hardware during HIL testing; project discontinued due to medical departure
-- **R&D Project:** Yes
-- **Project Tags:** Aircraft Systems, Architecture, Avionics, C, C++, CAN, CONOPS, Design, Docker, Embedded C, Embedded Systems, Flight Controls, HIL, Implementation, MBSE, Model Based Systems Engineering, Requirements, Software, Systems Engineering, TDD (Test Driven Development), Validation
-- **Notes:** Supervised by Daniel Teubl, M.Sc., and Prof. Dr.-Ing. Mirko Hornung. Built on predecessor thesis work by T. W. Bitenc (2021). Implemented double-buffer binary sensor data routines (binary_sensor_data) and verified execution on target hardware in May 2024. Project discontinued prior to thesis submission due to medical departure.
-
-**Activity 5 — What:** Refactored the ACMU data logging software pipeline using Test-Driven Development (TDD) in C++ to implement high-efficiency binary data serialization over USB
-
-**How:** Applied C++ design patterns by extracting a data logging superclass and implementing Dependency Injection to dynamically switch log formats at runtime via a log_format flag. Engineered double-buffered binary sensor data routines (binary_sensor_data), wrote unit test suites, and verified execution on target hardware within a HIL testing environment
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Achieved an 80% reduction in log frame size (reducing packet size from 100 bytes down to 20 bytes), delivering 5x data compression to support high-rate 10 MB / 120 s telemetry logging without memory resource depletion
-
-**Tags:** Aircraft Systems, Architecture, Avionics, C, C++, Design, Docker, Embedded C, Embedded Systems, Flight Controls, Git, Implementation, Software, Systems Engineering, TDD (Test Driven Development), Verification
-
-**Notes:** Verified directly on target hardware during May 2024 HIL test sessions. Work cut short due to departure on medical leave
-
-**Activity 6 — What:** ACMU System Architecture & Protocol Integration Research
-
-**How:** Conducted preliminary system architecture trade studies and authored the master thesis research expose defining software improvements for SD card buffer flushing, Cyphal / OpenCyphal bus protocols, and thread-level CPU status monitoring. Researched memory buffer optimization schemes, atomic write/sync routines, and fault exception handling for SD card removal. Evaluated OpenCyphal (UAV-CAN) middleware abstractions for distributed computing between the standalone ACMU and Pixhawk flight controllers
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** ormulated and submitted the approved technical expose and software requirements baseline to the Chair of Aircraft Design (LLS), TUM.
-
-**Tags:** Aircraft Systems, Architecture, Avionics, C, C++, CAN, CONOPS, Embedded Systems, MBSE, Requirements, Software, Systems Engineering, TDD (Test Driven Development)
-
-**Notes:** Supervised by Daniel Teubl, M.Sc., and Prof. Dr.-Ing. Mirko Hornung. Exposed baseline requirements prior to medical departure
-
-#### Project: Autonomous Sub-Terrain UAV Challenge
-- **System:** Autonomous Sub-Terrain Quadrotor UAV (Unity Simulator, ROS, RealSense Depth Camera, Semantic Camera)
-- **Objective:** Execute fully autonomous takeoff, transit, cave entry, 3D mapping, multi-object lantern detection/localization, and return-to-base homing in an unknown subterranean environment
-- **Description:** Group robotics R&D project for the LRG6300 Autonomous Systems course at TUM under Prof. Markus Ryll. Engineered a ROS software architecture in C++ within a Unity simulation environment to execute autonomous cave exploration, 3D voxel grid mapping, real-time perception filtering, and object localization for a subterranean quadrotor UAV
-- **Outcome:** Execute fully autonomous takeoff, transit, cave entry, 3D mapping, multi-object lantern detection/localization, and return-to-base homing in an unknown subterranean environment
-- **R&D Project:** Yes
-- **Project Tags:** Aircraft Systems, Architecture, Autonomy, C++, CONOPS, Computer Vision, Design, Git, Implementation, Integration, Payloads, ROS, Robotics, Sensors, Simulation, Software, Systems Engineering, Unity, Verification
-- **Notes:** Developed by Group 1 (Osama Atwi, Ezgi Köse, Brian Kirwa, Anas Tounsi, Joseph Gitu Waweru) for LRG6300 at TUM (Winter Semester 23/24) supervised by Prof. Markus Ryll. Personal contributions focused on authoring the mission planner FSM state machine and engineering the depth-to-octree perception/mapping pipeline
-
-**Activity 7 — What:** Depth-to-PointCloud Perception Engine & Spatial Frame Transformation
-
-**How:** Engineered the real-time depth perception pipeline (depth_to_pc_node) converting raw RealSense depth camera video streams into noise-filtered 3D point cloud topics in the global world frame. Integrated OpenCV within ROS to apply bilateral noise filtering on raw depth frames while sharpening geometric wall edges, restoring images to 16UC1 format. Processed intrinsic camera parameters (fx, fy, cx, cy) with a 0.001f depth scale factor using Point Cloud Library (PCL) pinhole projection equations. Utilized ROS tf2 spatial transformation libraries to dynamically transform point clouds from the moving camera sensor frame to the static world frame, compensating for quadrotor vibrations, pitch/roll tilt, and body oscillations
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Achieved stable, motion-compensated 3D point cloud generation at the cave entrance and interior, establishing an accurate point cloud stream free of quadrotor motion artifacts for downstream 3D mapping.
-
-**Tags:** C++, Computer Vision, Design, Implementation, Integration, Payloads, ROS, Research, Robotics, Sensors, Software, Unity, Verification
-
-**Notes:** Leveraged PCL and tf2 libraries in ROS. Math equations: pt.x = (u - cx) * z / fx; pt.y = (v - cy) * z / fy; pt.z = z.
-
-**Activity 8 — What:** OctoMap 3D Voxel Grid Mapping & Dynamic Point Cloud Updater
-
-**How:** Developed the 3D spatial mapping node (point_cloud_to_voxel_grid_node) utilizing the OctoMap library to build and update a global 3D occupancy voxel grid map of the cave environment in real time. Subscribed to world-frame point clouds and initialized an OctoMap tree with a 1.0 m voxel resolution for optimal computational efficiency. Implemented a Dynamic Updater algorithm comparing sequential point cloud frames within a 0.05 m search radius at resolution 2 to isolate newly observed environmental points into a changed_points cloud, preventing cumulative point overlap. Executed Octree tree-pruning routines, periodic binary exports (.bt format), and integrated OctoMap RViz plugins (OccupancyGrid display) for real-time 3D voxel visualization.
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Successfully generated and periodically saved a complete 3D binary OctoMap (.bt) of the subterranean cave network that was visualized and verified in Octovis and RViz
-
-**Tags:** Architecture, Autonomy, C++, Computer Vision, Design, Git, Implementation, ROS, Robotics, Software, Systems Engineering, Unity, Verification
-
-**Notes:** OctoMap binary folder export significantly reduced memory overhead and allowed standalone 3D inspection in Octovis.
-
-#### Project: Applied CFD Channel & Cavity Flow Simulation
-- **System:** Subsonic Dual-Cavity Channel Flow System
-- **Objective:** Simulate flow separation and reattachment dynamics across dual cavity geometries, evaluate shear stress transport (SST) versus Speziale, Sarkar and Gatski (SSG) Reynolds Stress Models, and analyze the impact of boundary layer mesh refinement and advection scheme order.
-- **Description:** Numerical CFD study investigating subsonic turbulent channel flow over dual cavity geometries using ANSYS ICEM CFD and ANSYS CFX to evaluate turbulence models, wall refinement (y+ approx 1), geometry modifications, and advection scheme numerical diffusion
-- **Outcome:** Completed 5 comparative CFD simulation cases in ANSYS CFX, demonstrating that non-algebraic SSG RSM accurately resolves cavity recirculation, boundary layer mesh refinement (y+ approx 1) captures wall shear, and 2nd-order advection prevents artificial numerical dissipation.
-- **R&D Project:** Yes
-- **Project Tags:** ANSYS Fluent, CFX, ICEM, Aerodynamics, CFD (Computational Fluid Dynamics), Design, Research, Simulation, Verification
-- **Notes:** Chair of Aerodynamics, TUM (MW1628 Applied CFD, Project KA3). Geometry blocking and structured mesh generated in ANSYS ICEM CFD; solver execution and post-processing completed in ANSYS CFX 2022.
-
-**Activity 9 — What:** Modeled 2D/3D dual-cavity channel geometries, built multi-block structured grids, and executed comparative subsonic CFD simulations across 5 test cases in ANSYS ICEM CFD and ANSYS CFX
-
-**How:** Applied multi-block structured grid blocking in ICEM CFD with wall boundary layer refinement (reducing cell size from 0.5 to 0.00001 m) to achieve a non-dimensional wall distance of y+ approx 1. Defined subsonic inlet boundary conditions (Mach 0.1, 34.3 m/s) and static pressure outlets in CFX. Evaluated shear-stress transport (SST) versus SSG Reynolds Stress turbulence models and 1st-Order Upwind versus 2nd-Order High Resolution advection schemes across initial and widened cavity geometries.
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Proved that the non-algebraic SSG Reynolds Stress Model accurately captured flow separation and recirculation vortices inside deep cavities where SST failed, and demonstrated that 2nd-order advection schemes eliminated artificial numerical diffusion present in 1st-order upwind calculations
-
-**Tags:** ANSYS Fluent, CFX, ICEM, Aerodynamics, CFD (Computational Fluid Dynamics), Design, Research, Simulation, Software, Verification
-
-**Notes:** Completed for MW1628 Applied CFD (Project KA3) at the Chair of Aerodynamics, TUM. Evaluated convergence residuals (RMS target 1e-6) and boundary layer y+ values across 5 distinct test cases.
-
-#### Project: Simulation of the Flowfield of a Multirotor in Axial Flight
-- **System:** Quadrotor UAV Flow Field & Actuator Disk System
-- **Objective:** Model the 3D aerodynamic flow field of a multirotor in low-rate axial descent, calculate individual rotor thrust and drag torque via Blade Element Theory, and evaluate tip vortex ring state interactions.
-- **Description:** Numerical CFD study simulating the steady, incompressible 3D flow field around a quadrotor UAV in axial descent flight using OpenFOAM. Implemented Blade Element Momentum Theory (BEMT) actuator disk source terms (rotorDiskSource in fvOptions) coupled with $k-\omega$ SST turbulence modeling to calculate aerodynamic thrust/torque and analyze induced velocity fields, axial pressure distributions, and blade tip vortex interaction
-- **Outcome:** Generated computational background domains and refined rotor disk meshes, executed parallel 4-processor steady-state solves in simpleFoam, achieved residual convergence within 410 iterations, and validated axial pressure distribution jumps and non-interacting tip vortex behavior against analytical momentum theory
-- **R&D Project:** Yes
-- **Project Tags:** Aerodynamics, C++, CFD (Computational Fluid Dynamics), Design, Git, Implementation, OpenFOAM, Python, Research, Simulation, Software, Verification
-- **Notes:** Completed for MW1277 Simulation of Thermofluids with Open Source Tools at TUM. Modeled a 2.5m x 2.5m x 4.0m domain containing 4 rotor disks (0.5m diameter, 0.01m thickness, 3 blades, -1000 RPM) using blockMesh, snappyHexMesh, and parallel decomposePar execution
-
-**Activity 10 — What:** OpenFOAM Multirotor CFD Mesh Generation & Parallel Domain Setup
-
-**How:** Built the 3D computational domain background grid and refined quadrotor rotor disk geometries using OpenFOAM mesh utilities (blockMesh and snappyHexMesh) for parallel CFD solver execution. Constructed a 2.5m x 2.5m x 4.0m bounding domain in blockMesh (25 x 25 x 40 cell grid) with velocity inlet (1.0 m/s), static pressure outlet, and slip wall boundary conditions. Extracted 4 rotor disk CAD geometries (0.5m diameter, 0.01m thickness) via surfaceFeatures and executed cell refinement using snappyHexMesh. Configured 4-processor spatial domain decomposition (decomposeParDict 2x2x1 split) for parallel execution (mpirun).
-
-**Responsibility:** OwnedArchitected
-
-**Result:** Generated a high-quality multi-region 3D mesh with fine cell resolution localized around all 4 rotor disks, enabling stable parallel solver execution in simpleFoam.
-
-**Tags:** Aerodynamics, C++, CFD (Computational Fluid Dynamics), Design, Implementation, OpenFOAM, Research, Simulation, Software
-
-**Notes:** Completed for MW1277 lab course at TUM
-
-**Activity 11 — What:** BEMT Actuator Disk Source Integration & Axial Flow Field Simulation
-
-**How:** Configured Blade Element Momentum Theory (BEMT) actuator disk source terms (rotorDiskSource in fvOptions) and solved the steady, incompressible RANS flow field in OpenFOAM. Programmed fvOptions to apply BEMT momentum source terms across 4 rotor cell zones (3 blades, -1000 RPM, 1.0 m/s axial inlet velocity) calculating lift/drag forces ($F_z$, $F_\theta$) from $C_l$ and $C_d$ dynamic pressure equations. Executed parallel simpleFoam iterations with the $k-\omega$ SST turbulence model until residual convergence ($p, k, \omega < 0.001$, $\vert{}U\vert{} < 0.0001$) at 410 iterations (762.07 s execution time). Processed axial pressure profiles, rotor thrust/torque totals, and induced velocity vector fields.
-
-**Responsibility:** OwnedArchitected
-
-**Result:** Calculated individual rotor effective lift (1061 N to 1144 N) and drag torque (-101 Nm to -110 Nm), validated axial pressure jump profiles against analytical momentum theory, and demonstrated that rotor tip vortices do not interact when inter-rotor spacing equals or exceeds disk diameter.
-
-**Tags:** Aerodynamics, C++, CFD (Computational Fluid Dynamics), Design, OpenFOAM, Propulsion, Python, Research, Simulation, Software, Validation, Verification
-
-**Notes:** Validated against Leishman (2006) helicopter aerodynamics vortex ring state literature.
-
-#### Project: Geospatial Analysis & Cartography — Nakuru County Geotourism Research
-- **System:** QGIS, EARS geological datasets, SRTM elevation rasters, Pralong/Pereira geomorphosite assessment matrices
-- **Objective:** rocess spatial datasets and produce all cartographic figures, geosite localizations, and structural overlays across four primary geosites (Hell's Gate National Park, Menengai Crater, Lake Naivasha Basin, Kariandusi Site) for academic publication
-- **Description:** End-to-end spatial data processing, QGIS modeling, geomorphosite localization, and publication-grade map production for an academic research study evaluating geotourism potential along the Gregory Rift in Nakuru County, Kenya.
-- **Outcome:** Delivered 100% of the spatial models, site localizations, and cartographic map figures co-authored in a peer-reviewed research paper.
-- **R&D Project:** Yes
-- **Project Tags:** Academic Publication, Data Processing, Design, GIS Tools, Implementation, QGIS, Research
-- **Notes:** Independent research collaboration supporting Lead Author Shalom Chemutai Maina (AGH University of Krakow). Executed without TUM faculty supervision, but authored and published under TUM institutional affiliation (brian.kirwa@tum.de). Financed in part by the UNESCO/Poland Co-Sponsored Fellowships Programme
-
-**Activity 12 — What:** Formulated the spatial data processing pipeline and generated all regional GIS figures, geosite localizations, and geological mapping overlays.
-
-**How:** Imported and structured vector/raster datasets in QGIS, generated elevation and boundary maps for four EARS geosites, integrated geomorphosite evaluation scoring into spatial layouts, and produced publication-grade figures
-
-**Responsibility:** Led
-
-**Result:** Completed 100% of the cartographic and spatial analysis deliverables required for the research publication
-
-**Tags:** Academic Publication, Data Processing, GIS Tools, Implementation, QGIS, Research
-
-**Notes:** All map figures and spatial localizations in the published paper were independently produced.
-
----
-
-### Jasiri4Africa — Jasiri Fellow, Talent Investor Program
-*Entrepreneur | Rwanda | 2025-01 – 2025-05*
-
-Participated in the Jasiri Talent Investor program (Cohort 7 / Ntore Cohort) funded by Allan & Gill Gray Philanthropy. Completed the online Jumpstart phase and 3-month Residential Intensive in Bugesera, Rwanda, focusing on team formation, qualitative/quantitative smallholder farmer discovery, commissioning a GeoPoll research study, formulating the iCARUS business model canvas, and presenting at Jasiri Demo Day 1 before opting out prior to the venture creation phase.
-
-**Experience-level Activities (not tied to a specific project):**
-
-**Activity 1 — What:** Completed the Jasiri Jumpstart and 3-month Residential Intensive while executing field-level market discovery on smallholder agri-data adoption barriers in Kenya.
-
-**How:** Completed the Jasiri Jumpstart and 3-month Residential Intensive while executing field-level market discovery on smallholder agri-data adoption barriers in Kenya.
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Validated core market pain points around late crop stress detection, high input costs, and lack of affordable farm-specific decision support tools for smallholder farmers.
-
-**Tags:** Agronomy, Market Research, Microsoft Office, Precision Agriculture, Requirements, Research, Validation
-
-**Notes:** Field research established the foundational problem statement and user requirements for iCARUS / Kilimo Anga
-
-**Activity 2 — What:** formulated the dual-sided business model canvas and revenue architecture for the iCARUS precision agriculture concept.
-
-**How:** Structured pay-per-scan B2C smallholder services and B2B software/data subscriptions for drone operators and agricultural parastatals; mapped key value propositions, extension channels, and cost structures; evaluated strategic partnerships with regulators (KCAA), seed companies (ADC, KSC), and cloud providers.
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Produced a comprehensive Business Model Canvas establishing unit economics, market size ($5.7M TAM target), and go-to-market channels.
-
-**Tags:** Agronomy, Architecture, Business Development, CONOPS, Financial Modeling , Microsoft Office, Precision Agriculture, Venture Building
-
-**Notes:** Designed B2B and B2C value propositions tailored to smallholders in Uasin Gishu, Nandi, and Nakuru counties
-
-**Activity 3 — What:** Authored and delivered the iCARUS venture pitch deck at Jasiri Demo Day 1 in Bugesera, Rwanda
-
-**How:** Synthesized market research data, smallholder yield deficit statistics, drone/multispectral tech stack architecture, and pilot financial projections into a 9-slide investor presentation; pitched to Jasiri program directors, venture coaches, and fellow entrepreneurs
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Successfully completed Demo Day 1 requirements on May 2, 2025, validating venture readiness prior to program exit.
-
-**Tags:** Investor Relations, Microsoft Office, Operations, Operations, Precision Agriculture, Public Speaking & Debate, Stakeholder Engagement
-
-**Notes:** Presentation highlighted the 4.4M metric ton national maize shortfall and demonstrated drone/multispectral crop health visualization software
-
----
-
-### Amazilia Aerospace GmbH — Aerospace Systems Engineering
-*Working Student | Munich, Germany | 2022-09 – 2024-12*
-
-Role concurrent with MSc studies at TU Munich. Involved in aircraft systems integration, electrical architecture, HIL testing, GCS development and autonomous charging systems across both UAS and conventional aircraft platforms.
-
-**Projects under this experience (4):**
-
-#### Project: WfA MiniFreighter GCS -SN2
-- **System:** Ground Control Station — WfA MiniFreighter 8/500FW
-- **Objective:** Redesign the SN2 GCS to meet updated customer, pilot and operational requirements including revised control architecture, communication protocols, BLOS capability and maintainability improvements
-- **Description:** Full lifecycle redesign of the Wings for Aid MiniFreighter 8/500FW Ground Control Station — from customer requirements capture through design reviews, procurement, assembly, integration testing and field deployment. Five units delivered operationally
-- **Outcome:** Five GCS units assembled, tested and deployed to customer for active WFP operations in Africa
-- **R&D Project:** Yes
-- **Project Tags:** Aircraft Systems, Allocation, Architecture, Autodesk Inventor, Avionics, CAN, Communications, Deployment, Design, Electrical Systems, Embedded Systems, Ethernet, Functional Analysis, Ground Control Systems, Ground Testing, Implementation, Integration, Interface Definition, RS-232, RS-422, Requirements Management, Systems Engineering, UART, Validation, Verification
-- **Notes:** NDA applies — keep evidence references general
-
-**Activity 1 — What:** Attended joint design evaluation session with Wings for Aid CEO and chief pilot alongside Amazilia CTO and senior systems engineer. Captured customer and pilot requirements directly and translated them into formal engineering specifications for the SN2 GCS redesign. Produced wiring diagrams, CAD renders and system architecture documentation. Presented across three internal design reviews with CTO, Head of Systems Engineering and Senior Systems Engineer, incorporating embedded software team input on DCU interface changes. Received sign-off to proceed to BOM and procurement.
-
-**How:** Direct customer requirements capture, requirements-to-specification translation, iterative design review process, wiring diagram production, CAD modelling, system architecture documentation
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Approved SN2 GCS design package including updated wiring architecture, component specifications and BOM — cleared for procurement and assembly
-
-**Tags:** Aircraft Systems, Allocation, Architecture, AutoCAD, Autodesk Inventor, Avionics, CAN, Communications, Design, Electrical Systems, Ethernet, Functional Analysis, Ground Control Systems, Interface Definition, RS-232, RS-422, Requirements Management, Systems Engineering, Technical Documentation, UART, yEd
-
-**Notes:** Handwritten requirements notes from WfA meeting exist as personal evidence. Formal design review documentation produced internally at Amazilia — NDA applies.
-
-**Activity 2 — What:** Sourced alternative panel supplier through independent research, which reduced component costs compared to the original source. Redesigned front panels in Autodesk Inventor to match the new supplier's specifications. Curated a full assembly procedure based on SN1 documentation and discussions with seniors. Upon parts arrival, performed mechanical assembly including drilling connection holes on panels and GCS case, installing internal support structures, and routing the power architecture — standardising all internal components on 12VDC via an AC/DC converter.
-
-**How:** Supplier sourcing and cost evaluation, Autodesk Inventor CAD redesign, assembly procedure development, mechanical assembly, power architecture wiring
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Completed mechanical assembly and power architecture of SN2 Unit 1, with reduced component cost versus SN1 baseline
-
-**Tags:** Aircraft Systems, Autodesk Inventor, Design, Electrical Systems, Ground Control Systems, Implementation, Mechanical Assembly , Mechanical Fabrication, Quality Assurance, RS-232, RS-422, Supplier Sourcing, Technical Documentation
-
-**Notes:** Panel supplier change was self-initiated and resulted in cost saving for Amazilia.
-
-**Activity 3 — What:** Performed stepwise electrical integration of all internal GCS components following the assembly procedure, conducting QA checks and functionality tests at marked checkpoints verified with seniors. Installed GCS software received from the software team upon completion of Unit 1. Scheduled and conducted simulator testing in the lab to evaluate control software, internal wiring of controls, stick feedback and aircraft response time. Applied personal drone and private pilot experience to assess pilot feel and control responsiveness directly during simulation runs. Coordinated firmware and wiring corrections on the hardware side while communicating required software changes to the software team. Conducted a final internal review before inviting the Wings for Aid CEO and chief pilot for customer acceptance testing against the original specifications.
-
-**How:** Stepwise electrical integration, QA checkpoint verification, simulator-based functional testing, cross-team coordination with software team for firmware and software updates, customer acceptance testing
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Unit 1 passed all internal tests and customer acceptance checks. Customer confirmed the GCS met specifications. Cleared for serial production of remaining four units
-
-**Tags:** Aircraft Systems, Avionics, CAN, Communications, Deployment, Electrical Systems, Embedded Systems, Ethernet, Functional Analysis, Ground Control Systems, Ground Testing, Implementation, Integration, MIL-SPEC Connectors, Mechanical Assembly , Quality Assurance, RS-232, RS-422, Soldering, Systems Engineering, TTL, Technical Documentation, UART, Validation, Verification, Wire Harness Design
-
-**Notes:** Pilot licence and drone experience directly applied during simulator evaluation — provided genuine pilot feedback on stick feel and control responsiveness without relying solely on engineering judgment.
-
-**Activity 4 — What:** Serially produced four additional GCS units following customer acceptance of Unit 1. Worked on all four units simultaneously in a dedicated assembly space, applying the verified assembly procedure and QA process established during Unit 1 production. Each unit went through the same integration, functionality testing and verification process before being cleared for delivery
-
-**How:** Serial assembly using verified procedure, parallel multi-unit production, QA and functionality testing per unit
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Five GCS units total completed, tested and delivered to Wings for Aid for operational deployment with WFP in Africa
-
-**Tags:** Aircraft Systems, CAN, Communications, Deployment, Electrical Systems, Ethernet, Ground Control Systems, Implementation, Integration, MIL-SPEC Connectors, Mechanical Assembly , Mechanical Fabrication, Quality Assurance, RS-232, RS-422, Soldering, TTL, Technical Documentation, UART, Verification, Wire Harness Design
-
-**Notes:** Five units delivered and confirmed operational in the field. End-to-end ownership from requirements through deployment on a customer-facing product.
-
-#### Project: Amazilia Ground Control Station
-- **System:** AAG GCS
-- **Objective:** Deliver functional lab GCS units for use across Amazilia's HIL testing and digital flight systems development activities
-- **Description:** Assembly, integration and verification of three tabletop ground control station units for use in the Amazilia lab HIL environment. Multi-aircraft capable — compatible with Pipistrel OPV, Nuuva and CTOL platforms. Three-monitor setup covering camera feed, telemetry and engine parameters, with a mode control panel replicating actual aircraft flight controls.
-- **Outcome:** Three units assembled, integrated and verified for development use
-- **R&D Project:** Yes
-- **Project Tags:** Aircraft Systems, Avionics, Communications, Electrical Systems, Ethernet, Flight Controls, Ground Control Systems, Implementation, Integration, RS-232, RS-422, Validation, Verification
-- **Notes:** Scope limited to assembly, integration, verification and documentation cleanup — design work done by predecessors
-
-**Activity 5 — What:** Reviewed and cleaned up existing CAD files, wiring diagrams and system architecture documentation inherited from predecessor. Reconciled documentation against the physical design to ensure accuracy before proceeding to assembly.
-
-**How:** CAD review and cleanup, wiring diagram verification, architecture documentation reconciliation
-
-**Responsibility:** Contributed
-
-**Result:** Accurate and verified documentation baseline established for the three-unit production run
-
-**Tags:** Aircraft Systems, AutoCAD, Autodesk Inventor, Design, Electrical Systems, Ground Control Systems, Systems Engineering, Technical Documentation, yEd
-
-**Notes:** Design work was not originated by Brian — scope was documentation cleanup and verification only.
-
-**Activity 6 — What:** Performed mechanical assembly of three tabletop GCS units including mounting of three-monitor arrangement, mode control panel and internal structural components. Drilled connection points and installed internal support elements following the inherited design
-
-**How:** Mechanical assembly, panel mounting, structural installation
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Three units mechanically assembled and ready for electrical integration
-
-**Tags:** Aircraft Systems, Electrical Systems, Ground Control Systems, Implementation, Mechanical Assembly , Mechanical Fabrication, Quality Assurance, Technical Documentation
-
-**Activity 7 — What:** Performed electrical integration of all internal components across three units including power architecture, monitor connections, mode control panel wiring and communication interfaces. Followed stepwise approach with QA checks at key points.
-
-**How:** Electrical wiring, power architecture integration, stepwise assembly with QA checkpoints
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Three units fully wired and electrically integrated, ready for functional testing
-
-**Tags:** Aircraft Systems, CAN, Communications, Electrical Systems, Ethernet, Ground Control Systems, Implementation, Integration, MIL-SPEC Connectors, Mechanical Assembly , Quality Assurance, RS-232, RS-422, Soldering, TTL, Technical Documentation, UART, Wire Harness Design
-
-**Activity 8 — What:** Conducted functional testing of each completed unit, verifying correct operation of all three monitor feeds — camera, telemetry and engine parameters — as well as mode control panel inputs and communication interfaces. Validated that each unit performed correctly within the lab environment across the aircraft types Amazilia was working on — Pipistrel OPV, Nuuva and CTOL.
-
-**How:** Functional testing per unit, interface verification, multi-aircraft compatibility validation
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Three tabletop GCS units verified and validated for lab use across multiple Pipistrel aircraft platforms
-
-**Tags:** Aircraft Systems, Avionics, CAN, Communications, Ethernet, Flight Controls, Ground Control Systems, Ground Testing, Integration, MIL-SPEC Connectors, Quality Assurance, RS-232, RS-422, Systems Engineering, TTL, Technical Documentation, UART, Validation, Verification
-
-#### Project: Aircraft Systems Hardware-in-the-Loop (HIL) Test Rig
-- **System:** Hardware-in-the-Loop Test Rig — Amazilia Aircraft Fleet
-- **Objective:** Design and deliver a functional HIL environment replicating the actual aircraft avionics and communication architecture to support system validation and performance analysis without flight testing
-- **Description:** End-to-end design, build and integration of a hardware-in-the-loop test rig for Amazilia aircraft systems, built on a server rack architecture. Incorporated actual flight hardware including FCCs, DCUs, LMUs, CAN interfaces, Ethernet switching and power systems. Enabled in-office simulation, monitoring and validation of aircraft systems in flight conditions.
-- **Outcome:** Fully operational HIL rig delivering in-lab aircraft simulation capability across Amazilia's fleet
-- **R&D Project:** Yes
-- **Project Tags:** Aircraft Systems, Allocation, Architecture, Avionics, CAN, Communications, Design, Electrical Systems, Embedded Systems, Ethernet, Flight Controls, Ground Control Systems, Ground Testing, HIL, Implementation, Integration, Interface Definition, RS-232, RS-422, Requirements Management, Research, Systems Engineering, UART, Validation, Verification
-- **Notes:** NDA applies — hardware details kept general. Actual flight hardware used throughout, not simulated equivalents.
-
-**Activity 9 — What:** Received system requirements from Head of Systems Engineering defining the HIL rig scope, component specifications and communications architecture. Studied the complex multi-protocol communications architecture of the aircraft systems. Developed the high-level wiring architecture covering OPS Panel and PSUs, CAN boxes, RPi and USB hub, FCCs and DCUs, ETH switch, LMUs, Panels A/B/C and BRS tray. Produced detailed wiring sheets and interface definitions across all components.
-
-**How:** Requirements analysis, wiring architecture development, interface definition, communication protocol mapping across CAN and Ethernet networks
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Approved wiring architecture and interface documentation baseline established for the HIL rig
-
-**Tags:** Aircraft Systems, Allocation, Architecture, AutoCAD, Avionics, CAN, Communications, Electrical Systems, Ethernet, Flight Controls, Functional Analysis, Ground Control Systems, Interface Definition, MIL-SPEC Connectors, RS-232, RS-422, Requirements Management, Systems Engineering, TTL, yEd
-
-**Notes:** Architecture covered actual flight hardware interfaces — FCCs, DCUs and LMUs as they appear on Amazilia aircraft. NDA applies — keep details general. Wiring architecture diagrams exist as personal evidence.
-
-**Activity 10 — What:** Designed the full server rack assembly in Autodesk Inventor, modelling the physical layout and component placement of the HIL rig including rack structure, trays, panels and internal component arrangement. Presented the design across multiple preliminary design reviews with cross-functional teams including systems engineering and embedded software before receiving sign-off to proceed to procurement and assembly
-
-**How:** Autodesk Inventor CAD modelling, iterative design review process, cross-functional review with systems and software teams
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Approved CAD assembly and design package cleared for component procurement and physical build
-
-**Tags:** Aircraft Systems, Architecture, AutoCAD, Autodesk Inventor, Avionics, Design, Electrical Systems, Ground Control Systems, Systems Engineering, Technical Documentation, yEd
-
-**Notes:** Full CAD assembly. NDA applies.
-
-**Activity 11 — What:** Procured all components for the HIL rig following design sign-off. Performed mechanical assembly of the server rack including mounting of rack rails, trays, panels and structural elements. Installed and positioned all hardware components within the rack according to the approved CAD layout
-
-**How:** Component sourcing and procurement, mechanical rack assembly, hardware installation and positioning
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** HIL rig mechanically assembled and all hardware components installed and positioned ready for electrical integration
-
-**Tags:** Aircraft Systems, Autodesk Inventor, Electrical Systems, Ground Control Systems, Implementation, Mechanical Assembly , Mechanical Fabrication, Quality Assurance, Supplier Sourcing, Technical Documentation
-
-**Notes:** NDA applies
-
-**Activity 12 — What:** Performed full electrical integration of all HIL rig components including power distribution, CAN bus wiring, Ethernet patch panel connections, and interface wiring between FCCs, DCUs, LMUs, RPi units and OPS panels. Followed the wiring architecture developed during design, working stepwise through each subsystem layer of the rack.
-
-**How:** Electrical wiring, power architecture integration, CAN bus wiring, Ethernet network integration, multi-protocol interface wiring
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Fully wired HIL rig with all internal interfaces connected across CAN, Ethernet and power networks
-
-**Tags:** Aircraft Systems, Avionics, CAN, Communications, Embedded Systems, Ethernet, Flight Controls, Ground Control Systems, Implementation, Integration, MIL-SPEC Connectors, Mechanical Assembly , Quality Assurance, RS-232, RS-422, Soldering, TTL, Technical Documentation, UART, Wire Harness Design
-
-**Notes:** NDA applies — component identities kept general.
-
-**Activity 13 — What:** Conducted extensive testing and verification of the completed HIL rig with seniors, validating correct operation of all interfaces, communication protocols and hardware components. Progressed through to full HIL environment testing — monitoring and controlling aircraft systems in simulated flight conditions from the lab. Verified that the rig faithfully replicated the actual aircraft avionics architecture and communication behaviour.
-
-**How:** Interface verification, protocol testing across CAN and Ethernet, functional validation, HIL environment testing, collaborative verification with seniors
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Fully operational HIL rig confirmed — aircraft systems successfully simulated, monitored and controlled in-lab. Enabled in-office flight simulation and performance analysis across Amazilia aircraft fleet without requiring physical flight testing.
-
-**Tags:** Aircraft Systems, Avionics, CAN, Communications, Electrical Systems, Ethernet, Ground Control Systems, Ground Testing, Integration, MIL-SPEC Connectors, Quality Assurance, RS-232, RS-422, TTL, Technical Documentation, Validation, Verification
-
-**Notes:** Actual flight hardware used throughout — FCCs, DCUs, LMUs and associated avionics are identical to what is installed on Amazilia aircraft. Videos of operational HIL rig exist as personal evidence. NDA applies — aircraft type and specific component details kept confidential.
-
-#### Project: Aircraft Battery Charging Unit (ABCU)
-- **System:** Standalone External Aircraft Battery Charging Unit
-- **Objective:** Design a portable, autonomous charging unit capable of safely charging both 12V and 24V LiFePO4 battery configurations used across Amazilia aircraft systems, with built-in polarity protection, voltage indicators and field-deployable enclosure
-- **Description:** End-to-end design of a standalone autonomous aircraft battery charging unit for Amazilia's Pipistrel aircraft fleet. Initiated following a polarity reversal incident during field testing that caused a short circuit and wire damage, identifying the need for a safe, controlled external charging solution. Project covered requirements capture through design review and full handover documentation. Physical build not completed due to departure
-- **Outcome:** Complete design package delivered including system architecture, wiring diagrams, component specifications, BOM, panel designs and assembly guide. Handed over to team upon departure
-- **R&D Project:** Yes
-- **Project Tags:** Aircraft Systems, Allocation, Architecture, Autodesk Inventor, Design, Electrical Systems, Embedded Systems, Interface Definition, Requirements Management, Systems Engineering
-- **Notes:** Project initiated from a real field incident. Physical assembly not completed by Brian — design package handed over in full. Evidence includes architectural diagrams, wiring diagrams, component datasheets, panel CAD designs and assembly documentation.
-
-**Activity 14 — What:** Following a polarity reversal incident during field testing of a Pipistrel aircraft that caused a short circuit and wire damage, received brief from CTO to design a safe standalone aircraft battery charging unit. Conducted requirements capture by consulting all field testing personnel to understand operational needs, environmental conditions and safety requirements. Researched LiFePO4 battery chemistry, charging characteristics and available charging system suppliers to establish a technically grounded requirements baseline.
-
-**How:** Stakeholder requirements capture, field operator consultation, LiFePO4 battery and charging system research, supplier and component market study, datasheet analysis
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Clear requirements baseline established covering dual-voltage capability (12V and 24V LiFePO4), polarity protection, voltage indication, field deployability and safe external charging operation
-
-**Tags:** Aircraft Systems, Electrical Systems, Functional Analysis, Requirements Management, Safety, Systems Engineering, Technical Documentation
-
-**Notes:** Requirements captured directly from CTO brief and field testing team. Incident involved polarity reversal on a Pipistrel aircraft during hangar testing — identified as a safety risk to aircraft systems. LiFePO4 chemistry research conducted independently to inform component selection.
-
-**Activity 15 — What:** Developed system architecture for the ABCU covering power input, charging system selection, voltage switching between 12V and 24V LiFePO4 configurations, polarity protection, battery voltage indication and enclosure design. Conducted detailed component market study matching available charging systems against Amazilia's battery specifications. Selected components capable of handling both 12V and 24V LiFePO4 chemistries with switchable output, allowing field teams to switch between configurations during operations. Optimised component selection for cost following design review feedback.
-
-**How:** System architecture design, component market study, datasheet matching against battery specifications, cost optimisation, architectural diagram production
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Approved system architecture and component selection covering dual-voltage charging capability with polarity protection and field-deployable form factor
-
-**Tags:** Aircraft Systems, Allocation, Architecture, AutoCAD, Autodesk Inventor, Electrical Systems, Safety, Supplier Sourcing, Systems Engineering, Technical Documentation, yEd
-
-**Notes:** Architecture diagrams produced and presented at design review. Component selection driven by dual-voltage LiFePO4 requirement — 12V and 24V battery configurations present across Amazilia aircraft fleet. Cost optimisation applied following design review feedback.
-
-**Activity 16 — What:** Produced full wiring diagrams for the ABCU internal architecture. Designed enclosure panels, panel holders, mounting hardware and overall box layout in Autodesk Inventor, sized for transport in a hardened carry case similar to those used for the GCS units. Designed front panel layout for voltage switching and indicators. Specified screw sizes, mounting arrangements and all mechanical details required for assembly. Presented complete design package across design reviews with CTO and senior systems engineering team, incorporating revisions to optimise cost and usability. Agreed final panel supplier — same alternative supplier used for the WfA GCS — following design review approval.
-
-**How:** Wiring diagram production, enclosure and panel CAD design in Autodesk Inventor, design review presentation, iterative revision and cost optimisation
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Fully approved detailed design package including wiring diagrams, enclosure CAD, panel designs, component specifications and BOM
-
-**Tags:** Aircraft Systems, Architecture, AutoCAD, Autodesk Inventor, Design, Electrical Systems, Interface Definition, Quality Assurance, Safety, Systems Engineering, Technical Documentation, Wire Harness Design, yEd
-
-**Notes:** Panel design reused supplier relationship established during WfA GCS SN2 project. Full CAD and wiring documentation exists as personal evidence. Design approved through formal design review process with CTO sign-off.
-
-**Activity 17 — What:** Upon departure from Amazilia, compiled and handed over the complete ABCU design package to the team. Handover included full system architecture diagrams, wiring diagrams, component datasheets and specifications, BOM, panel CAD designs and a step-by-step assembly guide to enable the team to proceed to physical build without loss of design intent or technical context
-
-**How:** Technical documentation compilation, assembly guide authoring, structured handover to engineering team
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Complete design package successfully handed over. Physical assembly left to team to complete. No technical information lost at point of departure.
-
-**Tags:** Aircraft Systems, AutoCAD, Autodesk Inventor, Design, Electrical Systems, Systems Engineering, Technical Documentation, yEd
-
-**Notes:** Physical build not completed by Brian — departure due to personal circumstances. Handover package was comprehensive and self-contained. Evidence includes all design documentation produced during the project.
-
----
-
-### Technical University of Munich — Institute for Rotorcraft and Vertical Flight — Student Assistant - IFR Simulator Instructor
-*Graduate Student | Munich, Germany | 2023-04 – 2024-09*
-
-Instructed and evaluated aerospace engineering students during the MW1450 IFR Helicopter Flight Lab course across three academic semesters (Summer 2023, Winter 2023/24, Summer 2024). Conducted 8 weekly 5-hour practical training sessions per semester for student pairs, teaching IFR procedures, emergency protocols, radio telephony, and digital cockpit systems on an EC135 fixed-base simulator. Administered and evaluated 5-hour oral and practical final examinations as an official course examiner
-
-**Projects under this experience (1):**
-
-#### Project: IFR Flight Simulator Instruction & Student Assessment
-- **System:** Fixed-base EC135 Flight Simulator (X-Plane, Digital Cockpit Display, Physical Flight Controls)
-- **Objective:** Train aerospace engineering students in instrument flight rules, flight deck procedures, navigation, and radio communications, and evaluate their flight proficiency through formal examinations
-- **Description:** light simulator instruction, practical IFR coaching, and student evaluation for the MW1450 IFR Helicopter Flight Lab course
-- **Outcome:** Successfully instructed student cohorts across three academic semesters (8 weekly 5-hour sessions per semester) and evaluated final oral/practical examinations.
-- **R&D Project:** No
-- **Project Tags:** Aircraft Systems, Avionics, Flight Controls, Flight Simulation, IFR (Instrument Flight Rules), Operations, Operations, Simulation, Training Program Design, Validation, Verification
-- **Notes:** Course offered by the Institute for Rotorcraft and Vertical Flight (formerly Institute for Helicopter Technology) at TUM
-
-**Activity 1 — What:** Practical IFR Flight Instruction & Flight Deck Coordination
-
-**How:** Conducted weekly 5-hour practical flight simulator training sessions for student pairs enrolled in the MW1450 IFR Helicopter Flight Lab course across three academic semesters. Coordinated simulated flight scenarios using physical cyclic, collective, and rudder controls on an EC135 fixed-base simulator; coached students on flight deck procedures, checklist execution, hovering, taxiing, radio telephony, SID departures, NDB/VOR/DME navigation, holding entries, and ILS instrument approaches.
-
-**Responsibility:** Led
-
-**Result:** Guided multiple student cohorts to master practical helicopter IFR flight operations and instrument scanning techniques.
-
-**Tags:** Aircraft Systems, Avionics, Flight Controls, Flight Simulation, IFR (Instrument Flight Rules), Operations, Operations, Simulation, Training Program Design, Validation
-
-**Notes:** Covered 8 sessions per semester during Summer 2023, Winter 2023/24, and Summer 2024
-
-**Activity 2 — What:** Served as an official course examiner evaluating student pairs during 5-hour final oral and practical simulator examinations
-
-**How:** Administered oral questioning on EC135 cockpit systems and IFR flight rules, monitored checklist compliance, and assessed flight control accuracy during simulated instrument procedures
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Evaluated student technical competency against departmental standards using formal scorecard criteria
-
-**Tags:** Aircraft Systems, Avionics, Flight Controls, Flight Simulation, IFR (Instrument Flight Rules), Operations, Simulation, Training Program Design, Verification
-
-**Notes:** Examination duration was 5 hours per student group
-
----
-
-### HORYZN — Project Management - Systems & Integration
-*Student Initiative | Munich, Germany | 2023-07 – 2024-07*
-
-Appointed Project Manager for systems integration and flight testing phase of the Kolibri hybrid lift-and-cruise eVTOL UAS under Mission Pulse Phase 2. Oversaw cross-functional coordination across avionics, flight testing, CAD and structures teams. Hands-on involvement in avionics integration, PX4 flight controller setup, ground testing, flight testing and regulatory preparation. Secured TU Munich aerospace test facilities at Oberpfaffenhofen for final flight campaign. Project concluded with successful transition flight test — completing the Mission Pulse programme. Concurrent with MSc studies and Amazilia working student role. Held EU A1/A3 drone pilot licence throughout this period.
-
-**Projects under this experience (1):**
-
-#### Project: Kolibri eVTOL — Systems Integration, Flight Testing & Project Completion
-- **System:** Kolibri Hybrid Lift-and-Cruise eVTOL UAS — Full Aircraft Systems Integration and Flight Test
-- **Objective:** Drive Kolibri from detailed design through systems integration, ground testing and flight testing to achieve successful VTOL-to-cruise transition and complete Mission Pulse programme
-- **Description:** Led the systems integration and flight testing phase of the Kolibri hybrid lift-and-cruise eVTOL UAS as Project Manager. Coordinated cross-functional teams across avionics, flight testing, CAD and structures. Hands-on involvement in avionics integration, PX4 setup, ground testing and flight testing. Managed sponsor relations, team recruitment and facility coordination. Project concluded with successful transition flight test at Oberpfaffenhofen, completing Mission Pulse Phase 2
-- **Outcome:** Successful transition flight test achieved at Oberpfaffenhofen test airport. Mission Pulse Phase 2 concluded. Full aircraft development lifecycle completed from conceptual design through operational flight.
-- **R&D Project:** Yes
-- **Project Tags:** Advanced Air Mobility, Aircraft Systems, Avionics, Bill of Materials (BOM), Certification, Deployment, Electrical Systems, Flight Test, Functional Analysis, Git, Ground Control Systems, Ground Testing, Implementation, Integration, Mechanical Assembly , Mission Planning, Notion, PX4, Project Management, Recruitment & Team Building, Safety, Soldering, Stakeholder Engagement, Supplier Sourcing, Systems Engineering, Technical Documentation, eVTOL
-- **Notes:** Unpaid student initiative. Brian held EU A1/A3 drone pilot licence throughout flight testing phase. Evidence includes flight logs, test records, photographs and sponsor documentation
-
-**Activity 1 — What:** Appointed Project Manager for systems integration and flight testing phase of Kolibri by the outgoing project management team, based on demonstrated technical contribution and cross-team familiarity during the aerodynamics phase. Transitioned from aerodynamics engineering role into project leadership, taking responsibility for coordinating the avionics and flight testing team as primary focus, with secondary oversight of CAD and structures teams. Obtained EU A1/A3 drone pilot licence around this time, enabling direct participation in flight operations.
-
-**How:** Role transition, project management onboarding, cross-team coordination establishment, EU A1/A3 licence acquisition
-
-**Responsibility:** Led
-
-**Result:** Successfully assumed PM role. Clear responsibility boundaries established across teams. Drone pilot licence obtained enabling direct flight test participation.
-
-**Tags:** Advanced Air Mobility, Aircraft Systems, Notion, Project Management, Recruitment & Team Building, Requirements Management, Stakeholder Engagement, Systems Engineering, eVTOL
-
-**Notes:** Appointment was merit-based — observed performance during aerodynamics phase. EU A1/A3 licence obtained concurrent with role transition, directly enabling flight test involvement. Role was unpaid — HORYZN is a student initiative.
-
-**Activity 2 — What:** Served as the central coordination point between avionics, flight testing, CAD and structures teams during the systems integration phase of Kolibri. Identified and resolved integration conflicts — for example, where avionics and electronics sizing did not fit within the structural spaces allocated by the CAD team, requiring coordinated design iterations across CAD, structures and avionics teams. Facilitated regular cross-team meetings, tracked outstanding integration issues and ensured design decisions were communicated and implemented consistently across all teams. Coordinated with other project managers on resource allocation and scheduling.
-
-**How:** Cross-functional coordination, integration issue tracking, design review facilitation, inter-team communication management, project scheduling
-
-**Responsibility:** Contributed
-
-**Result:** Integration conflicts identified and resolved through coordinated design iterations. Systems integration progressed to hardware assembly and ground testing phase.
-
-**Tags:** Advanced Air Mobility, Aircraft Systems, Allocation, Architecture, Avionics, Electrical Systems, Embedded Systems, Flight Controls, Implementation, Integration, Interface Definition, Notion, Project Management, Requirements Management, Stakeholder Engagement, Structures, Systems Engineering, Technical Documentation, eVTOL
-
-**Notes:** Key integration challenge was physical fit of avionics and electronics within structural enclosures — required CAD and structures teams to revise designs to accommodate avionics sizing. This is a classic systems integration problem and demonstrates cross-disciplinary coordination at the hardware level
-
-**Activity 3 — What:** Worked hands-on with the avionics and flight testing team on the integration of Kolibri's avionics systems including flight controller setup on PX4, ESC configuration, sensor integration and onboard electronics wiring. Applied systems integration experience from Amazilia to support the team in solving avionics interface and communication issues. Contributed directly to soldering, wiring and bench testing of avionics components. Used knowledge of Kolibri's full design — aerodynamics, structures and avionics — to provide informed technical guidance on integration decisions.
-
-**How:** PX4 flight controller configuration, ESC setup, sensor integration, avionics wiring, bench testing, soldering, cross-system technical guidance
-
-**Responsibility:** Contributed
-
-**Result:** Kolibri avionics systems integrated and bench-tested, ready to progress to ground testing and hover trials
-
-**Tags:** Advanced Air Mobility, Aircraft Systems, Autonomy, Avionics, Communications, Electrical Systems, Embedded Systems, Flight Controls, Git, Implementation, Integration, Mechanical Assembly , Notion, PX4, Project Management, Sensors, Simulation, Soldering, Systems Engineering, Technical Documentation, Verification, Wire Harness Design, eVTOL
-
-**Notes:** Amazilia HIL and GCS experience directly applicable here — familiarity with avionics interfaces, communication protocols and wiring harness construction. PX4 used as the flight controller platform. Hands-on soldering and wiring involvement alongside the avionics team.
-
-**Activity 4 — What:** Participated in ground testing and hover trial campaign for Kolibri. Built and operated a hover test bench to validate lift motor thrust ratios against the design requirements for the 25kg MTOW aircraft. Tested the defibrillator payload delivery system to confirm correct operation with the aircraft systems. Analysed flight logs from test runs to identify issues and drive corrective actions. Managed the iterative build-test-fail-repeat development cycle — including analysis of two crashes — using data from flight logs and ground control interfaces to diagnose faults and implement fixes.
-
-**How:** Hover test bench construction and operation, thrust ratio measurement and validation, payload system testing, flight log analysis, fault diagnosis, iterative test campaign management
-
-**Responsibility:** Contributed
-
-**Result:** Lift motor thrust ratios validated against design requirements. Payload delivery system confirmed operational. Crash analyses completed and corrective actions implemented. Aircraft cleared to progress to transition flight testing.
-
-**Tags:** 3D Printing, Advanced Air Mobility, Aircraft Systems, Avionics, Electrical Systems, Flight Controls, Flight Test, Ground Control Systems, Ground Testing, Integration, Mechanical Assembly , Mission Planning, Notion, PX4, Project Management, Sensors, Software, Soldering, Structures, Systems Engineering, Technical Documentation, Validation, Verification, eVTOL
-
-**Notes:** Two crashes occurred during ground and early flight testing — both analysed using flight log data. Build-test-fail-repeat was the explicit team motto — "build fast, fail early." Thrust testing involved constructing a dedicated hover test bench. Defibrillator payload delivery system tested as part of Mission Pulse mission validation.
-
-**Activity 5 — What:** Supported preparation of regulatory documentation for Kolibri flight operations under the SORA framework. Coordinated with the team to ensure operational risk classifications and flight test documentation met the requirements for test flights at the secured facility. Contributed to safety planning and operational procedures for the flight test campaign.
-
-**How:** SORA framework application, operational risk classification, regulatory documentation preparation, safety planning
-
-**Responsibility:** Contributed
-
-**Result:** Regulatory documentation completed supporting authorised flight test operations at Oberpfaffenhofen test facility
-
-**Tags:** Advanced Air Mobility, Aircraft Systems, Certification, Flight Test, Notion, Operations, Project Management, Requirements Management, Safety, Systems Engineering, Technical Documentation, Validation, eVTOL
-
-**Notes:** SORA framework used for UAS operational risk assessment. Brian had working familiarity with SORA from Amazilia context as well. Regulatory preparation was a shared responsibility across the project management team.
-
-**Activity 6 — What:** Secured access to a TU Munich aerospace test facility for the Kolibri flight test campaign, coordinating with university contacts to establish a dedicated workspace with appropriate flight test area. Managed all logistics for the flight campaign including team transport, equipment movement, scheduling and on-site coordination. Maintained sponsor communications throughout, providing updates on project progress and test milestones. Coordinated new member recruitment and interviews for incoming semester intake alongside other project managers.
-
-**How:** Facility negotiation and coordination, flight campaign logistics management, sponsor communication, recruitment coordination, scheduling
-
-**Responsibility:** Contributed
-
-**Result:** est facility secured and operational. Flight campaign successfully executed from the facility. Sponsors kept informed and engaged. New member recruitment completed for incoming semester.
-
-**Tags:** Advanced Air Mobility, Aircraft Systems, Deployment, Flight Test, Notion, Project Management, Recruitment & Team Building, Requirements Management, Stakeholder Engagement, Systems Engineering, Technical Documentation, eVTOL
-
-**Notes:** Facility secured at TU Munich aerospace test centre — provided controlled environment for final flight campaign. Sponsor management was an ongoing responsibility throughout the PM role — HORYZN operated on external sponsorship as an unpaid student initiative. Recruitment coordination included interviews for new semester intake across multiple sub-teams.
-
-**Activity 7 — What:** Participated in the final Kolibri transition flight test campaign at Oberpfaffenhofen test airport. Contributed to pre-flight preparation, on-site coordination and post-flight analysis. Kolibri successfully completed VTOL hover, transition to forward flight and cruise phases — achieving the core Mission Pulse objective that the predecessor prototype Frankenstein had failed to reach. Mission Pulse Phase 2 concluded successfully with the completion of the transition flight test.
-
-**How:** Flight test campaign coordination, pre-flight preparation, on-site operations management, post-flight data analysis, EU A1/A3 drone pilot operations
-
-**Responsibility:** Contributed
-
-**Result:** Successful transition flight achieved at Oberpfaffenhofen. Mission Pulse Phase 2 concluded. Full aircraft development lifecycle completed from conceptual design through operational flight test.
-
-**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, Avionics, Certification, Flight Controls, Flight Test, Flight Testing, Ground Testing, Notion, Project Management, Safety, Stakeholder Engagement, Systems Engineering, Technical Documentation, Validation, Verification, eVTOL
-
-**Notes:** Oberpfaffenhofen is a certified test airport in Bavaria — use of this facility reflects the seriousness of the flight test campaign. Transition achievement was the central success criterion of Mission Pulse Phase 2 — directly solving the failure mode of Frankenstein. Brian was present for the full arc of the project from Phase 2 initiation through final flight. EU A1/A3 licence held throughout flight operations.
-
----
-
-### HORYZN — Aerodynamics Project Engineer
-*Student Initiative | Munich, Germany | 2022-10 – 2023-06*
-
-Unpaid student initiative at TU Munich. Member of the Design Loop team responsible for the aerodynamics module of the Kolibri hybrid lift-and-cruise eVTOL UAS under Mission Pulse Phase 2. Led the aerodynamics sub-team of three engineers. Developed and maintained the aerodynamics module within a CPACS/MATLAB/PAWAT/RCE integrated design environment, contributing to aircraft configuration selection and iterative multidisciplinary design optimization concurrent with MSc studies and Amazilia working student role.
-
-**Projects under this experience (1):**
-
-#### Project: Kolibri eVTOL — Aerodynamics Module Development
-- **System:** Kolibri Hybrid Lift-and-Cruise eVTOL UAS — Lifting Surfaces and Aerodynamic Configuration
-- **Objective:** Deliver an optimized aerodynamic configuration for Kolibri meeting mission profile requirements, with particular focus on achieving successful
-- **Description:** Development, implementation and optimization of the aerodynamics module within the HORYZN multidisciplinary design loop for the Kolibri hybrid lift-and-cruise eVTOL UAS. Covered airfoil selection, lifting surface optimization, configuration trade studies and iterative cross-team design convergence using a CPACS/MATLAB/PAWAT/RCE toolchain. Concluded with design handover to CAD, structures and avionics teams
-- **Outcome:** Converged aerodynamic design handed over to downstream teams. Cessna-type fixed-wing configuration with front tractor propeller selected and validated, resolving the transition failure mode of the predecessor aircraft
-- **R&D Project:** Yes
-- **Project Tags:** Aerodynamics, Aircraft Systems, Architecture, CPACS, Design, Functional Analysis, Git, Implementation, MATLAB, Notion, OpenFOAM, PAWAT, Python, RCE (Remote Component Environment), Requirements Management, Research, Simulation, Software, Systems Engineering, Technical Documentation, Validation, Verification, XFLR5/Flow5
-- **Notes:** Part of Mission Pulse Phase 2. HORYZN student initiative — unpaid. Evidence includes aerodynamics module codebase, README, UML diagrams, I/O documentation, validation reports, results review presentations and handover document — all on Git
-
-**Activity 1 — What:** Participated in structured handover sessions with the outgoing Mission Pulse Phase 1 team to understand the design, shortcomings and failure modes of the Frankenstein prototype. Analysed the previous CPACS files, MATLAB code and PAWAT outputs to reconstruct what had been built and why transition had failed. Collaborated across the full Design Loop team to document lessons learned and define requirements list for the Phase 2 prototype — Kolibri. Requirements captured and managed in Notion.
-
-**How:** Technical handover sessions, CPACS file analysis, MATLAB code review, PAWAT output analysis, cross-team requirements workshops, Notion documentation
-
-**Responsibility:** Contributed
-
-**Result:** Comprehensive requirements list established for Kolibri Phase 2, identifying transition failure as the primary design constraint to resolve
-
-**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, CPACS, Functional Analysis, Git, MATLAB, Notion, PAWAT, Requirements Management, Research, Systems Engineering, Technical Documentation, TiGL/TiXi, eVTOL
-
-**Notes:** First substantive task upon joining HORYZN. Transition failure in Frankenstein was the central problem the entire Phase 2 programme was designed to solve. CPACS files and MATLAB code from Phase 1 reviewed as primary technical evidence of what had been built.
-
-**Activity 2 — What:** Led the aerodynamics team's contribution to the Kolibri configuration selection process. Identified the root cause of Frankenstein's transition failure as wingtip-mounted propellers creating adverse interference at the 25kg MTOW scale. Proposed a Cessna-type fixed-wing configuration with a front tractor propeller and lift motors mounted on the wing, supported by case studies from undergraduate aircraft design projects and CFD analysis in OpenFOAM demonstrating adequate glide performance during transition in the event of propulsion switching delays. Presented the configuration argument across multiple design reviews, convincing the team and securing agreement to proceed.
-
-**How:** Configuration trade studies, first-principles aerodynamic analysis, OpenFOAM CFD analysis, undergraduate case study development, design review presentations, cross-team technical debate
-
-**Responsibility:** Led
-
-**Result:** Cessna-type fixed-wing hybrid lift-and-cruise configuration adopted for Kolibri, directly resolving the transition failure mode of Frankenstein
-
-**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, Architecture, CPACS, Flight Controls, Functional Analysis, MATLAB, Notion, OpenFOAM, PAWAT, Requirements Management, Research, Simulation, Systems Engineering, Technical Documentation, TiGL/TiXi, XFLR5/Flow5, eVTOL
-
-**Notes:** Configuration argument supported by private pilot experience — glide performance analogy drawn from engine failure simulation training. Case studies from METU undergraduate aircraft design projects used as supporting evidence. This decision determined the fundamental architecture of Kolibri and directly addressed the failure mode that ended Phase 1
-
-**Activity 3 — What:** Developed and maintained the aerodynamics module within the HORYZN multidisciplinary design loop. The module interfaced with CPACS via TiGL and TiXi libraries, using PAWAT as the core aerodynamic solver within a MATLAB class-based architecture. Implemented methods covering airfoil database management, CPACS geometry parsing, aerodynamic mapping across Reynolds number and angle of attack ranges, twist optimisation, stall velocity and force calculations, neutral point calculation and results writing back to CPACS. Wrote full module documentation including README, UML class diagram, function descriptions and I/O specifications. Managed module codebase on Git.
-
-**How:** MATLAB object-oriented programming, CPACS interface via TiGL/TiXi, PAWAT integration, aerodynamic analysis implementation, Git version control, technical documentation authoring
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Fully documented functional aerodynamics module integrated into the HORYZN RCE design loop, delivering aerodynamic coefficients, forces, moments and aeromap data to downstream modules via CPACS
-
-**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, CPACS, Design, Git, Implementation, MATLAB, Notion, PAWAT, RCE (Remote Component Environment), Requirements Management, Research, Simulation, Software, Systems Engineering, Technical Documentation, TiGL/TiXi, Verification, XFLR5/Flow5, eVTOL
-
-**Notes:** Full codebase exists on Git as primary evidence — README, UML diagram, function descriptions, I/O path documentation, calculation options and Flow5 validation task documentation all produced by Brian. Module written as a MATLAB class with well-defined interface to CPACS — designed for maintainability and handover.
-
-**Activity 4 — What:** Participated in the aerodynamics team's airfoil selection process for Kolibri's lifting surfaces. Ran systematic case studies across candidate airfoils using XFLR5 and Flow5 to evaluate CL/CD performance across the expected Reynolds number range. Fed selected airfoil profiles into the CPACS aircraft definition and ran iterative optimisation of wing geometry including twist distribution, span, chord and sweep through the aerodynamics module. Coordinated with structures and geometry sub-teams within the design loop to ensure aerodynamic outputs were compatible with structural and sizing constraints.
-
-**How:** XFLR5/Flow5 airfoil analysis, CPACS geometry parameterisation, iterative wing optimisation, cross-module design loop coordination
-
-**Responsibility:** Contributed
-
-**Result:** Optimised lifting surface definition for Kolibri delivered to the design loop, meeting CL/CD, wing loading and stall requirements within structural and geometric constraints
-
-**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, CPACS, Design, Git, Implementation, MATLAB, PAWAT, Research, Simulation, Structures, Systems Engineering, Technical Documentation, TiGL/TiXi, Validation, Verification, XFLR5/Flow5, eVTOL
-
-**Notes:** Airfoil selection driven by Reynolds number range appropriate for 25kg MTOW hybrid eVTOL in cruise flight. Twist optimisation implemented directly in the aerodynamics module — elliptic and bell-shaped lift distribution options both implemented.
-
-**Activity 5 — What:** Worked intensively within the RCE-based multidisciplinary design loop alongside aerodynamics, structures, geometry, wing sizing and propulsion sub-teams to achieve design convergence for Kolibri. Ensured aerodynamics module outputs were compatible with and correctly consumed by adjacent modules. Participated in extended working sessions — frequently 18 to 20 hours — to resolve inter-module conflicts and iterate toward a stable baseline design. Contributed aerodynamics expertise to cross-team configuration discussions and design decisions throughout the convergence process
-
-**How:** RCE multidisciplinary design loop operation, cross-module interface management, iterative design convergence, cross-team technical collaboration
-
-**Responsibility:** Contributed
-
-**Result:** Converged multidisciplinary baseline design achieved for Kolibri, with aerodynamics module outputs validated against structural, geometry and propulsion module requirements
-
-**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, Architecture, CPACS, Design, Flight Controls, Git, Implementation, MATLAB, Notion, PAWAT, Payloads, Propulsion, RCE (Remote Component Environment), Research, Simulation, Software, Structures, Systems Engineering, Technical Documentation, TiGL/TiXi, Validation, Verification, XFLR5/Flow5, eVTOL
-
-**Notes:** This phase involved the highest intensity of work — September 2022 to approximately February 2023. Extended sessions of 18 to 20 hours were common during convergence sprints. Cross-module compatibility between aerodynamics, structures and geometry was the primary technical challenge. RCE environment used to chain module execution and manage data flow between teams.
-
-**Activity 6 — What:** Prepared and delivered a comprehensive handover of the aerodynamics module to the incoming team and downstream design teams. Handover package included the full codebase on Git, README documentation, UML class diagram, function descriptions, I/O path specifications, calculation options documentation, Flow5 validation task documentation and a formal handover document. Ensured the receiving team could understand, operate and extend the module without loss of design intent or technical context.
-
-**How:** Technical documentation compilation, handover document authoring, Git repository organisation, knowledge transfer sessions
-
-**Responsibility:** Contributed
-
-**Result:** Complete aerodynamics module handed over with full documentation. Codebase and documentation confirmed received and understood by incoming team.
-
-**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, CPACS, Git, MATLAB, Notion, PAWAT, RCE (Remote Component Environment), Requirements Management, Software, Systems Engineering, Technical Documentation, TiGL/TiXi, XFLR5/Flow5, eVTOL
-
-**Notes:** Handover documents uploaded as evidence — Hand-Over_Document.docx, README.md, Aero_Module_Documentation_2023.docx, Aero_I_O_Paths.docx, Aero_Calc_Options.docx, Aero_UMLDiagram.png, IO_Presentation.pptx, KolibriResultsReview-20_03_2023.pptx, DesignLoopMaster.docx all exist as personal evidence. Full Git repository also exists.
-
----
-
-### University of Cologne — LEAD! Leadership for Africa
-*DAAD Scholar | Cologne, Germany (Hybrid — online and on-campus) | 2022-02 – 2023-01*
-
-Completed the LEAD! Leadership for Africa programme at the University of Cologne, offered exclusively to DAAD Leadership for Africa scholarship holders and funded by the German Federal Foreign Office. The programme covered development-related studies (sustainable development, governance, public administration, peace & conflict studies) and career training (intercultural skills, project management, science communication, individual development planning, and presentation). Total workload: 260 units / 195 hours. Graduated with a grade of Sehr gut (A), earning 8 ECTS credits.
-
-**Projects under this experience (1):**
-
-#### Project: Design and Implementation of an Unmanned Aircraft System (UAS) using the Model Based System Engineering (MBSE) Approach for Agricultural Applications at the Galana Kulalu Irrigation Scheme
-- **System:** Integrated agricultural UAS — precision agriculture payload suite (crop health monitoring, soil analysis, chemical spraying), autonomous flight control system, mission planning and trajectory optimisation subsystems
-- **Objective:** To design an MBSE-structured UAS architecture for precision agriculture deployment at the Galana Kulalu Irrigation Scheme, addressing food insecurity through improved farm management and increased crop yields, while closing Kenya's local UAS manufacturing gap
-- **Description:** A research and systems architecture project focused on the design and development of an integrated UAS for precision agriculture at the Galana Kulalu Irrigation Scheme, Kenya. The project employed the MBSE approach to define all system components, functionalities, and architecture including flight mission planning, trajectory optimisation, real-time control, failure probability and risk assessment. The operational goal was to employ precision agriculture techniques — crop health monitoring, soil fertility and water retention analysis, and chemical spraying — for maize farming at the scheme, with full UAS integration targeted by 2030.
-- **Outcome:** Produced a comprehensive project proposal comprising an MBSE-based UAS system architecture definition, SWOT and PEST analyses, work breakdown structure, critical path and Gantt chart, project summary, and elevator pitch. Delivered and graded Sehr gut (A) as part of the LEAD! programme final submission
-- **R&D Project:** Yes
-- **Project Tags:** Aerodynamics, Aircraft Systems, Architecture, Autonomy, CONOPS, Design, Flight Controls, Functional Analysis, MBSE, Market Research, Microsoft Office, Mission Planning, Model Based Systems Engineering, Precision Agriculture, Project Management, Requirements, Research, Safety, Simulation, Stakeholder Engagement, Systems Engineering, Technical Documentation, Validation, Verification
-- **Notes:** Project timeline targets full integration of UAS technology at Galana Kulalu by 2030. Submitted as part of the LEAD! Leadership for Africa programme at the University of Cologne. Funded by the DAAD / German Federal Foreign Office. All work at this stage is architecture, planning and conceptual — no physical build undertaken.
-
-**Activity 1 — What:** UAS system architecture definition and MBSE modeling for autonomous precision agriculture operations
-
-**How:** Applied the Model Based System Engineering (MBSE) approach to define all system components and functionalities within the UAS architecture, covering flight mission planning, trajectory optimisation, real-time flight control, failure probability assessment, and operational risk assessment for agricultural applications at the Galana Kulalu Irrigation Scheme
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Produced a structured MBSE-based system architecture capturing the full functional decomposition of the agricultural UAS, forming the technical backbone of the project proposal
-
-**Tags:** Aircraft Systems, Architecture, AutoCAD, Autonomy, CONOPS, Flight Controls, Functional Analysis, Interface Definition, MATLAB, MBSE, Mission Planning, Model Based Systems Engineering, Requirements, Research, Safety, Simulation, Simulink, Systems Engineering, Technical Documentation, yEd
-
-**Notes:** Conceptual and architecture phase only — no physical implementation undertaken
-
-**Activity 2 — What:** Precision agriculture capability definition — crop health monitoring, soil fertility and water retention analysis, and chemical spraying payload architecture
-
-**How:** Defined the precision agriculture payload suite and operational capabilities required for maize farming at Galana Kulalu, specifying crop health monitoring, soil fertility and water retention analysis, and chemical spraying functions within the MBSE framework
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Produced a defined payload and capability specification integrated into the overall UAS system architecture, supporting the operational and technical justification of the project
-
-**Tags:** Agronomy, Aircraft Systems, Architecture, CONOPS, Functional Analysis, MBSE, Model Based Systems Engineering, Payloads, Precision Agriculture, Requirements, Research, Sensors, Systems Engineering, Technical Documentation
-
-**Notes:** Capability definition only — no hardware selected or procured
-
-**Activity 3 — What:** Work breakdown structure, critical path, and Gantt chart development for UAS implementation at Galana Kulalu
-
-**How:** Decomposed the project into sub-goals and key milestones across five phases — drone sector engagement, knowledge acquisition, UAS actualisation, farm case study operations, and full Galana Kulalu integration — and mapped each to a specific timeline extending to 2030
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Produced a structured WBS and Gantt chart defining all key milestones, sub-goals, and indicators for the research project from 2020 to 2030
-
-**Tags:** CONOPS, Microsoft Office, Model Based Systems Engineering, Project Management, Requirements, Research, Systems Engineering, Technical Documentation
-
-**Notes:** Planning deliverable produced as part of the LEAD! Individual Development Plan submission
-
-**Activity 4 — What:** SWOT and PEST analysis — individual strengths, weaknesses, opportunities, threats, and external risk and opportunity assessment for the UAS project
-
-**How:** Conducted a personal SWOT analysis identifying individual strengths, weaknesses, opportunities, and threats relevant to the project execution. Followed with a PEST analysis examining political, economic, socio-cultural, and technological external factors affecting UAS implementation in Kenya, including regulatory landscape, government innovation stance, funding environment, and technology adoption challenges
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Produced SWOT and PEST analysis documents forming the risk and opportunity assessment framework for the project proposal, submitted as part of the LEAD! Individual Development Plan
-
-**Tags:** CONOPS, Market Research, Microsoft Office, Precision Agriculture, Regulatory Compliance, Requirements, Research, Stakeholder Engagement, Systems Engineering, Technical Documentation
-
-**Notes:** Part of the LEAD! programme career training and individual development plan deliverables
-
-**Activity 5 — What:** Project summary write-up and elevator pitch preparation and delivery
-
-**How:** Authored a formal project summary covering the problem context, MBSE approach, precision agriculture objectives, and long-term implementation roadmap for the Galana Kulalu Irrigation Scheme. Prepared and delivered an elevator pitch communicating the project vision, technical approach, and societal impact
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Delivered project summary and elevator pitch as final LEAD! programme submissions. Graded Sehr gut (A), earning 8 ECTS credits from the University of Cologne
-
-**Tags:** CONOPS, Market Research, Microsoft Office, Precision Agriculture, Project Management, Research, Stakeholder Engagement, Systems Engineering, Technical Documentation
-
-**Notes:** Final assessed deliverables of the LEAD! Leadership for Africa programme
-
----
-
-### Young Scientists Kenya (YSK) — STEM Mentorship
-*Volunteer  | Kenya | 2020-01 – 2021-12*
-
-Technical mentorship for secondary school student research teams participating in the Young Scientists Kenya national science and technology exhibitions. Provided engineering guidance across mechanical design, embedded systems, system architecture, prototyping, and technical report editing for automotive and aviation projects
-
-**Projects under this experience (2):**
-
-#### Project: Project Mentor - Hydrogen-Hybrid Engine
-- **System:** Modified 4-stroke Honda GX160 engine (5.5 hp), custom motorized bicycle chassis with Mitsubishi Shogun tappet return spring seat suspension, 8:1 belt drive with centrifugal clutch, 750 ml plastic HHO generator cell (stainless steel plates, NaOH electrolyte), custom "Archillator" damp-cotton moisture trap, 1-inch carburetor intake bypass port, and 16V/1.68A solar panel with 12V 7Ah Li-ion buffer battery.
-- **Objective:** Integrate an onboard solar-assisted hydroxy gas generator and carburetor bypass into a small 4-stroke internal combustion engine to evaluate fuel efficiency gains (km/L) and air-fuel ratio lean-burn characteristics
-- **Description:** Mentored a 2-student team (Sifa Home School / Oaks Academy) in the design, fabrication, and testing of a solar-assisted hydroxy (HHO) gas generator integrated into a 160cc 4-stroke petrol engine on a custom motorized bicycle
-- **Outcome:** Achieved a 22.6% fuel efficiency increase (25.24 km/L baseline to 30.95 km/L with engine alternator HHO) and a 43.6% increase (to 36.25 km/L with solar-assisted HHO) during road testing at 35 km/h
-- **R&D Project:** Yes
-- **Project Tags:** AutoCAD, Design, Electrical Systems, Implementation, Mechanical Assembly , Mechanical Fabrication, Propulsion, Research, Soldering
-- **Notes:** Presenters: Archippus Kimani & Tabitha Alakara; Patron: Rev. Oscar Ekesa. Total prototype build cost: KES 34,650 (Bike & Engine: KES 21,600; HHO Cell & Power: KES 5,500; Accessories: KES 3,650). Final report edited and formatted by Brian Lembuss Kirwa
-
-**Activity 1 — What:** Advised on mechanical drivetrain integration, electrical power architecture, HHO safety bypass design, and empirical fuel consumption testing protocols
-
-**How:** Guided the sizing of the 8:1 centrifugal clutch pulley drive, implementation of the 12V 25A fused power rail, design of the "Archillator" cotton moisture trap, welding of the 1-inch intake manifold bypass port, and execution of 3-run road mileage trials
-
-**Responsibility:** Assisted
-
-**Result:** Validated lean-burn engine performance demonstrating a 43.6% fuel mileage gain (36.25 km/L vs. 25.24 km/L baseline pure gasoline).
-
-**Tags:** Electrical Systems, Ground Testing, Implementation, Mechanical Assembly , Mechanical Fabrication, Propulsion
-
-**Notes:** Mentored team through YSK virtual exhibition judging. Authored and edited final technical documentation
-
-#### Project: Project Mentor - Portable Aircraft Refueling Rig & Automated Fuel Dispenser
-- **System:** Arduino UNO R3 microcontroller, 20x4 I2C LCD screen, $4\times4$ matrix keypad, YF-S201 hall-effect pulse flow rate sensor, 12V DC fuel pump, 12V relay switch, 12V LiPo battery rail with solar charging, PTFE fuel lines, dual fuel filters, and status LEDs/buzzer.  
-- **Objective:** Eliminate manual, error-prone container volume fuel transfers at small airstrips by engineering a keypad-controlled dispensing rig that accurately converts targeted fuel mass/volume inputs into automated pump relay actuation
-- **Description:** Mentored a 3-student team (Juja Preparatory and Senior School) in designing an automated, battery-powered fuel dispensing rig for light aircraft at remote airstrips lacking fuel bowsers
-- **Outcome:** Completed circuit design (Fritzing), control logic state machine, system flowchart, and functional bench prototype capable of pulse-count volume measurement, auto-shutoff via relay, and real-time LCD status reporting
-- **R&D Project:** Yes
-- **Project Tags:** Aircraft Systems, Architecture, Arduino, Avionics, C, C++, Design, Electrical Systems, Embedded C, Embedded Systems, Implementation, Soldering, Verification
-- **Notes:** Presenters: Emmanuel Nevile Omondi, Melvin Mango, Roy Peter; Patron: Mr. Ayodo. Developed circuit schematics and state machine control logic for flow-rate pulse feedback and fuel cutoff.
-
-**Activity 2 — What:** Guided the embedded systems architecture, circuit schematic design, and control logic state machine for the automated refueling rig
-
-**How:** Designed Fritzing circuit schematics mapping the Arduino UNO R3 to the YF-S201 flow sensor interrupt pin, 12V relay pump drive, $4\times4$ keypad, 20x4 I2C LCD, status LEDs, and buzzer; structured the software flowchart for keypad input validation, start/stop/clear states, and pulse-counting target cutoff.
-
-**Responsibility:** Assisted
-
-**Result:** Delivered verified circuit layout, software state machine logic, and complete technical abstract for the YSK exhibition submission
-
-**Tags:** Aircraft Systems, Architecture, Arduino, C, C++, Design, Embedded C, Embedded Systems
-
-**Notes:** Fritzing schematic (Circuit_scheme.png) and system flowchart (PROJECT SUMMARY.pdf) produced as core evidence artifacts.
-
----
-
-### Kendrone Ltd — UAS Engineer, Pilot and Instructor
-*UAS Company | Mtwapa, Nairobi, Naivasha - Kenya | 2021-01 – 2021-06*
-
-Joined Kenya's first KCAA-approved Drone Training Organisation as a student, earning the Remote Pilot Licence (YK-RPL-00013A) before transitioning into a permanent employee role as UAS Pilot, Instructor, and IT Assistant. Delivered ground school and practical flight instruction across three student cohorts, completed the Instructor Rating (IR001-01) under a company-sponsored training bond, and led engineering and innovation work including the design, fabrication, and flight testing of a drone-based seedball dispersal mechanism for reforestation in collaboration with Seedball Kenya. Concurrently owned all IT infrastructure, digital marketing, student administration, and external stakeholder engagement for the company.
-
-**Projects under this experience (5):**
-
-#### Project: Drone-Based Seedball Dispersal Mechanism
-- **System:** Tarot 650 quadrotor — Pixhawk PX4 flight controller, QGroundControl GCS, servo-actuated seedball container and release mechanism (custom-designed), 6S LiPo power system
-- **Objective:** Design and validate a payload mechanism enabling autonomous grid-pattern seedball dispersal from a multirotor UAS, characterise platform endurance under operational payload conditions, and demonstrate system readiness to Seedball Kenya and regulatory observers.
-- **Description:** Design, fabrication, integration, and flight testing of a drone-mounted seedball dispersal system for ecological reforestation, developed in collaboration with Seedball Kenya. The project spanned the full engineering lifecycle from requirements capture through witnessed operational demonstration, with a formal endurance test report produced as the primary deliverable.
-- **Outcome:** Mechanism successfully designed, fabricated, and integrated. Endurance test campaign (3 flights) established that dual 6S parallel battery configuration was optimal, achieving ~9min endurance, ~2km grid coverage, and ~5532m² area per sortie with 500g seedball payload. Findings and recommendations formally submitted to Seedball Kenya
-- **R&D Project:** Yes
-- **Project Tags:** 3D Printing, Aircraft Systems, Autodesk Inventor, Avionics, Bill of Materials (BOM), Communications, Design, Electrical Systems, Embedded Systems, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, Ground Control Systems, Ground Testing, Implementation, Integration, Mechanical Assembly , Mechanical Fabrication, Mission Planning, PX4, Payloads, Precision Agriculture, QGroundControl, Quality Assurance, Requirements, Research, Safety, Soldering, Systems Engineering, Technical Documentation, Validation, Verification
-- **Notes:** Commissioned by CEO Craig Cleave in collaboration with Seedball Kenya. Demonstration witnessed by a Mtwapa Police Station officer, Seedball Kenya representative, and CEO. Flight data logs archived on px4.io. Project concluded upon Brian's resignation in May 2021; post-submission status with Seedball Kenya unknown.
-
-**Activity 1 — What:** Captured mission requirements from CEO and Seedball Kenya and produced mechanical design of seedball container and servo-actuated release mechanism
-
-**How:** Requirements received verbally from CEO Craig Cleave in a meeting, specifying payload capacity, drop pattern, and coverage area targets for reforestation missions. Designed container and servo-actuated latch release in Autodesk Inventor, referencing existing Tarot 650 CAD geometry to ensure dimensional compatibility with the airframe mounting points.
-
-**Responsibility:** Led
-
-**Result:** Fully detailed CAD design of seedball container and release mechanism, dimensionally compatible with Tarot 650 airframe, ready for fabrication
-
-**Tags:** Aircraft Systems, Architecture, Autodesk Inventor, Bill of Materials (BOM), Design, Flight Controller Hardware, Interface Definition, Payloads, Precision Agriculture, Requirements, Systems Engineering, Technical Documentation
-
-**Notes:** Seedball Kenya supplied charcoal-coated seedballs (~2.4g per ball). Requirements defined coverage area, grid spacing, and trigger distance parameters that subsequently drove mission planning parameters in QGroundControl.
-
-**Activity 2 — What:** Fabricated mechanism components and integrated the dispersal payload onto the Tarot 650 airframe including servo power rail decoupling
-
-**How:** 3D printed container and release mechanism components on Duplicator printer using PLA. Physically assembled and mounted mechanism under the Tarot 650 airframe. Designed and implemented a dedicated servo power rail decoupled from the main Tarot power bus to prevent servo draw from interfering with flight controller power. Wired servo to Pixhawk PX4 PWM output channel and configured auto-trigger in QGroundControl mission planner, mirroring the camera trigger function used in survey missions.
-
-**Responsibility:** Led
-
-**Result:** Fully integrated dispersal payload on Tarot 650 airframe. Servo-actuated release responsive to both manual RC PWM input and autonomous mission trigger commands from QGroundControl
-
-**Tags:** 3D Printing, Aircraft Systems, Autodesk Inventor, Avionics, Bill of Materials (BOM), Design, Electrical Systems, Embedded Systems, Flight Controller Hardware, Flight Controls, Ground Control Systems, Implementation, Integration, Interface Definition, Mechanical Assembly , Mechanical Fabrication, Mission Planning, PX4, Payloads, QGroundControl, Soldering, Systems Engineering, Technical Documentation
-
-**Notes:** Battery positioning on the standard Tarot configuration conflicted with container installation — battery had to be partially embedded in seedball load in Flight Test 001, prompting recommendation for alternate battery location in subsequent design iterations.
-
-**Activity 3 — What:** Prepared Tarot 650 platform for flight operations — diagnosed and resolved flight controller calibration and motor imbalance issues, configured failsafes, and conducted initial airworthiness verification flight
-
-**How:** Identified motor imbalance and flight controller calibration anomalies during pre-flight checks. Performed ESC calibration, compass calibration, and accelerometer calibration on Pixhawk PX4 via QGroundControl. Balanced and re-seated motors to resolve vibration. Configured RTL and auto-land failsafes for low and critical battery voltage thresholds. Conducted initial checkout flight on 7 May 2021 to verify platform airworthiness prior to payload testing.
-
-**Responsibility:** Led
-
-**Result:** Tarot 650 confirmed airworthy. Failsafes correctly configured. Platform cleared for payload endurance test campaign.
-
-**Tags:** Aircraft Systems, Avionics, Electrical Systems, Embedded Systems, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, Ground Control Systems, Ground Testing, Integration, PX4, QGroundControl, Quality Assurance, Safety, Systems Engineering, Technical Documentation, Validation, Verification
-
-**Notes:** Failsafe configuration proved critical — Flight Test 001 experienced GCS telemetry link loss mid-flight; RTL failsafe was subsequently set after this incident to prevent battery over-discharge on future flights
-
-**Activity 4 — What:** Executed 3-flight endurance test campaign to characterise platform performance under operational payload conditions and authored formal test report
-
-**How:** Conducted 3 structured flights on 2–3 June 2021 at Kendrone Mtwapa Training Site (Greenwood Resort), varying battery configuration and payload mass: Flight Test 001 (1×6S, 1300g payload), Flight Test 002 (2×6S parallel, no seedballs), Flight Test 003 (2×6S parallel, 500g seedballs). Flew autonomous grid pattern missions (5449.24m², 1786m distance, 5m grid spacing, 50m AGL) in QGroundControl. Recorded voltage at takeoff, mid-flight, and landing for each test. Computed discharge rates and extrapolated endurance curves. Flight data logged to px4.io. Authored full endurance test report including battery discharge characterisation, payload weight tables, flight maps, results and recommendations.
-
-**Responsibility:** Led
-
-**Result:** Established dual 6S parallel as optimal configuration — discharge rate 0.0054V/s with 500g seedball payload, ~9min 10sec endurance, ~2km grid coverage, ~5532m² area, ~400 seedball capacity at 5m trigger spacing. Single 6S configuration found insufficient — critically low voltage (19.4V) reached within 6min 18sec. Formal report submitted to Seedball Kenya.
-
-**Tags:** Aircraft Systems, Avionics, Electrical Systems, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, Ground Control Systems, Ground Testing, Mission Planning, Operations, Operations, PX4, Payloads, Precision Agriculture, QGroundControl, Quality Assurance, Research, Safety, Sensors, Systems Engineering, Technical Documentation, UX/ Field Validation, Validation, Verification
-
-**Notes:** Flight Test 001 suffered GCS telemetry link loss mid-flight; pilot in command forcefully landed on visual cues. Battery not damaged. Discharge rates: FT001 0.0146V/s, FT002 0.0044V/s, FT003 0.0054V/s. Flight logs: px4.io references archived in report
-
-**Activity 5 — What:** Conducted witnessed operational demonstration of the seedball dispersal system before Seedball Kenya, KCAA-adjacent observer, and company CEO
-
-**How:** Prepared platform and payload for formal demonstration flight. Briefed attendees on system capabilities, mission parameters, and safety procedures. Executed demonstration flight with mechanism active. Results and endurance test findings presented and submitted to Seedball Kenya as basis for further development decisions
-
-**Responsibility:** Led
-
-**Result:** Demonstration successfully completed in the presence of a Mtwapa Police Station officer, Seedball Kenya representative, and CEO Craig Cleave. Mission footage recorded and published across Kendrone social media platforms. Findings and recommendations formally delivered to Seedball Kenya
-
-**Tags:** Aircraft Systems, Deployment, Flight Controller Hardware, Flight Test, Flight Testing, Mission Planning, Operations, Operations, PX4, Payloads, Precision Agriculture, QGroundControl, Regulatory Compliance, Safety, Stakeholder Engagement, Systems Engineering, Technical Documentation, Validation
-
-**Notes:** Project concluded upon Brian's resignation in May 2021. Post-submission development status with Seedball Kenya unknown
-
-#### Project: UAS Pilot Training Programme Delivery
-- **System:** DJI Phantom 4 Pro (5Y-0006A, 5Y-0072A), DJI Phantom 3 Pro (5Y-0008A), DJI Mavic Pro (5Y-0007A), Tarot 680 Pro (5Y-0021A) — all operated under Kendrone UTO KCAA authorisation
-- **Objective:** Train and qualify student pilots to KCAA RPL standard across ground school and practical flight phases, achieving regulatory sign-off and license issuance for all enrolled students.
-- **Description:** Delivery of the full KCAA Remote Pilot Licence training programme across three student cohorts at Kenya's first KCAA-approved Drone Training Organisation. Encompassed ground school instruction across seven theory domains, a 15-lesson practical flight syllabus, and a technical BVLOS presentation delivered to a KCAA representative as part of the instructor certification process
-- **Outcome:** Three cohorts trained (~16 students total, ~10 as primary instructor, ~6 during teaching practice). 9.0 logged instructor flight hours across Naivasha and Mtwapa. 100% student pass rate. BVLOS presentation successfully delivered to KCAA representative, chief instructor, and CEO.
-- **R&D Project:** No
-- **Project Tags:** Aircraft Systems, ArduPilot, Avionics, Communications, Deployment, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, Ground Control Systems, Mission Planning, Operations, Operations, Pix4D , Project Management, QGroundControl, Quality Assurance, Regulatory Compliance, Safety, Sensors, Stakeholder Engagement, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction, Validation
-- **Notes:** Conducted at three approved KCAA training sites: Mtwapa, Nairobi, and Naivasha. BVLOS presentation (32 slides) covered BVLOS definition, UAS category classification under Civil Aviation (UAS) Regulations 2020, C2 link architectures (RLOS/B-RLOS), IFR requirements, ICAO RPAS CONOPS, and global BVLOS case studies. Instructor flights logged under license YK-RPL-00013A.
-
-**Activity 6 — What:** Delivered a 32-slide technical presentation on BVLOS UAS operations to a KCAA representative, chief instructor, and CEO as part of the instructor rating certification process
-
-**How:** Researched and authored a comprehensive presentation covering BVLOS definition and operational categorisation under Civil Aviation (UAS) Regulations 2020, C2 link architectures (RLOS and B-RLOS), IFR requirements (ATC radio, transponder, DAA systems), ICAO RPAS CONOPS provisions, and global BVLOS case studies across 10 countries. Delivered as formal academic and practical assessment for instructor rating qualification.
-
-**Responsibility:** Led
-
-**Result:** Presentation successfully delivered. Contributed to successful completion of Instructor Rating (IR001-01) under Kendrone UTO, issued under KCAA framework.
-
-**Tags:** Aircraft Systems, Autonomy, CONOPS, Communications, Flight Controls, Ground Control Systems, Microsoft Office, Mission Planning, Operations, Operations, Regulatory Compliance, Requirements, Safety, Stakeholder Engagement, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction
-
-**Notes:** Presented as "Instructor in Training" under Kendrone UTO. Audience: KCAA representative, Head of Training (chief instructor), and CEO/DFE Craig Cleave. Presentation authored independently by Brian
-
-**Activity 7 — What:** Delivered full KCAA RPL ground school theory programme across three student cohorts covering seven subject domains
-
-**How:** Delivered classroom-based instruction across all seven KCAA RPL theory domains: Air Law, Flight Plan Filing, Human Factors, Meteorology, Navigation and Flight Planning, Principles of Flight, and Technical and General. Prepared and distributed study materials in advance of each cohort. Managed student questions, conducted internal assessments, and maintained student training files (APPENDIX 14) including exam records in compliance with UTO quality management requirements. Pass mark threshold enforced at 70% per KCAA requirements.
-
-**Responsibility:** Led
-
-**Result:** All students across three cohorts passed theoretical knowledge examinations to KCAA RPL standard. Post-training reference materials provided to students. Positive student feedback received — rated instruction as excellent across personal approach, knowledge transfer, and study material provision.
-
-**Tags:** Aircraft Systems, Avionics, Communications, Deployment, Flight Controls, Ground Control Systems, Microsoft Office, Mission Planning, Operations, Operations, Quality Assurance, Regulatory Compliance, Safety, Stakeholder Engagement, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction, Validation
-
-**Notes:** Training conducted at Mtwapa, Nairobi, and Naivasha sites. First cohort delivered during teaching practice phase prior to full instructor rating. Student feedback documented and archived. COVID-19 social distancing protocols observed throughout classroom sessions
-
-**Activity 8 — What:** Delivered 15-lesson KCAA RPL practical flight instruction programme across three student cohorts on multirotor platforms
-
-**How:** Instructed students through the full KCAA RPL-MR practical syllabus: UAS familiarisation, pre-flight site survey, takeoff, tail-in hover, yaw manoeuvres, lateral and longitudinal movements, vertical manoeuvres, rectangles, nose-in manoeuvres, slow level circuits, climbing and descent circuits, tear drop, and emergency procedures. Scored each lesson on the 4-point KCAA competency scale. Signed off student training checklists (APPENDIX 24) upon completion of each phase. Recommended students for RPL skill test upon satisfactory completion. Flew as safety pilot and instructor on DJI Phantom 4 Pro, DJI Phantom 3 Pro, DJI Mavic Pro, and Tarot 680 Pro across Naivasha and Mtwapa sites
-
-**Responsibility:** Led
-
-**Result:** 9.0 logged instructor flight hours. ~16 students trained across three cohorts. 100% student pass rate on KCAA RPL skill test. All students successfully obtained KCAA Remote Pilot Licences.
-
-**Tags:** Aircraft Systems, Avionics, Deployment, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, Ground Control Systems, Mission Planning, Operations, Operations, QGroundControl, Quality Assurance, Regulatory Compliance, Safety, Sensors, Stakeholder Engagement, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction, UX/ Field Validation, Validation, Verification
-
-**Notes:** Instructor flights logged under license YK-RPL-00013A. Examinations conducted by KCAA-appointed Designated Flight Examiner (DFE) — CEO Craig Cleave held DFE designation. Checkout flights performed by Brian; formal skill tests administered by DFE only per KCAA regulations
-
-#### Project: Aerial Mapping & Agricultural Survey Operations
-- **System:** DJI Phantom 4 Pro with RGB camera (survey) and multispectral sensor (agriculture) — Pix4D for survey processing, Pix4Dfields for agricultural analysis
-- **Objective:** Execute aerial survey and precision agriculture data capture missions to survey-grade output standards, and upskill survey company clients in UAS-based mapping workflows
-- **Description:** End-to-end UAS mapping and agricultural survey operations using DJI Phantom 4 Pro with RGB and multispectral payloads, covering mission planning, field data capture, and full photogrammetric processing to survey-grade outputs. Operations served both internal Kendrone missions and external survey company clients, with concurrent surveyor training delivered during live missions.
-- **Outcome:** Full mapping workflows executed end-to-end including orthomosaic, DSM/DTM, contour lines, 3D models, and vegetation index outputs. Survey company surveyors trained concurrently during live operational missions.
-- **R&D Project:** No
-- **Project Tags:** Aircraft Systems, ArduPilot, Avionics, Communications, Data Processing, Deployment, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, GIS Tools, Ground Control Systems, Mission Planning, Multispectral Imaging, Operations, Operations, PX4, Payloads, Photogrammetry, Pix4D , Precision Agriculture, QGIS, QGroundControl, Regulatory Compliance, Safety, Sensors, Stakeholder Engagement, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction, UX/ Field Validation, Validation
-- **Notes:** RGB payload used for topographic survey, cadastral, and mapping deliverables. Multispectral payload used for vegetation index and crop health analysis. Survey company clients engaged through outreach coordinated by Brian. Pix4Dfields used specifically for agricultural index computation.
-
-**Activity 9 — What:** Executed end-to-end aerial survey and agricultural mapping missions as PIC, from mission planning through photogrammetric processing to final deliverable outputs
-
-**How:** Planned survey missions in Pix4D — defined survey areas, set grid patterns, GSD, altitude, and waypoint parameters. Flew DJI Phantom 4 Pro as PIC with RGB payload for topographic survey missions and multispectral payload for agricultural missions. Processed captured data in Pix4D to produce orthomosaic, DSM/DTM, contour lines, 3D models, area and volume analyses, and CAD/GIS outputs. Processed agricultural datasets in Pix4Dfields to generate vegetation index maps for crop health analysis.
-
-**Responsibility:** Led
-
-**Result:** Full survey-grade outputs produced across multiple missions including orthomosaic, DSM/DTM, contour maps, and vegetation index outputs. Deliverables provided to clients and used in Kendrone operational portfolio.
-
-**Tags:** Aircraft Systems, Avionics, Communications, Data Processing, Deployment, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, GIS Tools, Ground Control Systems, Mission Planning, Multispectral Imaging, Operations, Operations, Payloads, Photogrammetry, Pix4D , Precision Agriculture, QGIS, QGroundControl, Regulatory Compliance, Safety, Sensors, Systems Engineering, Technical Documentation, UX/ Field Validation, Validation
-
-**Notes:** RGB payload used for topographic, cadastral, and land survey deliverables. Multispectral payload used for NDVI and crop health index computation. All flights conducted under Kendrone UTO KCAA authorisation.
-
-**Activity 10 — What:** Trained professional surveyors from external survey companies in UAS-based mapping workflows during live operational missions
-
-**How:** Coordinated with survey company clients to conduct concurrent training during live mapping missions. Instructed surveyors in mission planning principles, platform operation, data capture procedures, and output interpretation in Pix4D. Training delivered in the field alongside active survey operations, providing real-world context for all instruction
-
-**Responsibility:** Led
-
-**Result:** Survey company personnel upskilled in end-to-end UAS mapping workflows. Client relationships established as a revenue stream combining training fees with operational survey deliverables.
-
-**Tags:** Aircraft Systems, Business Development, Data Processing, Deployment, Flight Controller Hardware, GIS Tools, Ground Control Systems, Mission Planning, Operations, Operations, Photogrammetry, Pix4D , Precision Agriculture, QGroundControl, Regulatory Compliance, Safety, Stakeholder Engagement, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction
-
-**Notes:** Survey company outreach coordinated by Brian as part of broader business development activities. Training content tailored to surveying professional context rather than KCAA RPL syllabus
-
-#### Project: UAS Avionics, Payload Integration & Fleet Maintenance
-- **System:** DJI Phantom 4 Pro, DJI Phantom 3 Pro, DJI Mavic Pro, Tarot 680 Pro — RGB and multispectral payloads
-- **Objective:** Maintain full operational readiness of the Kendrone fleet across training and operational missions through systematic integration, inspection, and component-level maintenance
-- **Description:** Avionics integration, sensor configuration, payload mounting, and hardware-level maintenance across the Kendrone UAS fleet. Encompassed pre- and post-flight airworthiness routines, fault diagnosis, and component-level repair on DJI multirotor platforms to sustain operational readiness across training and survey missions
-- **Outcome:** Fleet maintained in continuous airworthy condition throughout operations. Component-level repairs completed including IMU replacement, gimbal replacement, and motor/ESC replacement on DJI platforms. All training and survey missions supported without platform-related mission failure.
-- **R&D Project:** No
-- **Project Tags:** Aircraft Systems, ArduPilot, Avionics, Communications, Electrical Systems, Embedded Systems, Flight Controller Hardware, Flight Controls, Flight Test, Ground Control Systems, Integration, Maintenance, Mechanical Assembly , Mechanical Fabrication, Operations, Operations, Payloads, QGroundControl, Quality Assurance, Safety, Sensors, Soldering, Systems Engineering, Technical Documentation, Validation, Verification
-- **Notes:** Maintenance activities included IMU replacement, gimbal replacement, motor and ESC replacement on DJI Phantom series. Sensor calibration performed prior to mapping and agricultural missions. Pre- and post-flight inspection routines conducted in compliance with KCAA operational requirements.
-
-**Activity 11 — What:** Integrated avionics and sensor payloads across the Kendrone multirotor fleet for mapping and agricultural missions
-
-**How:** Mounted and wired RGB and multispectral sensor payloads onto DJI Phantom 4 Pro. Configured sensor parameters and performed calibration checks prior to each mission type. Verified datalink integrity, GCS connectivity, and telemetry outputs. Performed pre-flight sensor and avionics checks as part of standard operational readiness procedure
-
-**Responsibility:** Led
-
-**Result:** Fleet consistently prepared and mission-ready for both survey and agricultural operations. Sensor payloads correctly integrated and calibrated for each mission type.
-
-**Tags:** Aircraft Systems, Avionics, Communications, Electrical Systems, Embedded Systems, Flight Controller Hardware, Flight Controls, Ground Control Systems, Integration, Mechanical Assembly , Mission Planning, Operations, Payloads, Pix4D , QGroundControl, Quality Assurance, Safety, Sensors, Systems Engineering, Technical Documentation, Validation, Verification
-
-**Notes:** Multispectral calibration required panel-based calibration procedure prior to each agricultural flight to ensure accurate vegetation index computation.
-
-**Activity 12 — What:** Diagnosed and performed component-level hardware repairs on DJI multirotor platforms to restore airworthiness
-
-**How:** Identified faults through pre-flight inspection, in-flight anomaly reports, and post-flight diagnostics. Performed IMU replacement, gimbal replacement, and motor/ESC replacement on DJI Phantom series platforms. Conducted post-repair functional checks and test flights to verify repair effectiveness before returning platforms to operational service
-
-**Responsibility:** Led
-
-**Result:** Faulted platforms returned to full airworthy condition. Fleet operational continuity maintained throughout training and survey operations without mission-affecting platform failures.
-
-**Tags:** Aircraft Systems, Avionics, Electrical Systems, Embedded Systems, Flight Controller Hardware, Flight Controls, Maintenance, Mechanical Assembly , Mechanical Fabrication, Operations, Quality Assurance, Safety, Sensors, Soldering, Systems Engineering, Technical Documentation, Validation, Verification
-
-**Notes:** Repairs conducted without external MRO support — all diagnosis and component replacement performed in-house by Brian. Tools used included multimeters and standard UAS servicing equipment.
-
-**Activity 13 — What:** Conducted systematic pre- and post-flight airworthiness inspection routines across the Kendrone fleet
-
-**How:** Performed structured pre-flight checks covering physical airframe integrity, propeller condition, motor function, power system voltage and connections, GCS link establishment, telemetry verification, and payload security. Conducted post-flight inspections covering battery state, airframe condition, and anomaly logging. Maintained inspection records in compliance with KCAA UTO operational requirements.
-
-**Responsibility:** Led
-
-**Result:** Zero platform-related mission failures attributed to missed pre-flight defects throughout the operational period. Inspection records maintained in compliance with KCAA UTO documentation requirements
-
-**Tags:** Aircraft Systems, Avionics, Electrical Systems, Flight Controller Hardware, Flight Controls, Ground Control Systems, Maintenance, Operations, Operations, QGroundControl, Quality Assurance, Regulatory Compliance, Safety, Sensors, Systems Engineering, Technical Documentation, Validation, Verification
-
-**Notes:** Inspection routines applied across DJI Phantom 4 Pro, DJI Phantom 3 Pro, DJI Mavic Pro, and Tarot 680 Pro. Routines followed KCAA UAS Regulations 2020 operational safety requirements.
-
-#### Project: IT Infrastructure, Digital Presence & Company Operations
-- **System:** Wix (website), Google Workspace (email, SPF/DKIM/DMARC), Instagram, Facebook, Duplicator 3D Printer (signage/placards)
-- **Objective:** Establish reliable, professional IT infrastructure and digital presence for Kenya's first KCAA-approved drone training organisation, and systematise student administration and external stakeholder engagement to support company growth.
-- **Description:** End-to-end ownership of Kendrone's IT infrastructure, digital marketing presence, student administration, and external stakeholder engagement. Reorganised a scattered company database, resolved email deliverability issues, established a functioning digital marketing operation, designed marketing collateral, and served as the primary point of contact for students and external parties.
-- **Outcome:** Email deliverability resolved and verified (9/10 spam test score). Website performance and content optimised. Company and student databases reorganised and maintained. Brochure, business cards, and 3D printed logo placards produced. Social media accounts managed with paid advertising campaigns run. External stakeholder relationships established with media houses, landowners, aviation doctors, and KCAA. Student RPL registrations processed and license progress monitored end-to-end.
-- **R&D Project:** No
-- **Project Tags:** 3D Printing, AutoCAD, Autodesk Inventor, Business Development, Communications, Deployment, Digital Marketing, Implementation, Market Research, Microsoft Office, Operations, Operations, Project Management, Recruitment & Team Building, Regulatory Compliance, Safety, Software, Stakeholder Engagement, Technical Documentation, Website Development
-- **Notes:** Brian listed as one of three student contact points on the Mtwapa accommodation guide. External outreach included Nation Media Group, Standard Group, RMS, and Mediamax for potential editorial coverage. Field access letters drafted and sent to landowners in Vipingo (Kilifi County) for new training site expansion. Petty cash records maintained throughout employment.
-
-**Activity 14 — What:** Diagnosed and resolved company email deliverability failures and optimised web infrastructure
-
-**How:** Identified that company emails were routing to spam due to missing SPF, DKIM, and DMARC records. Configured DKIM signing (2048-bit RSA key via Google Workspace), initiated SPF record setup, and recommended DMARC record addition for kendrone.co.ke. Verified deliverability improvements using mail-tester.com — achieved 9/10 spam score. Managed website on Wix platform including performance optimisation, content updates, and domain administration.
-
-**Responsibility:** Led
-
-**Result:** Email deliverability restored and verified at 9/10. DKIM signature validated. Website operational and maintained throughout employment period.
-
-**Tags:** Communications, Deployment, Implementation, Microsoft Office, Operations, Operations, Project Management, Safety, Software, Technical Documentation, Website Development
-
-**Notes:** Spam test initiated by Brian, sent from CEO's account (craig@kendrone.co.ke) to confirm end-to-end deliverability. SPF and DMARC records were outstanding at time of test — flagged in report for follow-up action.
-
-**Activity 15 — What:** Reorganised company and student databases and maintained operational records including petty cash
-
-**How:** Audited and restructured scattered company documentation into an organised database covering operational records, student files, contracts, training checklists (APPENDIX 14 and APPENDIX 24), and correspondence. Maintained student records from inquiry through to post-training license issuance. Managed info@kendrone.co.ke as primary student-facing email point of contact. Maintained petty cash records throughout employment
-
-**Responsibility:** Led
-
-**Result:** Company documentation systematised and accessible. Student records maintained end-to-end for all enrolled students. Petty cash accounts accurately recorded throughout operational period
-
-**Tags:** Deployment, Implementation, Microsoft Office, Operations, Operations, Project Management, Quality Assurance, Recruitment & Team Building, Regulatory Compliance, Software, Systems Engineering, Technical Documentation
-
-**Notes:** Student file management required compliance with UTO quality management system documentation standards per KCAA TPM requirements. Brian was sole administrator of info@ email inbox.
-
-**Activity 16 — What:** Designed company marketing collateral and managed digital marketing channels including paid advertising
-
-**How:** Designed company brochure, business cards, and 3D printed logo placards using available design tools and the office Duplicator 3D printer. Managed Kendrone Instagram and Facebook accounts — created and published content and ran paid advertising campaigns to drive student enrollment and brand awareness. Managed the company's social media presence under the @KendroneKenya handle across all platforms
-
-**Responsibility:** Led
-
-**Result:** Professional marketing collateral produced and deployed. Social media channels actively maintained with paid campaign support throughout employment period. Student enrollment supported through digital lead generation.
-
-**Tags:** 3D Printing, Business Development, Communications, Deployment, Digital Marketing, Implementation, Market Research, Microsoft Office, Operations, Operations, Project Management, Software, Stakeholder Engagement, Website Development
-
-**Notes:** Brochure and business card designs produced for CEO Craig Cleave and used in client and stakeholder engagement. 3D printed logo placards used for branding at training sites and events.
-
-**Activity 17 — What:** Led external stakeholder engagement across regulatory bodies, media, landowners, aviation doctors, and commercial clients
-
-**How:** Managed KCAA liaison for student RPL registrations, airspace permissions, and post-training license progress follow-up. Drafted and sent field access permission letters to landowners (including Vipingo, Kilifi County) for new training site expansion. Compiled and distributed KCAA-approved aviation medical examiner directory to students. Reached out to media organisations (Nation Media Group, Standard Group, RMS, Mediamax) for editorial coverage opportunities. Engaged survey companies for client training partnerships. Coordinated accommodation options for Mtwapa training site — scouted, compiled, and distributed student accommodation guide covering 7 properties across budget tiers with transport links.
-
-**Responsibility:** Led
-
-**Result:** Student RPL registrations processed and licenses obtained for all enrolled students. Mtwapa accommodation guide produced and distributed to students. Field access letters drafted for training site expansion. Media and client outreach conducted. Aviation doctor resource compiled and distributed.
-
-**Tags:** Business Development, Communications, Deployment, Digital Marketing, Market Research, Microsoft Office, Operations, Operations, Project Management, Recruitment & Team Building, Regulatory Compliance, Safety, Stakeholder Engagement, Systems Engineering, Technical Documentation, UAS Training & Instruction
-
-**Notes:** Brian was listed as one of three student contact points on the Mtwapa accommodation guide alongside CEO and colleague Tobias Orina. Media outreach focused on positioning Kendrone as Kenya's first KCAA-approved drone training organisation. Survey company engagement generated concurrent training revenue stream.
-
-**Experience-level Activities (not tied to a specific project):**
-
-**Activity 18 — What:** KCAA Instructor Rating — UAS ground school, practical instruction, and BVLOS technical presentation
-
-**How:** Completed one-month KCAA Instructor Rating programme (IR001-01) at Kendrone UTO, covering instructor methodology, UAS regulations, hands-on practical instruction, and teaching practice with the first student cohort. Delivered a 32-slide BVLOS technical presentation to KCAA representative, Chief Instructor, and CEO/DFE covering BVLOS definitions, UAS category classification under Civil Aviation (UAS) Regulations 2020, C2 link architectures (RLOS/B-RLOS), IFR requirements, ICAO RPAS CONOPS, and global BVLOS case studies across 10 countries. Pass mark threshold: 70%
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Awarded KCAA Instructor Rating. Radio Telephony licence renewed concurrently. Sponsored by Kendrone under a KSH 200,000 training bond (signed 29 January 2021); bond waived by CEO Craig Cleave upon resignation in recognition of MSc scholarship award.
-
-**Tags:** Aircraft Systems, Autonomy, Communications, Flight Test, Mission Planning, Operations, Operations, Regulatory Compliance, Safety, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction, Validation, Verification
-
-**Notes:** 1 February – 1 March 2021. Examined by KCAA-appointed DFE. Teaching practice conducted on first Kendrone student cohort while still in training phase
-
----
-
-### Kendrone Ltd — Remote Pilot Licence (RPL) Training — Multirotor
-*Aviation | Mtwapa, Nairobi, Naivasha | 2021-01 – 2021-01*
-
-Completed a two-week KCAA-approved Remote Pilot Licence (Multirotor) programme at Kendrone Ltd, Kenya's first KCAA-certified Unmanned Training Organisation (certified November 2020). Training covered ground school (Air Law, Meteorology, Human Factors, Navigation, Principles of Flight, Technical and General) and practical flight training on multirotor platforms under 25kg, examined by a KCAA-designated Flight Examiner. Conducted under the Civil Aviation (Unmanned Aircraft Systems) Regulations 2020
-
-**Experience-level Activities (not tied to a specific project):**
-
-**Activity 1 — What:** RPL ground school and practical flight training on multirotor platforms — KCAA certification
-
-**How:** Completed two-week KCAA RPL-MR programme comprising ground school theory (Air Law, Flight Plan Filing, Human Factors, Meteorology, Navigation, Principles of Flight, Technical and General) and practical flight training on DJI Phantom 4 Pro, Phantom 3 Pro, and Mavic Pro against the 15-lesson KCAA RPL-MR syllabus. Examined by KCAA-designated Flight Examiner (DFE) Craig Cleave. Pass mark threshold: 70% on all theory examinations.
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Awarded KCAA Remote Pilot Licence — Multirotor, Licence No. YK-RPL-00013A. First logged flight: 20 January 2021
-
-**Tags:** Aircraft Systems, Autonomy, Flight Test, Operations, Operations, Regulatory Compliance, Safety, UAS Training & Instruction, Validation, Verification
-
-**Notes:** Conducted under Civil Aviation (UAS) Regulations 2020. Platforms: DJI Phantom 4 Pro, Phantom 3 Pro, Mavic Pro.
-
----
-
-### eMobilis Technology Institute — Full Stack Software Development
-*Student | Nairobi, Kenya | 2020-01 – 2020-06*
-
-Completed a five-month full stack software development programme at eMobilis Technology Institute, Nairobi (Admission No. 01/0120/4698, January 2020 Afternoon intake, under lecturer Benjamin Wanyama). The programme covered web development (HTML, CSS, Python, MySQL) and Android mobile application development (Kotlin, Java, XML). Engaged with all curriculum streams. Completed a capstone Android carpool application (Fadhili). Also obtained Google Digital Skills certification during this period. Subsequently co-founded the Coding Collective — a peer learning group formed from the cohort for continued collaborative development work.
-
-**Projects under this experience (1):**
-
-#### Project: Fadhili — Android Carpool Application
-- **System:** Android mobile application — Firebase Authentication, Firebase Realtime Database, GeoFire real-time location engine, Google Maps SDK (driver and passenger map views), Google Play Services
-- **Objective:** To design and deliver a functional carpool Android application demonstrating end-to-end full stack mobile development competency across UI, backend, authentication, real-time location, and database integration
-- **Description:** A fully functional Android carpool application designed and developed from scratch as the programme capstone project. Fadhili connected drivers and passengers in real-time, implementing ride matching, live map tracking, user authentication, messaging, notifications, and profile management. Built using Kotlin as the primary language with Firebase as the backend infrastructure and Google Maps SDK for location and mapping services
-- **Outcome:** Delivered a working Android carpool application (API 16+, target SDK 30) with real-time driver/passenger location tracking, ride coordination, user authentication, and messaging features. Codebase archived on GitHub.
-- **R&D Project:** No
-- **Project Tags:** Design, Firebase, Firestore, Git, Implementation, Integration, Java, Kotlin, Mobile Development, MySQL, Software, Verification
-- **Notes:** Capstone project for the eMobilis Full Stack programme, January 2020 intake. Primary language Kotlin; Java also used. Built on Android SDK 30, targeting API 16+.
-
-**Activity 1 — What:** Designed and developed Fadhili — a full-stack Android carpool application — end to end
-
-**How:** Independently architected and built the full application in Kotlin and Java, implementing multi-screen UI (landing, splash, sign-in, registration, dashboard, rides, messages, notifications, profile) using XML layouts and Material Design, Firebase Authentication for user management, Firebase Realtime Database for ride coordination and messaging, GeoFire and Google Maps SDK for real-time driver/passenger location tracking, and distance computation between points
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Delivered a fully functional Android carpool application (SDK 30, API 16+) with real-time location, authentication, ride matching, messaging, and notification features. Codebase archived on GitHub
-
-**Tags:** Design, Firebase, Firestore, Git, Implementation, Integration, Java, Kotlin, Mobile Development, Software, Verification
-
-**Notes:** Capstone project for eMobilis Full Stack programme, January 2020 intake
-
-**Experience-level Activities (not tied to a specific project):**
-
-**Activity 2 — What:** Full stack web and mobile development training — HTML, CSS, Python, MySQL, Kotlin, Java, Android
-
-**How:** Completed the full eMobilis curriculum across front-end web development (HTML, CSS, Bootstrap), back-end development (Python, MySQL), and Android mobile development (Kotlin, Java, XML) over five months under lecturer Benjamin Wanyama
-Responsibility: Contributed
-
-**Responsibility:** Contributed
-
-**Result:** Successfully completed the full programme across all curriculum streams gaining practical competency in web and Android development
-
-**Tags:** HTML/CSS, Implementation, Java, Kotlin, Mobile Development, MySQL, Python, Software, Website Development
-
-**Notes:** January–May 2020, Nairobi. Admission No. 01/0120/4698, January 2020 Afternoon intake
-
-**Activity 3 — What:** Co-founded the Coding Collective — a peer collaborative development group from the eMobilis cohort
-
-**How:** Co-founded an informal coding collective with cohort members from the eMobilis afternoon MIT class, structured around collaborative projects, peer knowledge sharing, and commercialisation of development work across web and Android stacks
-
-**Responsibility:** Led
-
-**Result:** Established an active peer learning group continuing collaborative development beyond the formal programme, with intent to evolve into a commercial development organisation
-
-**Tags:** Design, Git, HTML/CSS, Implementation, Java, Kotlin, Mobile Development, MySQL, Project Management, Python, Recruitment & Team Building, Software, Stakeholder Engagement, Website Development
-
-**Notes:** Documented in the Coding Collective founding proposal
-
----
-
-### Middle East Technical University — Student Assistant - ASE301 Numerical Methods for Aerospace Engineers
-*Undergraduate Student | Turkey/ Northern Cyprus | 2019-02 – 2019-06*
-
-Appointed as Student Assistant for ASE301 (Numerical Methods for Aerospace Engineers) under Prof. Dr. Hakan Tarman based on highest academic grade merit (AA). Conducted consultation sessions and evaluated computational assignments covering ODE/PDE numerical solvers in MATLAB for a cohort of 30+ undergraduate students.
-
-**Projects under this experience (1):**
-
-#### Project: ASE301 Course Instruction & Student Assessment
-- **System:** METU NCC ASE301 Academic Curriculum & MATLAB Numerical Solvers
-- **Objective:** METU NCC ASE301 Academic Curriculum & MATLAB Numerical Solvers
-- **Description:** Academic support, report grading, and student consultation sessions for 30+ undergraduate aerospace engineering students taking ASE301 Numerical Methods for Aerospace Engineers.
-- **Outcome:** Successfully conducted 5 consultation sessions and graded 3 major computational assignments covering 12 ODE solvers (Euler1, Euler2, Flowa, Flowb, Flowd, Heun, Lorenz, RK2, RK4, stability_1, stability_2, System) and 3 PDE solvers (heat, p6, wave) in MATLAB.
-- **R&D Project:** No
-- **Project Tags:** CFD (Computational Fluid Dynamics), MATLAB, Numerical Methods, Operations, Research, Simulation, Software, Training Program Design
-- **Notes:** Appointed by course instructor Prof. Dr. Hakan Tarman following AA grade achievement
-
-**Activity 1 — What:** Conducted 5 dedicated consultation sessions for a cohort of 30+ undergraduate aerospace engineering students in ASE301
-
-**How:** Provided technical guidance and debugging support on MATLAB implementations of ODE solvers (Euler1, Euler2, Heun, RK2, RK4, Lorenz, Flowa/b/d, System aeroelastic coupling, stability_1/2) and PDE solvers (heat, wave, p6).
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Resolved student algorithmic errors and clarified physical interpretations of numerical simulations, including 2-DOF spring-mass-airfoil pitching and plunging dynamics.
-
-**Tags:** CFD (Computational Fluid Dynamics), MATLAB, Numerical Methods, Operations, Simulation, Software, Training Program Design
-
-**Activity 2 — What:** Graded 3 major numerical methods homework assignments and computational experiment reports for 30+ students
-
-**How:** Evaluated MATLAB code correctness, numerical stability analysis, convergence plots, and physical discussions of aeroelastic and differential equation simulations against course benchmarks
-
-**Responsibility:** IndependentlyExecuted
-
-**Result:** Completed timely assessment and detailed feedback for 3 assignment submission cycles throughout the semester
-
-**Tags:** MATLAB, Numerical Methods, Operations, Simulation, Software, Training Program Design
-
-**Notes:** Evaluated assignments such as HW #2 involving 2-DOF aeroelastic spring-mass-airfoil system simulations modified with RK4 solvers
-
----
-
 ### Middle East Technical University — B.Sc. Aerospace Engineering
 *Undergraduate Student | Turkey/Northern Cyprus | 2015-09 – 2019-06*
 
@@ -2161,48 +913,53 @@ Bachelor of Science in Aerospace Engineering at METU Northern Cyprus Campus, com
 
 ---
 
-### Middle East Technical University — SI-PASS Leader & Instructor — MAT119 & MAT120
-*Undergraduate Student | Turkey/Northern Cyprus | 2018-09 – 2019-05*
+### Middle East Technical University — Secretary General, International Students Association
+*Undergraduate Student | Turkey, Northern Cyprus | 2016-09 – 2018-01*
 
-Certified Supplemental Instruction (SI-PASS) Leader and Instructor at METU NCC, facilitating peer-assisted study sessions for undergraduate mathematics courses MAT119 (Calculus I: Calculus of Single Variable Functions) and MAT120 (Calculus II: Calculus of Multivariable Functions) throughout the 2018 Fall and 2019 Spring academic semesters.
+Executive leadership role serving as Secretary General of the International Students Association at METU NCC[cite: 3, 4, 25, 31]. Served as the highest-ranking African student representative on the executive board, directed day-to-day operations across 8 directorates, led recruitment interviews for student leadership positions, managed administrative approval pipelines, and ran point on major cultural, social, and sports events
 
-**Projects under this experience (1):**
+**Experience-level Activities (not tied to a specific project):**
 
-#### Project: Calculus Supplemental Instruction & Peer-Assisted Study Sessions
-- **System:** METU NCC Academic Support & SI-PASS Framework
-- **Objective:** Enhance student comprehension, problem-solving techniques, and academic performance in foundational calculus through structured, peer-led collaborative learning
-- **Description:** Facilitation of peer-assisted study sessions for undergraduate single-variable (MAT119) and multivariable (MAT120) calculus courses at METU NCC following formal SI-PASS leader leadership training and certification
-- **Outcome:** Successfully conducted two weekly 60-minute study sessions across the Fall 2018 and Spring 2019 academic semesters, providing calculus problem-solving support to undergraduate students
-- **R&D Project:** No
-- **Project Tags:** SIPASS, Training Program Design
-- **Notes:** Completed 2 days of formal SI-PASS Leadership Training on September 29–30, 2018. Certified by Dr. Z. Eda Sun Selişik (SI-PASS Programme Supervisor) and Prof. Dr. Gürkan Karakaş (Vice President of METU NCC)
+**Activity 1 — What:** Managed daily operational workflows for ISA across eight functional directorates, led talent acquisition interviews, and served as executive representative for the international/African student body
 
-**Activity 1 — What:** Completed formal 2-day SI-PASS Leadership Training and earned official certification as an SI-PASS Leader at METU NCC.
+**How:** Co-directed board operations with the President and Director General; structured executive roles across Publications, Logistics, HR, PR, Media, Events, Finance, and Marketing; conducted recruitment interviews to build a 50+ person team of directors, assistants, and volunteers.
 
-**How:** Participated in intensive leadership training on September 29–30, 2018, mastering peer facilitation methodologies, group dynamics management, collaborative learning strategies, and active problem-solving techniques for calculus instruction
+**Responsibility:** Led
 
-**Responsibility:** IndependentlyExecuted
+**Result:** Built a fully staffed organizational structure across 8 directorates, maintained active engagement for over 70 student members, and established efficient daily operational workflows.
 
-**Result:** Formally certified as an SI-PASS Leader and Instructor by the SI-PASS Programme Supervisor and METU NCC Vice President.
+**Tags:** Corporate Governance, International Relations, Microsoft Office, Operations, Operations, Project Management, Recruitment & Team Building, Stakeholder Engagement, Student Advocacy
 
-**Tags:** Operations, SIPASS, Training Program Design
+**Notes:** Served as the highest-ranking African student on the executive board, acting as a key advocate and liaison for African student interests.
 
-**Activity 2 — What:** Conducted peer-assisted study sessions for MAT119 (Calculus I) and MAT120 (Calculus II) throughout the 2018 Fall and 2019 Spring semesters
+**Activity 2 — What:** Authored official event proposals, managed university approval workflows, coordinated inter-university transportation, and directed social media marketing campaigns
 
-**How:** Attended 3 weekly lecture hours alongside undergraduate students to track course progression, then designed and facilitated two standalone 60-minute study sessions per week in classrooms and library study rooms focused on single-variable and multivariable calculus problems.
+**How:** Drafted formal proposals and navigated multi-tier signature approval pipelines (ISA President, Academic Advisor, Directorate of Social and Cultural Affairs); liaised with Near East University to arrange campus transit for 40 delegates to African Night 2016; coordinated with the Media team on promotional videos, banners, and digital flyers.
 
-**Responsibility:** IndependentlyExecuted
+**Responsibility:** Led
 
-**Result:** Successfully delivered regular peer-led instruction and problem-solving support to interested undergraduate students across both semesters
+**Result:** 100% administrative proposal sign-off, secured campus funding/logistics, and expanded digital outreach to increase international event turnouts
 
-**Tags:** SIPASS, Training Program Design
+**Tags:** Event Management, Microsoft Office, Operations, Operations, Project Management, Stakeholder Engagement, Student Advocacy
 
-**Notes:** Sessions held in METU NCC library study rooms and designated campus classrooms
+**Notes:** Re-drafted proposals to strictly adhere to university compliance and administrative standards required by campus directors and advisors.
+
+**Activity 3 — What:** Ran point on campus-wide flagship events including the 10th International Food Festival, METU’s Got Talent, International Music Festival, sports tournaments, and cultural excursions
+
+**How:** Oversaw on-site event execution, stage timing, venue setup, and judge/contestant coordination; managed supply chain logistics including ingredient sourcing and allocation for international food stalls; organized sports competitions (ISA Football Tournament, Olympic Games) and historical trips (St. Hilarion Castle)
+
+**Responsibility:** Led
+
+**Result:** Successfully delivered high-attendance campus festivals and competitions, engaging hundreds of domestic and international students.
+
+**Tags:** Event Management, International Relations, Operations, Operations, Project Management, Stakeholder Engagement
+
+**Notes:** Successfully delivered high-attendance campus festivals and competitions, engaging hundreds of domestic and international students.
 
 ---
 
 ### Middle East Technical University — Vice President, Aerospace Society
-*Undergraduate Student | Turkey/Northern Cyprus | 2017-09 – 2018-06*
+*Undergraduate Student | Turkey/Northern Cyprus | 2017-09 – Present*
 
 Executive leadership role co-managing student society operations, technical software workshops, faculty/guest seminars, and hands-on project teams. Spearheaded the society's Model Aircraft Project, facilitated MATLAB/Inventor technical courses, and established professional development channels for aerospace engineering undergraduates.
 
@@ -2303,48 +1060,826 @@ Executive leadership role reviving and directing the dormant Model United Nation
 
 ---
 
-### Middle East Technical University — Secretary General, International Students Association
-*Undergraduate Student | Turkey, Northern Cyprus | 2016-09 – 2018-01*
+### Middle East Technical University — SI-PASS Leader & Instructor — MAT119 & MAT120
+*Undergraduate Student | Turkey/Northern Cyprus | 2018-09 – 2019-05*
 
-Executive leadership role serving as Secretary General of the International Students Association at METU NCC[cite: 3, 4, 25, 31]. Served as the highest-ranking African student representative on the executive board, directed day-to-day operations across 8 directorates, led recruitment interviews for student leadership positions, managed administrative approval pipelines, and ran point on major cultural, social, and sports events
+Certified Supplemental Instruction (SI-PASS) Leader and Instructor at METU NCC, facilitating peer-assisted study sessions for undergraduate mathematics courses MAT119 (Calculus I: Calculus of Single Variable Functions) and MAT120 (Calculus II: Calculus of Multivariable Functions) throughout the 2018 Fall and 2019 Spring academic semesters.
+
+**Projects under this experience (1):**
+
+#### Project: Calculus Supplemental Instruction & Peer-Assisted Study Sessions
+- **System:** METU NCC Academic Support & SI-PASS Framework
+- **Objective:** Enhance student comprehension, problem-solving techniques, and academic performance in foundational calculus through structured, peer-led collaborative learning
+- **Description:** Facilitation of peer-assisted study sessions for undergraduate single-variable (MAT119) and multivariable (MAT120) calculus courses at METU NCC following formal SI-PASS leader leadership training and certification
+- **Outcome:** Successfully conducted two weekly 60-minute study sessions across the Fall 2018 and Spring 2019 academic semesters, providing calculus problem-solving support to undergraduate students
+- **R&D Project:** No
+- **Project Tags:** SIPASS, Training Program Design
+- **Notes:** Completed 2 days of formal SI-PASS Leadership Training on September 29–30, 2018. Certified by Dr. Z. Eda Sun Selişik (SI-PASS Programme Supervisor) and Prof. Dr. Gürkan Karakaş (Vice President of METU NCC)
+
+**Activity 1 — What:** Completed formal 2-day SI-PASS Leadership Training and earned official certification as an SI-PASS Leader at METU NCC.
+
+**How:** Participated in intensive leadership training on September 29–30, 2018, mastering peer facilitation methodologies, group dynamics management, collaborative learning strategies, and active problem-solving techniques for calculus instruction
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Formally certified as an SI-PASS Leader and Instructor by the SI-PASS Programme Supervisor and METU NCC Vice President.
+
+**Tags:** Operations, SIPASS, Training Program Design
+
+**Activity 2 — What:** Conducted peer-assisted study sessions for MAT119 (Calculus I) and MAT120 (Calculus II) throughout the 2018 Fall and 2019 Spring semesters
+
+**How:** Attended 3 weekly lecture hours alongside undergraduate students to track course progression, then designed and facilitated two standalone 60-minute study sessions per week in classrooms and library study rooms focused on single-variable and multivariable calculus problems.
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Successfully delivered regular peer-led instruction and problem-solving support to interested undergraduate students across both semesters
+
+**Tags:** SIPASS, Training Program Design
+
+**Notes:** Sessions held in METU NCC library study rooms and designated campus classrooms
+
+---
+
+### Middle East Technical University — Student Assistant - ASE301 Numerical Methods for Aerospace Engineers
+*Undergraduate Student | Turkey/ Northern Cyprus | 2019-02 – 2019-06*
+
+Appointed as Student Assistant for ASE301 (Numerical Methods for Aerospace Engineers) under Prof. Dr. Hakan Tarman based on highest academic grade merit (AA). Conducted consultation sessions and evaluated computational assignments covering ODE/PDE numerical solvers in MATLAB for a cohort of 30+ undergraduate students.
+
+**Projects under this experience (1):**
+
+#### Project: ASE301 Course Instruction & Student Assessment
+- **System:** METU NCC ASE301 Academic Curriculum & MATLAB Numerical Solvers
+- **Objective:** METU NCC ASE301 Academic Curriculum & MATLAB Numerical Solvers
+- **Description:** Academic support, report grading, and student consultation sessions for 30+ undergraduate aerospace engineering students taking ASE301 Numerical Methods for Aerospace Engineers.
+- **Outcome:** Successfully conducted 5 consultation sessions and graded 3 major computational assignments covering 12 ODE solvers (Euler1, Euler2, Flowa, Flowb, Flowd, Heun, Lorenz, RK2, RK4, stability_1, stability_2, System) and 3 PDE solvers (heat, p6, wave) in MATLAB.
+- **R&D Project:** No
+- **Project Tags:** CFD (Computational Fluid Dynamics), MATLAB, Numerical Methods, Operations, Research, Simulation, Software, Training Program Design
+- **Notes:** Appointed by course instructor Prof. Dr. Hakan Tarman following AA grade achievement
+
+**Activity 1 — What:** Conducted 5 dedicated consultation sessions for a cohort of 30+ undergraduate aerospace engineering students in ASE301
+
+**How:** Provided technical guidance and debugging support on MATLAB implementations of ODE solvers (Euler1, Euler2, Heun, RK2, RK4, Lorenz, Flowa/b/d, System aeroelastic coupling, stability_1/2) and PDE solvers (heat, wave, p6).
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Resolved student algorithmic errors and clarified physical interpretations of numerical simulations, including 2-DOF spring-mass-airfoil pitching and plunging dynamics.
+
+**Tags:** CFD (Computational Fluid Dynamics), MATLAB, Numerical Methods, Operations, Simulation, Software, Training Program Design
+
+**Activity 2 — What:** Graded 3 major numerical methods homework assignments and computational experiment reports for 30+ students
+
+**How:** Evaluated MATLAB code correctness, numerical stability analysis, convergence plots, and physical discussions of aeroelastic and differential equation simulations against course benchmarks
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Completed timely assessment and detailed feedback for 3 assignment submission cycles throughout the semester
+
+**Tags:** MATLAB, Numerical Methods, Operations, Simulation, Software, Training Program Design
+
+**Notes:** Evaluated assignments such as HW #2 involving 2-DOF aeroelastic spring-mass-airfoil system simulations modified with RK4 solvers
+
+---
+
+### Kendrone Ltd — UAS Engineer, Pilot and Instructor
+*UAS Company | Mtwapa, Nairobi, Naivasha - Kenya | 2021-01 – 2021-06*
+
+Joined Kenya's first KCAA-approved Drone Training Organisation as a student, earning the Remote Pilot Licence (YK-RPL-00013A) before transitioning into a permanent employee role as UAS Pilot, Instructor, and IT Assistant. Delivered ground school and practical flight instruction across three student cohorts, completed the Instructor Rating (IR001-01) under a company-sponsored training bond, and led engineering and innovation work including the design, fabrication, and flight testing of a drone-based seedball dispersal mechanism for reforestation in collaboration with Seedball Kenya. Concurrently owned all IT infrastructure, digital marketing, student administration, and external stakeholder engagement for the company.
+
+**Projects under this experience (5):**
+
+#### Project: Drone-Based Seedball Dispersal Mechanism
+- **System:** Tarot 650 quadrotor — Pixhawk PX4 flight controller, QGroundControl GCS, servo-actuated seedball container and release mechanism (custom-designed), 6S LiPo power system
+- **Objective:** Design and validate a payload mechanism enabling autonomous grid-pattern seedball dispersal from a multirotor UAS, characterise platform endurance under operational payload conditions, and demonstrate system readiness to Seedball Kenya and regulatory observers.
+- **Description:** Design, fabrication, integration, and flight testing of a drone-mounted seedball dispersal system for ecological reforestation, developed in collaboration with Seedball Kenya. The project spanned the full engineering lifecycle from requirements capture through witnessed operational demonstration, with a formal endurance test report produced as the primary deliverable.
+- **Outcome:** Mechanism successfully designed, fabricated, and integrated. Endurance test campaign (3 flights) established that dual 6S parallel battery configuration was optimal, achieving ~9min endurance, ~2km grid coverage, and ~5532m² area per sortie with 500g seedball payload. Findings and recommendations formally submitted to Seedball Kenya
+- **R&D Project:** Yes
+- **Project Tags:** 3D Printing, Aircraft Systems, Autodesk Inventor, Avionics, Bill of Materials (BOM), Communications, Design, Electrical Systems, Embedded Systems, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, Ground Control Systems, Ground Testing, Implementation, Integration, Mechanical Assembly , Mechanical Fabrication, Mission Planning, PX4, Payloads, Precision Agriculture, QGroundControl, Quality Assurance, Requirements, Research, Safety, Soldering, Systems Engineering, Technical Documentation, Validation, Verification
+- **Notes:** Commissioned by CEO Craig Cleave in collaboration with Seedball Kenya. Demonstration witnessed by a Mtwapa Police Station officer, Seedball Kenya representative, and CEO. Flight data logs archived on px4.io. Project concluded upon Brian's resignation in May 2021; post-submission status with Seedball Kenya unknown.
+
+**Activity 1 — What:** Captured mission requirements from CEO and Seedball Kenya and produced mechanical design of seedball container and servo-actuated release mechanism
+
+**How:** Requirements received verbally from CEO Craig Cleave in a meeting, specifying payload capacity, drop pattern, and coverage area targets for reforestation missions. Designed container and servo-actuated latch release in Autodesk Inventor, referencing existing Tarot 650 CAD geometry to ensure dimensional compatibility with the airframe mounting points.
+
+**Responsibility:** Led
+
+**Result:** Fully detailed CAD design of seedball container and release mechanism, dimensionally compatible with Tarot 650 airframe, ready for fabrication
+
+**Tags:** Aircraft Systems, Architecture, Autodesk Inventor, Bill of Materials (BOM), Design, Flight Controller Hardware, Interface Definition, Payloads, Precision Agriculture, Requirements, Systems Engineering, Technical Documentation
+
+**Notes:** Seedball Kenya supplied charcoal-coated seedballs (~2.4g per ball). Requirements defined coverage area, grid spacing, and trigger distance parameters that subsequently drove mission planning parameters in QGroundControl.
+
+**Activity 2 — What:** Fabricated mechanism components and integrated the dispersal payload onto the Tarot 650 airframe including servo power rail decoupling
+
+**How:** 3D printed container and release mechanism components on Duplicator printer using PLA. Physically assembled and mounted mechanism under the Tarot 650 airframe. Designed and implemented a dedicated servo power rail decoupled from the main Tarot power bus to prevent servo draw from interfering with flight controller power. Wired servo to Pixhawk PX4 PWM output channel and configured auto-trigger in QGroundControl mission planner, mirroring the camera trigger function used in survey missions.
+
+**Responsibility:** Led
+
+**Result:** Fully integrated dispersal payload on Tarot 650 airframe. Servo-actuated release responsive to both manual RC PWM input and autonomous mission trigger commands from QGroundControl
+
+**Tags:** 3D Printing, Aircraft Systems, Autodesk Inventor, Avionics, Bill of Materials (BOM), Design, Electrical Systems, Embedded Systems, Flight Controller Hardware, Flight Controls, Ground Control Systems, Implementation, Integration, Interface Definition, Mechanical Assembly , Mechanical Fabrication, Mission Planning, PX4, Payloads, QGroundControl, Soldering, Systems Engineering, Technical Documentation
+
+**Notes:** Battery positioning on the standard Tarot configuration conflicted with container installation — battery had to be partially embedded in seedball load in Flight Test 001, prompting recommendation for alternate battery location in subsequent design iterations.
+
+**Activity 3 — What:** Prepared Tarot 650 platform for flight operations — diagnosed and resolved flight controller calibration and motor imbalance issues, configured failsafes, and conducted initial airworthiness verification flight
+
+**How:** Identified motor imbalance and flight controller calibration anomalies during pre-flight checks. Performed ESC calibration, compass calibration, and accelerometer calibration on Pixhawk PX4 via QGroundControl. Balanced and re-seated motors to resolve vibration. Configured RTL and auto-land failsafes for low and critical battery voltage thresholds. Conducted initial checkout flight on 7 May 2021 to verify platform airworthiness prior to payload testing.
+
+**Responsibility:** Led
+
+**Result:** Tarot 650 confirmed airworthy. Failsafes correctly configured. Platform cleared for payload endurance test campaign.
+
+**Tags:** Aircraft Systems, Avionics, Electrical Systems, Embedded Systems, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, Ground Control Systems, Ground Testing, Integration, PX4, QGroundControl, Quality Assurance, Safety, Systems Engineering, Technical Documentation, Validation, Verification
+
+**Notes:** Failsafe configuration proved critical — Flight Test 001 experienced GCS telemetry link loss mid-flight; RTL failsafe was subsequently set after this incident to prevent battery over-discharge on future flights
+
+**Activity 4 — What:** Executed 3-flight endurance test campaign to characterise platform performance under operational payload conditions and authored formal test report
+
+**How:** Conducted 3 structured flights on 2–3 June 2021 at Kendrone Mtwapa Training Site (Greenwood Resort), varying battery configuration and payload mass: Flight Test 001 (1×6S, 1300g payload), Flight Test 002 (2×6S parallel, no seedballs), Flight Test 003 (2×6S parallel, 500g seedballs). Flew autonomous grid pattern missions (5449.24m², 1786m distance, 5m grid spacing, 50m AGL) in QGroundControl. Recorded voltage at takeoff, mid-flight, and landing for each test. Computed discharge rates and extrapolated endurance curves. Flight data logged to px4.io. Authored full endurance test report including battery discharge characterisation, payload weight tables, flight maps, results and recommendations.
+
+**Responsibility:** Led
+
+**Result:** Established dual 6S parallel as optimal configuration — discharge rate 0.0054V/s with 500g seedball payload, ~9min 10sec endurance, ~2km grid coverage, ~5532m² area, ~400 seedball capacity at 5m trigger spacing. Single 6S configuration found insufficient — critically low voltage (19.4V) reached within 6min 18sec. Formal report submitted to Seedball Kenya.
+
+**Tags:** Aircraft Systems, Avionics, Electrical Systems, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, Ground Control Systems, Ground Testing, Mission Planning, Operations, Operations, PX4, Payloads, Precision Agriculture, QGroundControl, Quality Assurance, Research, Safety, Sensors, Systems Engineering, Technical Documentation, UX/ Field Validation, Validation, Verification
+
+**Notes:** Flight Test 001 suffered GCS telemetry link loss mid-flight; pilot in command forcefully landed on visual cues. Battery not damaged. Discharge rates: FT001 0.0146V/s, FT002 0.0044V/s, FT003 0.0054V/s. Flight logs: px4.io references archived in report
+
+**Activity 5 — What:** Conducted witnessed operational demonstration of the seedball dispersal system before Seedball Kenya, KCAA-adjacent observer, and company CEO
+
+**How:** Prepared platform and payload for formal demonstration flight. Briefed attendees on system capabilities, mission parameters, and safety procedures. Executed demonstration flight with mechanism active. Results and endurance test findings presented and submitted to Seedball Kenya as basis for further development decisions
+
+**Responsibility:** Led
+
+**Result:** Demonstration successfully completed in the presence of a Mtwapa Police Station officer, Seedball Kenya representative, and CEO Craig Cleave. Mission footage recorded and published across Kendrone social media platforms. Findings and recommendations formally delivered to Seedball Kenya
+
+**Tags:** Aircraft Systems, Deployment, Flight Controller Hardware, Flight Test, Flight Testing, Mission Planning, Operations, Operations, PX4, Payloads, Precision Agriculture, QGroundControl, Regulatory Compliance, Safety, Stakeholder Engagement, Systems Engineering, Technical Documentation, Validation
+
+**Notes:** Project concluded upon Brian's resignation in May 2021. Post-submission development status with Seedball Kenya unknown
+
+#### Project: UAS Pilot Training Programme Delivery
+- **System:** DJI Phantom 4 Pro (5Y-0006A, 5Y-0072A), DJI Phantom 3 Pro (5Y-0008A), DJI Mavic Pro (5Y-0007A), Tarot 680 Pro (5Y-0021A) — all operated under Kendrone UTO KCAA authorisation
+- **Objective:** Train and qualify student pilots to KCAA RPL standard across ground school and practical flight phases, achieving regulatory sign-off and license issuance for all enrolled students.
+- **Description:** Delivery of the full KCAA Remote Pilot Licence training programme across three student cohorts at Kenya's first KCAA-approved Drone Training Organisation. Encompassed ground school instruction across seven theory domains, a 15-lesson practical flight syllabus, and a technical BVLOS presentation delivered to a KCAA representative as part of the instructor certification process
+- **Outcome:** Three cohorts trained (~16 students total, ~10 as primary instructor, ~6 during teaching practice). 9.0 logged instructor flight hours across Naivasha and Mtwapa. 100% student pass rate. BVLOS presentation successfully delivered to KCAA representative, chief instructor, and CEO.
+- **R&D Project:** No
+- **Project Tags:** Aircraft Systems, ArduPilot, Avionics, Communications, Deployment, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, Ground Control Systems, Mission Planning, Operations, Operations, Pix4D , Project Management, QGroundControl, Quality Assurance, Regulatory Compliance, Safety, Sensors, Stakeholder Engagement, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction, Validation
+- **Notes:** Conducted at three approved KCAA training sites: Mtwapa, Nairobi, and Naivasha. BVLOS presentation (32 slides) covered BVLOS definition, UAS category classification under Civil Aviation (UAS) Regulations 2020, C2 link architectures (RLOS/B-RLOS), IFR requirements, ICAO RPAS CONOPS, and global BVLOS case studies. Instructor flights logged under license YK-RPL-00013A.
+
+**Activity 6 — What:** Delivered a 32-slide technical presentation on BVLOS UAS operations to a KCAA representative, chief instructor, and CEO as part of the instructor rating certification process
+
+**How:** Researched and authored a comprehensive presentation covering BVLOS definition and operational categorisation under Civil Aviation (UAS) Regulations 2020, C2 link architectures (RLOS and B-RLOS), IFR requirements (ATC radio, transponder, DAA systems), ICAO RPAS CONOPS provisions, and global BVLOS case studies across 10 countries. Delivered as formal academic and practical assessment for instructor rating qualification.
+
+**Responsibility:** Led
+
+**Result:** Presentation successfully delivered. Contributed to successful completion of Instructor Rating (IR001-01) under Kendrone UTO, issued under KCAA framework.
+
+**Tags:** Aircraft Systems, Autonomy, CONOPS, Communications, Flight Controls, Ground Control Systems, Microsoft Office, Mission Planning, Operations, Operations, Regulatory Compliance, Requirements, Safety, Stakeholder Engagement, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction
+
+**Notes:** Presented as "Instructor in Training" under Kendrone UTO. Audience: KCAA representative, Head of Training (chief instructor), and CEO/DFE Craig Cleave. Presentation authored independently by Brian
+
+**Activity 7 — What:** Delivered full KCAA RPL ground school theory programme across three student cohorts covering seven subject domains
+
+**How:** Delivered classroom-based instruction across all seven KCAA RPL theory domains: Air Law, Flight Plan Filing, Human Factors, Meteorology, Navigation and Flight Planning, Principles of Flight, and Technical and General. Prepared and distributed study materials in advance of each cohort. Managed student questions, conducted internal assessments, and maintained student training files (APPENDIX 14) including exam records in compliance with UTO quality management requirements. Pass mark threshold enforced at 70% per KCAA requirements.
+
+**Responsibility:** Led
+
+**Result:** All students across three cohorts passed theoretical knowledge examinations to KCAA RPL standard. Post-training reference materials provided to students. Positive student feedback received — rated instruction as excellent across personal approach, knowledge transfer, and study material provision.
+
+**Tags:** Aircraft Systems, Avionics, Communications, Deployment, Flight Controls, Ground Control Systems, Microsoft Office, Mission Planning, Operations, Operations, Quality Assurance, Regulatory Compliance, Safety, Stakeholder Engagement, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction, Validation
+
+**Notes:** Training conducted at Mtwapa, Nairobi, and Naivasha sites. First cohort delivered during teaching practice phase prior to full instructor rating. Student feedback documented and archived. COVID-19 social distancing protocols observed throughout classroom sessions
+
+**Activity 8 — What:** Delivered 15-lesson KCAA RPL practical flight instruction programme across three student cohorts on multirotor platforms
+
+**How:** Instructed students through the full KCAA RPL-MR practical syllabus: UAS familiarisation, pre-flight site survey, takeoff, tail-in hover, yaw manoeuvres, lateral and longitudinal movements, vertical manoeuvres, rectangles, nose-in manoeuvres, slow level circuits, climbing and descent circuits, tear drop, and emergency procedures. Scored each lesson on the 4-point KCAA competency scale. Signed off student training checklists (APPENDIX 24) upon completion of each phase. Recommended students for RPL skill test upon satisfactory completion. Flew as safety pilot and instructor on DJI Phantom 4 Pro, DJI Phantom 3 Pro, DJI Mavic Pro, and Tarot 680 Pro across Naivasha and Mtwapa sites
+
+**Responsibility:** Led
+
+**Result:** 9.0 logged instructor flight hours. ~16 students trained across three cohorts. 100% student pass rate on KCAA RPL skill test. All students successfully obtained KCAA Remote Pilot Licences.
+
+**Tags:** Aircraft Systems, Avionics, Deployment, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, Ground Control Systems, Mission Planning, Operations, Operations, QGroundControl, Quality Assurance, Regulatory Compliance, Safety, Sensors, Stakeholder Engagement, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction, UX/ Field Validation, Validation, Verification
+
+**Notes:** Instructor flights logged under license YK-RPL-00013A. Examinations conducted by KCAA-appointed Designated Flight Examiner (DFE) — CEO Craig Cleave held DFE designation. Checkout flights performed by Brian; formal skill tests administered by DFE only per KCAA regulations
+
+#### Project: Aerial Mapping & Agricultural Survey Operations
+- **System:** DJI Phantom 4 Pro with RGB camera (survey) and multispectral sensor (agriculture) — Pix4D for survey processing, Pix4Dfields for agricultural analysis
+- **Objective:** Execute aerial survey and precision agriculture data capture missions to survey-grade output standards, and upskill survey company clients in UAS-based mapping workflows
+- **Description:** End-to-end UAS mapping and agricultural survey operations using DJI Phantom 4 Pro with RGB and multispectral payloads, covering mission planning, field data capture, and full photogrammetric processing to survey-grade outputs. Operations served both internal Kendrone missions and external survey company clients, with concurrent surveyor training delivered during live missions.
+- **Outcome:** Full mapping workflows executed end-to-end including orthomosaic, DSM/DTM, contour lines, 3D models, and vegetation index outputs. Survey company surveyors trained concurrently during live operational missions.
+- **R&D Project:** No
+- **Project Tags:** Aircraft Systems, ArduPilot, Avionics, Communications, Data Processing, Deployment, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, GIS Tools, Ground Control Systems, Mission Planning, Multispectral Imaging, Operations, Operations, PX4, Payloads, Photogrammetry, Pix4D , Precision Agriculture, QGIS, QGroundControl, Regulatory Compliance, Safety, Sensors, Stakeholder Engagement, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction, UX/ Field Validation, Validation
+- **Notes:** RGB payload used for topographic survey, cadastral, and mapping deliverables. Multispectral payload used for vegetation index and crop health analysis. Survey company clients engaged through outreach coordinated by Brian. Pix4Dfields used specifically for agricultural index computation.
+
+**Activity 9 — What:** Executed end-to-end aerial survey and agricultural mapping missions as PIC, from mission planning through photogrammetric processing to final deliverable outputs
+
+**How:** Planned survey missions in Pix4D — defined survey areas, set grid patterns, GSD, altitude, and waypoint parameters. Flew DJI Phantom 4 Pro as PIC with RGB payload for topographic survey missions and multispectral payload for agricultural missions. Processed captured data in Pix4D to produce orthomosaic, DSM/DTM, contour lines, 3D models, area and volume analyses, and CAD/GIS outputs. Processed agricultural datasets in Pix4Dfields to generate vegetation index maps for crop health analysis.
+
+**Responsibility:** Led
+
+**Result:** Full survey-grade outputs produced across multiple missions including orthomosaic, DSM/DTM, contour maps, and vegetation index outputs. Deliverables provided to clients and used in Kendrone operational portfolio.
+
+**Tags:** Aircraft Systems, Avionics, Communications, Data Processing, Deployment, Flight Controller Hardware, Flight Controls, Flight Test, Flight Testing, GIS Tools, Ground Control Systems, Mission Planning, Multispectral Imaging, Operations, Operations, Payloads, Photogrammetry, Pix4D , Precision Agriculture, QGIS, QGroundControl, Regulatory Compliance, Safety, Sensors, Systems Engineering, Technical Documentation, UX/ Field Validation, Validation
+
+**Notes:** RGB payload used for topographic, cadastral, and land survey deliverables. Multispectral payload used for NDVI and crop health index computation. All flights conducted under Kendrone UTO KCAA authorisation.
+
+**Activity 10 — What:** Trained professional surveyors from external survey companies in UAS-based mapping workflows during live operational missions
+
+**How:** Coordinated with survey company clients to conduct concurrent training during live mapping missions. Instructed surveyors in mission planning principles, platform operation, data capture procedures, and output interpretation in Pix4D. Training delivered in the field alongside active survey operations, providing real-world context for all instruction
+
+**Responsibility:** Led
+
+**Result:** Survey company personnel upskilled in end-to-end UAS mapping workflows. Client relationships established as a revenue stream combining training fees with operational survey deliverables.
+
+**Tags:** Aircraft Systems, Business Development, Data Processing, Deployment, Flight Controller Hardware, GIS Tools, Ground Control Systems, Mission Planning, Operations, Operations, Photogrammetry, Pix4D , Precision Agriculture, QGroundControl, Regulatory Compliance, Safety, Stakeholder Engagement, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction
+
+**Notes:** Survey company outreach coordinated by Brian as part of broader business development activities. Training content tailored to surveying professional context rather than KCAA RPL syllabus
+
+#### Project: UAS Avionics, Payload Integration & Fleet Maintenance
+- **System:** DJI Phantom 4 Pro, DJI Phantom 3 Pro, DJI Mavic Pro, Tarot 680 Pro — RGB and multispectral payloads
+- **Objective:** Maintain full operational readiness of the Kendrone fleet across training and operational missions through systematic integration, inspection, and component-level maintenance
+- **Description:** Avionics integration, sensor configuration, payload mounting, and hardware-level maintenance across the Kendrone UAS fleet. Encompassed pre- and post-flight airworthiness routines, fault diagnosis, and component-level repair on DJI multirotor platforms to sustain operational readiness across training and survey missions
+- **Outcome:** Fleet maintained in continuous airworthy condition throughout operations. Component-level repairs completed including IMU replacement, gimbal replacement, and motor/ESC replacement on DJI platforms. All training and survey missions supported without platform-related mission failure.
+- **R&D Project:** No
+- **Project Tags:** Aircraft Systems, ArduPilot, Avionics, Communications, Electrical Systems, Embedded Systems, Flight Controller Hardware, Flight Controls, Flight Test, Ground Control Systems, Integration, Maintenance, Mechanical Assembly , Mechanical Fabrication, Operations, Operations, Payloads, QGroundControl, Quality Assurance, Safety, Sensors, Soldering, Systems Engineering, Technical Documentation, Validation, Verification
+- **Notes:** Maintenance activities included IMU replacement, gimbal replacement, motor and ESC replacement on DJI Phantom series. Sensor calibration performed prior to mapping and agricultural missions. Pre- and post-flight inspection routines conducted in compliance with KCAA operational requirements.
+
+**Activity 11 — What:** Integrated avionics and sensor payloads across the Kendrone multirotor fleet for mapping and agricultural missions
+
+**How:** Mounted and wired RGB and multispectral sensor payloads onto DJI Phantom 4 Pro. Configured sensor parameters and performed calibration checks prior to each mission type. Verified datalink integrity, GCS connectivity, and telemetry outputs. Performed pre-flight sensor and avionics checks as part of standard operational readiness procedure
+
+**Responsibility:** Led
+
+**Result:** Fleet consistently prepared and mission-ready for both survey and agricultural operations. Sensor payloads correctly integrated and calibrated for each mission type.
+
+**Tags:** Aircraft Systems, Avionics, Communications, Electrical Systems, Embedded Systems, Flight Controller Hardware, Flight Controls, Ground Control Systems, Integration, Mechanical Assembly , Mission Planning, Operations, Payloads, Pix4D , QGroundControl, Quality Assurance, Safety, Sensors, Systems Engineering, Technical Documentation, Validation, Verification
+
+**Notes:** Multispectral calibration required panel-based calibration procedure prior to each agricultural flight to ensure accurate vegetation index computation.
+
+**Activity 12 — What:** Diagnosed and performed component-level hardware repairs on DJI multirotor platforms to restore airworthiness
+
+**How:** Identified faults through pre-flight inspection, in-flight anomaly reports, and post-flight diagnostics. Performed IMU replacement, gimbal replacement, and motor/ESC replacement on DJI Phantom series platforms. Conducted post-repair functional checks and test flights to verify repair effectiveness before returning platforms to operational service
+
+**Responsibility:** Led
+
+**Result:** Faulted platforms returned to full airworthy condition. Fleet operational continuity maintained throughout training and survey operations without mission-affecting platform failures.
+
+**Tags:** Aircraft Systems, Avionics, Electrical Systems, Embedded Systems, Flight Controller Hardware, Flight Controls, Maintenance, Mechanical Assembly , Mechanical Fabrication, Operations, Quality Assurance, Safety, Sensors, Soldering, Systems Engineering, Technical Documentation, Validation, Verification
+
+**Notes:** Repairs conducted without external MRO support — all diagnosis and component replacement performed in-house by Brian. Tools used included multimeters and standard UAS servicing equipment.
+
+**Activity 13 — What:** Conducted systematic pre- and post-flight airworthiness inspection routines across the Kendrone fleet
+
+**How:** Performed structured pre-flight checks covering physical airframe integrity, propeller condition, motor function, power system voltage and connections, GCS link establishment, telemetry verification, and payload security. Conducted post-flight inspections covering battery state, airframe condition, and anomaly logging. Maintained inspection records in compliance with KCAA UTO operational requirements.
+
+**Responsibility:** Led
+
+**Result:** Zero platform-related mission failures attributed to missed pre-flight defects throughout the operational period. Inspection records maintained in compliance with KCAA UTO documentation requirements
+
+**Tags:** Aircraft Systems, Avionics, Electrical Systems, Flight Controller Hardware, Flight Controls, Ground Control Systems, Maintenance, Operations, Operations, QGroundControl, Quality Assurance, Regulatory Compliance, Safety, Sensors, Systems Engineering, Technical Documentation, Validation, Verification
+
+**Notes:** Inspection routines applied across DJI Phantom 4 Pro, DJI Phantom 3 Pro, DJI Mavic Pro, and Tarot 680 Pro. Routines followed KCAA UAS Regulations 2020 operational safety requirements.
+
+#### Project: IT Infrastructure, Digital Presence & Company Operations
+- **System:** Wix (website), Google Workspace (email, SPF/DKIM/DMARC), Instagram, Facebook, Duplicator 3D Printer (signage/placards)
+- **Objective:** Establish reliable, professional IT infrastructure and digital presence for Kenya's first KCAA-approved drone training organisation, and systematise student administration and external stakeholder engagement to support company growth.
+- **Description:** End-to-end ownership of Kendrone's IT infrastructure, digital marketing presence, student administration, and external stakeholder engagement. Reorganised a scattered company database, resolved email deliverability issues, established a functioning digital marketing operation, designed marketing collateral, and served as the primary point of contact for students and external parties.
+- **Outcome:** Email deliverability resolved and verified (9/10 spam test score). Website performance and content optimised. Company and student databases reorganised and maintained. Brochure, business cards, and 3D printed logo placards produced. Social media accounts managed with paid advertising campaigns run. External stakeholder relationships established with media houses, landowners, aviation doctors, and KCAA. Student RPL registrations processed and license progress monitored end-to-end.
+- **R&D Project:** No
+- **Project Tags:** 3D Printing, AutoCAD, Autodesk Inventor, Business Development, Communications, Deployment, Digital Marketing, Implementation, Market Research, Microsoft Office, Operations, Operations, Project Management, Recruitment & Team Building, Regulatory Compliance, Safety, Software, Stakeholder Engagement, Technical Documentation, Website Development
+- **Notes:** Brian listed as one of three student contact points on the Mtwapa accommodation guide. External outreach included Nation Media Group, Standard Group, RMS, and Mediamax for potential editorial coverage. Field access letters drafted and sent to landowners in Vipingo (Kilifi County) for new training site expansion. Petty cash records maintained throughout employment.
+
+**Activity 14 — What:** Diagnosed and resolved company email deliverability failures and optimised web infrastructure
+
+**How:** Identified that company emails were routing to spam due to missing SPF, DKIM, and DMARC records. Configured DKIM signing (2048-bit RSA key via Google Workspace), initiated SPF record setup, and recommended DMARC record addition for kendrone.co.ke. Verified deliverability improvements using mail-tester.com — achieved 9/10 spam score. Managed website on Wix platform including performance optimisation, content updates, and domain administration.
+
+**Responsibility:** Led
+
+**Result:** Email deliverability restored and verified at 9/10. DKIM signature validated. Website operational and maintained throughout employment period.
+
+**Tags:** Communications, Deployment, Implementation, Microsoft Office, Operations, Operations, Project Management, Safety, Software, Technical Documentation, Website Development
+
+**Notes:** Spam test initiated by Brian, sent from CEO's account (craig@kendrone.co.ke) to confirm end-to-end deliverability. SPF and DMARC records were outstanding at time of test — flagged in report for follow-up action.
+
+**Activity 15 — What:** Reorganised company and student databases and maintained operational records including petty cash
+
+**How:** Audited and restructured scattered company documentation into an organised database covering operational records, student files, contracts, training checklists (APPENDIX 14 and APPENDIX 24), and correspondence. Maintained student records from inquiry through to post-training license issuance. Managed info@kendrone.co.ke as primary student-facing email point of contact. Maintained petty cash records throughout employment
+
+**Responsibility:** Led
+
+**Result:** Company documentation systematised and accessible. Student records maintained end-to-end for all enrolled students. Petty cash accounts accurately recorded throughout operational period
+
+**Tags:** Deployment, Implementation, Microsoft Office, Operations, Operations, Project Management, Quality Assurance, Recruitment & Team Building, Regulatory Compliance, Software, Systems Engineering, Technical Documentation
+
+**Notes:** Student file management required compliance with UTO quality management system documentation standards per KCAA TPM requirements. Brian was sole administrator of info@ email inbox.
+
+**Activity 16 — What:** Designed company marketing collateral and managed digital marketing channels including paid advertising
+
+**How:** Designed company brochure, business cards, and 3D printed logo placards using available design tools and the office Duplicator 3D printer. Managed Kendrone Instagram and Facebook accounts — created and published content and ran paid advertising campaigns to drive student enrollment and brand awareness. Managed the company's social media presence under the @KendroneKenya handle across all platforms
+
+**Responsibility:** Led
+
+**Result:** Professional marketing collateral produced and deployed. Social media channels actively maintained with paid campaign support throughout employment period. Student enrollment supported through digital lead generation.
+
+**Tags:** 3D Printing, Business Development, Communications, Deployment, Digital Marketing, Implementation, Market Research, Microsoft Office, Operations, Operations, Project Management, Software, Stakeholder Engagement, Website Development
+
+**Notes:** Brochure and business card designs produced for CEO Craig Cleave and used in client and stakeholder engagement. 3D printed logo placards used for branding at training sites and events.
+
+**Activity 17 — What:** Led external stakeholder engagement across regulatory bodies, media, landowners, aviation doctors, and commercial clients
+
+**How:** Managed KCAA liaison for student RPL registrations, airspace permissions, and post-training license progress follow-up. Drafted and sent field access permission letters to landowners (including Vipingo, Kilifi County) for new training site expansion. Compiled and distributed KCAA-approved aviation medical examiner directory to students. Reached out to media organisations (Nation Media Group, Standard Group, RMS, Mediamax) for editorial coverage opportunities. Engaged survey companies for client training partnerships. Coordinated accommodation options for Mtwapa training site — scouted, compiled, and distributed student accommodation guide covering 7 properties across budget tiers with transport links.
+
+**Responsibility:** Led
+
+**Result:** Student RPL registrations processed and licenses obtained for all enrolled students. Mtwapa accommodation guide produced and distributed to students. Field access letters drafted for training site expansion. Media and client outreach conducted. Aviation doctor resource compiled and distributed.
+
+**Tags:** Business Development, Communications, Deployment, Digital Marketing, Market Research, Microsoft Office, Operations, Operations, Project Management, Recruitment & Team Building, Regulatory Compliance, Safety, Stakeholder Engagement, Systems Engineering, Technical Documentation, UAS Training & Instruction
+
+**Notes:** Brian was listed as one of three student contact points on the Mtwapa accommodation guide alongside CEO and colleague Tobias Orina. Media outreach focused on positioning Kendrone as Kenya's first KCAA-approved drone training organisation. Survey company engagement generated concurrent training revenue stream.
 
 **Experience-level Activities (not tied to a specific project):**
 
-**Activity 1 — What:** Managed daily operational workflows for ISA across eight functional directorates, led talent acquisition interviews, and served as executive representative for the international/African student body
+**Activity 18 — What:** KCAA Instructor Rating — UAS ground school, practical instruction, and BVLOS technical presentation
 
-**How:** Co-directed board operations with the President and Director General; structured executive roles across Publications, Logistics, HR, PR, Media, Events, Finance, and Marketing; conducted recruitment interviews to build a 50+ person team of directors, assistants, and volunteers.
+**How:** Completed one-month KCAA Instructor Rating programme (IR001-01) at Kendrone UTO, covering instructor methodology, UAS regulations, hands-on practical instruction, and teaching practice with the first student cohort. Delivered a 32-slide BVLOS technical presentation to KCAA representative, Chief Instructor, and CEO/DFE covering BVLOS definitions, UAS category classification under Civil Aviation (UAS) Regulations 2020, C2 link architectures (RLOS/B-RLOS), IFR requirements, ICAO RPAS CONOPS, and global BVLOS case studies across 10 countries. Pass mark threshold: 70%
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Awarded KCAA Instructor Rating. Radio Telephony licence renewed concurrently. Sponsored by Kendrone under a KSH 200,000 training bond (signed 29 January 2021); bond waived by CEO Craig Cleave upon resignation in recognition of MSc scholarship award.
+
+**Tags:** Aircraft Systems, Autonomy, Communications, Flight Test, Mission Planning, Operations, Operations, Regulatory Compliance, Safety, Systems Engineering, Technical Documentation, Training Program Design, UAS Training & Instruction, Validation, Verification
+
+**Notes:** 1 February – 1 March 2021. Examined by KCAA-appointed DFE. Teaching practice conducted on first Kendrone student cohort while still in training phase
+
+---
+
+### Kendrone Ltd — Remote Pilot Licence (RPL) Training — Multirotor
+*Aviation | Mtwapa, Nairobi, Naivasha | 2021-01 – 2021-01*
+
+Completed a two-week KCAA-approved Remote Pilot Licence (Multirotor) programme at Kendrone Ltd, Kenya's first KCAA-certified Unmanned Training Organisation (certified November 2020). Training covered ground school (Air Law, Meteorology, Human Factors, Navigation, Principles of Flight, Technical and General) and practical flight training on multirotor platforms under 25kg, examined by a KCAA-designated Flight Examiner. Conducted under the Civil Aviation (Unmanned Aircraft Systems) Regulations 2020
+
+**Experience-level Activities (not tied to a specific project):**
+
+**Activity 1 — What:** RPL ground school and practical flight training on multirotor platforms — KCAA certification
+
+**How:** Completed two-week KCAA RPL-MR programme comprising ground school theory (Air Law, Flight Plan Filing, Human Factors, Meteorology, Navigation, Principles of Flight, Technical and General) and practical flight training on DJI Phantom 4 Pro, Phantom 3 Pro, and Mavic Pro against the 15-lesson KCAA RPL-MR syllabus. Examined by KCAA-designated Flight Examiner (DFE) Craig Cleave. Pass mark threshold: 70% on all theory examinations.
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Awarded KCAA Remote Pilot Licence — Multirotor, Licence No. YK-RPL-00013A. First logged flight: 20 January 2021
+
+**Tags:** Aircraft Systems, Autonomy, Flight Test, Operations, Operations, Regulatory Compliance, Safety, UAS Training & Instruction, Validation, Verification
+
+**Notes:** Conducted under Civil Aviation (UAS) Regulations 2020. Platforms: DJI Phantom 4 Pro, Phantom 3 Pro, Mavic Pro.
+
+---
+
+### Amazilia Aerospace GmbH — Aerospace Systems Engineering
+*Working Student | Munich, Germany | 2022-09 – 2024-12*
+
+Role concurrent with MSc studies at TU Munich. Involved in aircraft systems integration, electrical architecture, HIL testing, GCS development and autonomous charging systems across both UAS and conventional aircraft platforms.
+
+**Projects under this experience (4):**
+
+#### Project: WfA MiniFreighter GCS -SN2
+- **System:** Ground Control Station — WfA MiniFreighter 8/500FW
+- **Objective:** Redesign the SN2 GCS to meet updated customer, pilot and operational requirements including revised control architecture, communication protocols, BLOS capability and maintainability improvements
+- **Description:** Full lifecycle redesign of the Wings for Aid MiniFreighter 8/500FW Ground Control Station — from customer requirements capture through design reviews, procurement, assembly, integration testing and field deployment. Five units delivered operationally
+- **Outcome:** Five GCS units assembled, tested and deployed to customer for active WFP operations in Africa
+- **R&D Project:** Yes
+- **Project Tags:** Aircraft Systems, Allocation, Architecture, Autodesk Inventor, Avionics, CAN, Communications, Deployment, Design, Electrical Systems, Embedded Systems, Ethernet, Functional Analysis, Ground Control Systems, Ground Testing, Implementation, Integration, Interface Definition, RS-232, RS-422, Requirements Management, Systems Engineering, UART, Validation, Verification
+- **Notes:** NDA applies — keep evidence references general
+
+**Activity 1 — What:** Attended joint design evaluation session with Wings for Aid CEO and chief pilot alongside Amazilia CTO and senior systems engineer. Captured customer and pilot requirements directly and translated them into formal engineering specifications for the SN2 GCS redesign. Produced wiring diagrams, CAD renders and system architecture documentation. Presented across three internal design reviews with CTO, Head of Systems Engineering and Senior Systems Engineer, incorporating embedded software team input on DCU interface changes. Received sign-off to proceed to BOM and procurement.
+
+**How:** Direct customer requirements capture, requirements-to-specification translation, iterative design review process, wiring diagram production, CAD modelling, system architecture documentation
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Approved SN2 GCS design package including updated wiring architecture, component specifications and BOM — cleared for procurement and assembly
+
+**Tags:** Aircraft Systems, Allocation, Architecture, AutoCAD, Autodesk Inventor, Avionics, CAN, Communications, Design, Electrical Systems, Ethernet, Functional Analysis, Ground Control Systems, Interface Definition, RS-232, RS-422, Requirements Management, Systems Engineering, Technical Documentation, UART, yEd
+
+**Notes:** Handwritten requirements notes from WfA meeting exist as personal evidence. Formal design review documentation produced internally at Amazilia — NDA applies.
+
+**Activity 2 — What:** Sourced alternative panel supplier through independent research, which reduced component costs compared to the original source. Redesigned front panels in Autodesk Inventor to match the new supplier's specifications. Curated a full assembly procedure based on SN1 documentation and discussions with seniors. Upon parts arrival, performed mechanical assembly including drilling connection holes on panels and GCS case, installing internal support structures, and routing the power architecture — standardising all internal components on 12VDC via an AC/DC converter.
+
+**How:** Supplier sourcing and cost evaluation, Autodesk Inventor CAD redesign, assembly procedure development, mechanical assembly, power architecture wiring
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Completed mechanical assembly and power architecture of SN2 Unit 1, with reduced component cost versus SN1 baseline
+
+**Tags:** Aircraft Systems, Autodesk Inventor, Design, Electrical Systems, Ground Control Systems, Implementation, Mechanical Assembly , Mechanical Fabrication, Quality Assurance, RS-232, RS-422, Supplier Sourcing, Technical Documentation
+
+**Notes:** Panel supplier change was self-initiated and resulted in cost saving for Amazilia.
+
+**Activity 3 — What:** Performed stepwise electrical integration of all internal GCS components following the assembly procedure, conducting QA checks and functionality tests at marked checkpoints verified with seniors. Installed GCS software received from the software team upon completion of Unit 1. Scheduled and conducted simulator testing in the lab to evaluate control software, internal wiring of controls, stick feedback and aircraft response time. Applied personal drone and private pilot experience to assess pilot feel and control responsiveness directly during simulation runs. Coordinated firmware and wiring corrections on the hardware side while communicating required software changes to the software team. Conducted a final internal review before inviting the Wings for Aid CEO and chief pilot for customer acceptance testing against the original specifications.
+
+**How:** Stepwise electrical integration, QA checkpoint verification, simulator-based functional testing, cross-team coordination with software team for firmware and software updates, customer acceptance testing
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Unit 1 passed all internal tests and customer acceptance checks. Customer confirmed the GCS met specifications. Cleared for serial production of remaining four units
+
+**Tags:** Aircraft Systems, Avionics, CAN, Communications, Deployment, Electrical Systems, Embedded Systems, Ethernet, Functional Analysis, Ground Control Systems, Ground Testing, Implementation, Integration, MIL-SPEC Connectors, Mechanical Assembly , Quality Assurance, RS-232, RS-422, Soldering, Systems Engineering, TTL, Technical Documentation, UART, Validation, Verification, Wire Harness Design
+
+**Notes:** Pilot licence and drone experience directly applied during simulator evaluation — provided genuine pilot feedback on stick feel and control responsiveness without relying solely on engineering judgment.
+
+**Activity 4 — What:** Serially produced four additional GCS units following customer acceptance of Unit 1. Worked on all four units simultaneously in a dedicated assembly space, applying the verified assembly procedure and QA process established during Unit 1 production. Each unit went through the same integration, functionality testing and verification process before being cleared for delivery
+
+**How:** Serial assembly using verified procedure, parallel multi-unit production, QA and functionality testing per unit
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Five GCS units total completed, tested and delivered to Wings for Aid for operational deployment with WFP in Africa
+
+**Tags:** Aircraft Systems, CAN, Communications, Deployment, Electrical Systems, Ethernet, Ground Control Systems, Implementation, Integration, MIL-SPEC Connectors, Mechanical Assembly , Mechanical Fabrication, Quality Assurance, RS-232, RS-422, Soldering, TTL, Technical Documentation, UART, Verification, Wire Harness Design
+
+**Notes:** Five units delivered and confirmed operational in the field. End-to-end ownership from requirements through deployment on a customer-facing product.
+
+#### Project: Amazilia Ground Control Station
+- **System:** AAG GCS
+- **Objective:** Deliver functional lab GCS units for use across Amazilia's HIL testing and digital flight systems development activities
+- **Description:** Assembly, integration and verification of three tabletop ground control station units for use in the Amazilia lab HIL environment. Multi-aircraft capable — compatible with Pipistrel OPV, Nuuva and CTOL platforms. Three-monitor setup covering camera feed, telemetry and engine parameters, with a mode control panel replicating actual aircraft flight controls.
+- **Outcome:** Three units assembled, integrated and verified for development use
+- **R&D Project:** Yes
+- **Project Tags:** Aircraft Systems, Avionics, Communications, Electrical Systems, Ethernet, Flight Controls, Ground Control Systems, Implementation, Integration, RS-232, RS-422, Validation, Verification
+- **Notes:** Scope limited to assembly, integration, verification and documentation cleanup — design work done by predecessors
+
+**Activity 5 — What:** Reviewed and cleaned up existing CAD files, wiring diagrams and system architecture documentation inherited from predecessor. Reconciled documentation against the physical design to ensure accuracy before proceeding to assembly.
+
+**How:** CAD review and cleanup, wiring diagram verification, architecture documentation reconciliation
+
+**Responsibility:** Contributed
+
+**Result:** Accurate and verified documentation baseline established for the three-unit production run
+
+**Tags:** Aircraft Systems, AutoCAD, Autodesk Inventor, Design, Electrical Systems, Ground Control Systems, Systems Engineering, Technical Documentation, yEd
+
+**Notes:** Design work was not originated by Brian — scope was documentation cleanup and verification only.
+
+**Activity 6 — What:** Performed mechanical assembly of three tabletop GCS units including mounting of three-monitor arrangement, mode control panel and internal structural components. Drilled connection points and installed internal support elements following the inherited design
+
+**How:** Mechanical assembly, panel mounting, structural installation
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Three units mechanically assembled and ready for electrical integration
+
+**Tags:** Aircraft Systems, Electrical Systems, Ground Control Systems, Implementation, Mechanical Assembly , Mechanical Fabrication, Quality Assurance, Technical Documentation
+
+**Activity 7 — What:** Performed electrical integration of all internal components across three units including power architecture, monitor connections, mode control panel wiring and communication interfaces. Followed stepwise approach with QA checks at key points.
+
+**How:** Electrical wiring, power architecture integration, stepwise assembly with QA checkpoints
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Three units fully wired and electrically integrated, ready for functional testing
+
+**Tags:** Aircraft Systems, CAN, Communications, Electrical Systems, Ethernet, Ground Control Systems, Implementation, Integration, MIL-SPEC Connectors, Mechanical Assembly , Quality Assurance, RS-232, RS-422, Soldering, TTL, Technical Documentation, UART, Wire Harness Design
+
+**Activity 8 — What:** Conducted functional testing of each completed unit, verifying correct operation of all three monitor feeds — camera, telemetry and engine parameters — as well as mode control panel inputs and communication interfaces. Validated that each unit performed correctly within the lab environment across the aircraft types Amazilia was working on — Pipistrel OPV, Nuuva and CTOL.
+
+**How:** Functional testing per unit, interface verification, multi-aircraft compatibility validation
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Three tabletop GCS units verified and validated for lab use across multiple Pipistrel aircraft platforms
+
+**Tags:** Aircraft Systems, Avionics, CAN, Communications, Ethernet, Flight Controls, Ground Control Systems, Ground Testing, Integration, MIL-SPEC Connectors, Quality Assurance, RS-232, RS-422, Systems Engineering, TTL, Technical Documentation, UART, Validation, Verification
+
+#### Project: Aircraft Systems Hardware-in-the-Loop (HIL) Test Rig
+- **System:** Hardware-in-the-Loop Test Rig — Amazilia Aircraft Fleet
+- **Objective:** Design and deliver a functional HIL environment replicating the actual aircraft avionics and communication architecture to support system validation and performance analysis without flight testing
+- **Description:** End-to-end design, build and integration of a hardware-in-the-loop test rig for Amazilia aircraft systems, built on a server rack architecture. Incorporated actual flight hardware including FCCs, DCUs, LMUs, CAN interfaces, Ethernet switching and power systems. Enabled in-office simulation, monitoring and validation of aircraft systems in flight conditions.
+- **Outcome:** Fully operational HIL rig delivering in-lab aircraft simulation capability across Amazilia's fleet
+- **R&D Project:** Yes
+- **Project Tags:** Aircraft Systems, Allocation, Architecture, Avionics, CAN, Communications, Design, Electrical Systems, Embedded Systems, Ethernet, Flight Controls, Ground Control Systems, Ground Testing, HIL, Implementation, Integration, Interface Definition, RS-232, RS-422, Requirements Management, Research, Systems Engineering, UART, Validation, Verification
+- **Notes:** NDA applies — hardware details kept general. Actual flight hardware used throughout, not simulated equivalents.
+
+**Activity 9 — What:** Received system requirements from Head of Systems Engineering defining the HIL rig scope, component specifications and communications architecture. Studied the complex multi-protocol communications architecture of the aircraft systems. Developed the high-level wiring architecture covering OPS Panel and PSUs, CAN boxes, RPi and USB hub, FCCs and DCUs, ETH switch, LMUs, Panels A/B/C and BRS tray. Produced detailed wiring sheets and interface definitions across all components.
+
+**How:** Requirements analysis, wiring architecture development, interface definition, communication protocol mapping across CAN and Ethernet networks
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Approved wiring architecture and interface documentation baseline established for the HIL rig
+
+**Tags:** Aircraft Systems, Allocation, Architecture, AutoCAD, Avionics, CAN, Communications, Electrical Systems, Ethernet, Flight Controls, Functional Analysis, Ground Control Systems, Interface Definition, MIL-SPEC Connectors, RS-232, RS-422, Requirements Management, Systems Engineering, TTL, yEd
+
+**Notes:** Architecture covered actual flight hardware interfaces — FCCs, DCUs and LMUs as they appear on Amazilia aircraft. NDA applies — keep details general. Wiring architecture diagrams exist as personal evidence.
+
+**Activity 10 — What:** Designed the full server rack assembly in Autodesk Inventor, modelling the physical layout and component placement of the HIL rig including rack structure, trays, panels and internal component arrangement. Presented the design across multiple preliminary design reviews with cross-functional teams including systems engineering and embedded software before receiving sign-off to proceed to procurement and assembly
+
+**How:** Autodesk Inventor CAD modelling, iterative design review process, cross-functional review with systems and software teams
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Approved CAD assembly and design package cleared for component procurement and physical build
+
+**Tags:** Aircraft Systems, Architecture, AutoCAD, Autodesk Inventor, Avionics, Design, Electrical Systems, Ground Control Systems, Systems Engineering, Technical Documentation, yEd
+
+**Notes:** Full CAD assembly. NDA applies.
+
+**Activity 11 — What:** Procured all components for the HIL rig following design sign-off. Performed mechanical assembly of the server rack including mounting of rack rails, trays, panels and structural elements. Installed and positioned all hardware components within the rack according to the approved CAD layout
+
+**How:** Component sourcing and procurement, mechanical rack assembly, hardware installation and positioning
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** HIL rig mechanically assembled and all hardware components installed and positioned ready for electrical integration
+
+**Tags:** Aircraft Systems, Autodesk Inventor, Electrical Systems, Ground Control Systems, Implementation, Mechanical Assembly , Mechanical Fabrication, Quality Assurance, Supplier Sourcing, Technical Documentation
+
+**Notes:** NDA applies
+
+**Activity 12 — What:** Performed full electrical integration of all HIL rig components including power distribution, CAN bus wiring, Ethernet patch panel connections, and interface wiring between FCCs, DCUs, LMUs, RPi units and OPS panels. Followed the wiring architecture developed during design, working stepwise through each subsystem layer of the rack.
+
+**How:** Electrical wiring, power architecture integration, CAN bus wiring, Ethernet network integration, multi-protocol interface wiring
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Fully wired HIL rig with all internal interfaces connected across CAN, Ethernet and power networks
+
+**Tags:** Aircraft Systems, Avionics, CAN, Communications, Embedded Systems, Ethernet, Flight Controls, Ground Control Systems, Implementation, Integration, MIL-SPEC Connectors, Mechanical Assembly , Quality Assurance, RS-232, RS-422, Soldering, TTL, Technical Documentation, UART, Wire Harness Design
+
+**Notes:** NDA applies — component identities kept general.
+
+**Activity 13 — What:** Conducted extensive testing and verification of the completed HIL rig with seniors, validating correct operation of all interfaces, communication protocols and hardware components. Progressed through to full HIL environment testing — monitoring and controlling aircraft systems in simulated flight conditions from the lab. Verified that the rig faithfully replicated the actual aircraft avionics architecture and communication behaviour.
+
+**How:** Interface verification, protocol testing across CAN and Ethernet, functional validation, HIL environment testing, collaborative verification with seniors
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Fully operational HIL rig confirmed — aircraft systems successfully simulated, monitored and controlled in-lab. Enabled in-office flight simulation and performance analysis across Amazilia aircraft fleet without requiring physical flight testing.
+
+**Tags:** Aircraft Systems, Avionics, CAN, Communications, Electrical Systems, Ethernet, Ground Control Systems, Ground Testing, Integration, MIL-SPEC Connectors, Quality Assurance, RS-232, RS-422, TTL, Technical Documentation, Validation, Verification
+
+**Notes:** Actual flight hardware used throughout — FCCs, DCUs, LMUs and associated avionics are identical to what is installed on Amazilia aircraft. Videos of operational HIL rig exist as personal evidence. NDA applies — aircraft type and specific component details kept confidential.
+
+#### Project: Aircraft Battery Charging Unit (ABCU)
+- **System:** Standalone External Aircraft Battery Charging Unit
+- **Objective:** Design a portable, autonomous charging unit capable of safely charging both 12V and 24V LiFePO4 battery configurations used across Amazilia aircraft systems, with built-in polarity protection, voltage indicators and field-deployable enclosure
+- **Description:** End-to-end design of a standalone autonomous aircraft battery charging unit for Amazilia's Pipistrel aircraft fleet. Initiated following a polarity reversal incident during field testing that caused a short circuit and wire damage, identifying the need for a safe, controlled external charging solution. Project covered requirements capture through design review and full handover documentation. Physical build not completed due to departure
+- **Outcome:** Complete design package delivered including system architecture, wiring diagrams, component specifications, BOM, panel designs and assembly guide. Handed over to team upon departure
+- **R&D Project:** Yes
+- **Project Tags:** Aircraft Systems, Allocation, Architecture, Autodesk Inventor, Design, Electrical Systems, Embedded Systems, Interface Definition, Requirements Management, Systems Engineering
+- **Notes:** Project initiated from a real field incident. Physical assembly not completed by Brian — design package handed over in full. Evidence includes architectural diagrams, wiring diagrams, component datasheets, panel CAD designs and assembly documentation.
+
+**Activity 14 — What:** Following a polarity reversal incident during field testing of a Pipistrel aircraft that caused a short circuit and wire damage, received brief from CTO to design a safe standalone aircraft battery charging unit. Conducted requirements capture by consulting all field testing personnel to understand operational needs, environmental conditions and safety requirements. Researched LiFePO4 battery chemistry, charging characteristics and available charging system suppliers to establish a technically grounded requirements baseline.
+
+**How:** Stakeholder requirements capture, field operator consultation, LiFePO4 battery and charging system research, supplier and component market study, datasheet analysis
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Clear requirements baseline established covering dual-voltage capability (12V and 24V LiFePO4), polarity protection, voltage indication, field deployability and safe external charging operation
+
+**Tags:** Aircraft Systems, Electrical Systems, Functional Analysis, Requirements Management, Safety, Systems Engineering, Technical Documentation
+
+**Notes:** Requirements captured directly from CTO brief and field testing team. Incident involved polarity reversal on a Pipistrel aircraft during hangar testing — identified as a safety risk to aircraft systems. LiFePO4 chemistry research conducted independently to inform component selection.
+
+**Activity 15 — What:** Developed system architecture for the ABCU covering power input, charging system selection, voltage switching between 12V and 24V LiFePO4 configurations, polarity protection, battery voltage indication and enclosure design. Conducted detailed component market study matching available charging systems against Amazilia's battery specifications. Selected components capable of handling both 12V and 24V LiFePO4 chemistries with switchable output, allowing field teams to switch between configurations during operations. Optimised component selection for cost following design review feedback.
+
+**How:** System architecture design, component market study, datasheet matching against battery specifications, cost optimisation, architectural diagram production
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Approved system architecture and component selection covering dual-voltage charging capability with polarity protection and field-deployable form factor
+
+**Tags:** Aircraft Systems, Allocation, Architecture, AutoCAD, Autodesk Inventor, Electrical Systems, Safety, Supplier Sourcing, Systems Engineering, Technical Documentation, yEd
+
+**Notes:** Architecture diagrams produced and presented at design review. Component selection driven by dual-voltage LiFePO4 requirement — 12V and 24V battery configurations present across Amazilia aircraft fleet. Cost optimisation applied following design review feedback.
+
+**Activity 16 — What:** Produced full wiring diagrams for the ABCU internal architecture. Designed enclosure panels, panel holders, mounting hardware and overall box layout in Autodesk Inventor, sized for transport in a hardened carry case similar to those used for the GCS units. Designed front panel layout for voltage switching and indicators. Specified screw sizes, mounting arrangements and all mechanical details required for assembly. Presented complete design package across design reviews with CTO and senior systems engineering team, incorporating revisions to optimise cost and usability. Agreed final panel supplier — same alternative supplier used for the WfA GCS — following design review approval.
+
+**How:** Wiring diagram production, enclosure and panel CAD design in Autodesk Inventor, design review presentation, iterative revision and cost optimisation
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Fully approved detailed design package including wiring diagrams, enclosure CAD, panel designs, component specifications and BOM
+
+**Tags:** Aircraft Systems, Architecture, AutoCAD, Autodesk Inventor, Design, Electrical Systems, Interface Definition, Quality Assurance, Safety, Systems Engineering, Technical Documentation, Wire Harness Design, yEd
+
+**Notes:** Panel design reused supplier relationship established during WfA GCS SN2 project. Full CAD and wiring documentation exists as personal evidence. Design approved through formal design review process with CTO sign-off.
+
+**Activity 17 — What:** Upon departure from Amazilia, compiled and handed over the complete ABCU design package to the team. Handover included full system architecture diagrams, wiring diagrams, component datasheets and specifications, BOM, panel CAD designs and a step-by-step assembly guide to enable the team to proceed to physical build without loss of design intent or technical context
+
+**How:** Technical documentation compilation, assembly guide authoring, structured handover to engineering team
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Complete design package successfully handed over. Physical assembly left to team to complete. No technical information lost at point of departure.
+
+**Tags:** Aircraft Systems, AutoCAD, Autodesk Inventor, Design, Electrical Systems, Systems Engineering, Technical Documentation, yEd
+
+**Notes:** Physical build not completed by Brian — departure due to personal circumstances. Handover package was comprehensive and self-contained. Evidence includes all design documentation produced during the project.
+
+---
+
+### Technical University of Munich — M.Sc Aerospace
+*Graduate Student | Munich, Germany | 2021-10 – Present*
+
+Master of Science degree program in Aerospace Engineering at the TUM School of Engineering and Design, specializing in Aircraft Systems, Control, and UAS Integration. Completed 73 ECTS of advanced coursework, research practice, and practical labs covering rotorcraft engineering, electric aircraft, flight guidance, avionics safety, autonomous systems, non-linear control, and CFD simulation. Achieved a provisional overall grade of 2.6, with supplementary requirement courses passed in Automatic Control and CAD/Machine Elements. Degree completion is pending the submission of the Master's thesis
+
+**Projects under this experience (6):**
+
+#### Project: Generic Modeling of Slotneutral UAM Throughput at Commercial Airports
+- **System:** Munich Airport (EDDM) Terminal Airspace & eVTOL Point-in-Space (PinS) Approach System
+- **Objective:** Eliminate operationally unfeasible eVTOL detours (~66 km) and maximize slot-neutral UAM throughput at commercial airports without disrupting conventional air traffic operations.
+- **Description:** Research project conducted at the Chair of Aircraft Design (LLS), TUM, in collaboration with Airbus Urban Mobility and Munich Airport International under the AMI-AirShuttle project. Developed a generic Python toolchain to model and evaluate slot-neutral eVTOL approach trajectories into Munich Airport (EDDM), enabling dynamic airspace reconfiguration based on live traffic data and wake turbulence categories.
+- **Outcome:** Developed and delivered a fully functional Python toolchain generating 2D/3D KML trajectories for Google Earth Pro and the Airbus USim environment. Reduced approach detours from 66 km to ~15 km (direct approach) or ~23 km (with holding pattern). Co-authored and published the research paper at AIAA 2024.
+- **R&D Project:** Yes
+- **Project Tags:** Academic Publication, Advanced Air Mobility, Aircraft Systems, Architecture, Avionics, CONOPS, Design, GIS Tools, Git, Microsoft Office, Python, QGIS, Research, Simulation, Systems Engineering, Verification, eVTOL
+- **Notes:** Supervised by Prof. Dr.-Ing. Mirko Hornung and Johannes Michelmann, M.Sc. Processed 24-hour Flightradar24 traffic data across RECAT-EU categories (CAT-A through CAT-F), calculated 3-degree ILS glideslope separation trigger points ($1000\text{ ft}$ threshold), and integrated T-bar Point-in-Space (PinS) approach geometry.
+
+**Activity 1 — What:** Traffic Categorization & Glideslope Separation Analysis
+
+**How:** xtracted and processed 24-hour Flightradar24 arrival and departure traffic data at Munich Airport (EDDM) and calculated the ILS glideslope vertical separation profile to establish dynamic trigger points for restricted airspace activation. Mapped ICAO aircraft type designators to RECAT-EU wake turbulence categories (CAT-A through CAT-F) using custom Python data processing scripts (traffic_data_manipulation.py) and Microsoft Excel. Calculated 3° ILS glideslope geometry on Runway 26L/08R to identify points where vertical separation between arriving conventional aircraft (5000 ft AMSL at FAF) and cruising eVTOLs (2500 ft AMSL) drops below the 1000 ft ICAO Doc 4444 threshold
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Established empirical proof that 86.9% of EDDM arriving traffic falls into CAT-D (62.37%) and CAT-E (24.53%), proving that static CAT-B (7 NM separation) assumptions were overly conservative. Formulated exact glideslope trigger locations (6.40 NM start, 3.25 NM end from threshold) where wake turbulence separation becomes active/inactive
+
+**Tags:** Academic Publication, Advanced Air Mobility, Aircraft Systems, CONOPS, Data Processing, Design, MATLAB, Microsoft Office, Operations, Python, Requirements, Research, Simulation
+
+**Notes:** Supervised by Johannes Michelmann, M.Sc.. Traffic dataset retrieved for September 26, 2023. Showed that CAT-D requires 5 NM and CAT-E requires 4 NM separation, offering significant airspace volume reductions compared to static 7 NM CAT-B assumptions
+
+**Activity 2 — What:** PinS Approach Procedure & Holding Pattern Trajectory Design
+
+**How:** Designed Instrument Meteorological Conditions (IMC) Point-in-Space (PinS) instrument approach procedures, T-bar transition fixes, and 1-minute holding patterns for eVTOL traffic operating in a triple parallel independent approach configuration at Munich Airport. Applied ICAO Doc 8168 (PANS-OPS), Doc 9643 (SOIR), and FAA Order JO 7110.65X regulatory criteria to construct a 540 m wide Normal Operating Zone (NOZ) between active runway centerlines (2300 m spacing). Calculated 3.0 NM Intermediate Approach Segments (IF), 4.0 NM Initial Approach Segments (IAF), 1250 m radius-to-fix (RF) turns, and 1-minute right-turn holding patterns (2 km leg, 700 m turn radius at 25° bank angle) for 120 km/h cruise speed.
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Formulated complete, regulatory-compliant IFR approach procedure geometry allowing eVTOLs to transition from instrument guidance at the MAPt (500 ft AGL OCH) to visual vertiport descent without crossing active conventional runways or violating No Transgression Zones (NTZ).
+
+**Tags:** Academic Publication, Advanced Air Mobility, Aircraft Systems, AutoCAD, CONOPS, Design, Interface Definition, MATLAB, Operations, Python, Requirements, Safety, Systems Engineering
+
+**Notes:** Adapted procedures from Reinisch (2023) master thesis. Addressed IMC resiliency while conforming to EASA PTS-VPT-DSN vertiport guidelines
+
+**Activity 3 — What:** Python Throughput Modeling Toolchain & KML Trajectory Generation
+
+**How:** Designed and implemented an object-oriented Python software toolchain that dynamically recalculates restricted airspace volumes and generates 2D/3D flight trajectories for Google Earth Pro and the Airbus USim simulation environment. Developed a modular Python engine (main.py, approach.py, trajectory_design.py, glideslope_visualization.py, functions.py) using class inheritance structures (Approach -> TrafficApproach / eVTOLApproach). Programmed algorithms to compute 3D corner coordinates for dynamic restricted volumes, generate RF turns with 5° arc steps, construct detour headings, and format output geometry into Keyhole Markup Language (KML) LineString and Polygon files.
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Delivered a generic, airport-agnostic toolchain that reduced eVTOL approach detour tracks from 66 km down to ~14.9 km for direct approaches (7.5 min flight time) or ~23 km when combining a 1-minute holding pattern with a direct approach (12 min flight time)
+
+**Tags:** Academic Publication, Advanced Air Mobility, Aircraft Systems, Architecture, CONOPS, Data Processing, GIS Tools, Git, Implementation, MATLAB, Python, QGIS, Research, Simulation, Software, Systems Engineering, Verification
+
+**Notes:** Delivered to the Chair of Aircraft Design (LLS) and Air Mobility Initiative (AMI) industry partners. Output KML files verified in Google Earth Pro
+
+**Activity 4 — What:** AIAA 2024 Research Contribution — Airspace Geometry Dynamization
+
+**How:** Co-authored and published research on Advanced Air Mobility integration in controlled airport terminal airspaces, delivering the core geometry dynamization methodology and empirical traffic findings for the AIAA 2024 Aviation Forum paper. Synthesized thesis findings into Section IV.B.2 ("Airspace re-configuration based on aircraft classes") of the joint publication with Airbus Urban Mobility and LLS TUM. Formulated comparative trade studies contrasting static CAT-B restricted volumes against dynamic RECAT-EU class-based volumes, demonstrating significant track length and flight time reductions. 
+
+**Responsibility:** Contributed
+
+**Result:** Co-authored paper titled "Conceptualization and simulation of Advanced Air Mobility (AAM) operations within Controlled Airspaces of airports running independent parallel runway operations", presented to the global aerospace community at AIAA 2024.
+
+**Tags:** Academic Publication, Advanced Air Mobility, Aircraft Systems, GIS Tools, Git, Python, QGIS, Research, Simulation, Systems Engineering, Verification
+
+**Notes:** oint work with Dominik von Mengden (Airbus Urban Mobility), Felix Reinisch, Johannes Michelmann, Xueqing Nies (LLS TUM), and Philipp Stute. Directly translated thesis Python toolchain insights into industry dissemination.
+
+#### Project: Embedded Software Development of the Actuator Control and Monitoring Unit (ACMU)
+- **System:** Actuator Control and Monitoring Unit (ACMU)
+- **Objective:** Optimize logging throughput, reduce memory overhead, eliminate SD card data corruption risk, and establish high-integrity UAV-CAN communication between the ACMU and Pixhawk flight control computers
+- **Description:** Embedded software R&D project conducted at the Chair of Aircraft Design (LLS), TUM, focusing on C++ software performance optimization, double-buffer log file management, binary USB data streaming, and OpenCyphal CAN bus integration for a standalone electromechanical actuator control unit
+- **Outcome:** Refactored logging architecture using C++ TDD and Dependency Injection, successfully implementing binary USB data streaming that achieved a 5x data reduction (from 100 bytes to 20 bytes per log frame) verified on target hardware during HIL testing; project discontinued due to medical departure
+- **R&D Project:** Yes
+- **Project Tags:** Aircraft Systems, Architecture, Avionics, C, C++, CAN, CONOPS, Design, Docker, Embedded C, Embedded Systems, Flight Controls, HIL, Implementation, MBSE, Model Based Systems Engineering, Requirements, Software, Systems Engineering, TDD (Test Driven Development), Validation
+- **Notes:** Supervised by Daniel Teubl, M.Sc., and Prof. Dr.-Ing. Mirko Hornung. Built on predecessor thesis work by T. W. Bitenc (2021). Implemented double-buffer binary sensor data routines (binary_sensor_data) and verified execution on target hardware in May 2024. Project discontinued prior to thesis submission due to medical departure.
+
+**Activity 5 — What:** Refactored the ACMU data logging software pipeline using Test-Driven Development (TDD) in C++ to implement high-efficiency binary data serialization over USB
+
+**How:** Applied C++ design patterns by extracting a data logging superclass and implementing Dependency Injection to dynamically switch log formats at runtime via a log_format flag. Engineered double-buffered binary sensor data routines (binary_sensor_data), wrote unit test suites, and verified execution on target hardware within a HIL testing environment
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Achieved an 80% reduction in log frame size (reducing packet size from 100 bytes down to 20 bytes), delivering 5x data compression to support high-rate 10 MB / 120 s telemetry logging without memory resource depletion
+
+**Tags:** Aircraft Systems, Architecture, Avionics, C, C++, Design, Docker, Embedded C, Embedded Systems, Flight Controls, Git, Implementation, Software, Systems Engineering, TDD (Test Driven Development), Verification
+
+**Notes:** Verified directly on target hardware during May 2024 HIL test sessions. Work cut short due to departure on medical leave
+
+**Activity 6 — What:** ACMU System Architecture & Protocol Integration Research
+
+**How:** Conducted preliminary system architecture trade studies and authored the master thesis research expose defining software improvements for SD card buffer flushing, Cyphal / OpenCyphal bus protocols, and thread-level CPU status monitoring. Researched memory buffer optimization schemes, atomic write/sync routines, and fault exception handling for SD card removal. Evaluated OpenCyphal (UAV-CAN) middleware abstractions for distributed computing between the standalone ACMU and Pixhawk flight controllers
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** ormulated and submitted the approved technical expose and software requirements baseline to the Chair of Aircraft Design (LLS), TUM.
+
+**Tags:** Aircraft Systems, Architecture, Avionics, C, C++, CAN, CONOPS, Embedded Systems, MBSE, Requirements, Software, Systems Engineering, TDD (Test Driven Development)
+
+**Notes:** Supervised by Daniel Teubl, M.Sc., and Prof. Dr.-Ing. Mirko Hornung. Exposed baseline requirements prior to medical departure
+
+#### Project: Autonomous Sub-Terrain UAV Challenge
+- **System:** Autonomous Sub-Terrain Quadrotor UAV (Unity Simulator, ROS, RealSense Depth Camera, Semantic Camera)
+- **Objective:** Execute fully autonomous takeoff, transit, cave entry, 3D mapping, multi-object lantern detection/localization, and return-to-base homing in an unknown subterranean environment
+- **Description:** Group robotics R&D project for the LRG6300 Autonomous Systems course at TUM under Prof. Markus Ryll. Engineered a ROS software architecture in C++ within a Unity simulation environment to execute autonomous cave exploration, 3D voxel grid mapping, real-time perception filtering, and object localization for a subterranean quadrotor UAV
+- **Outcome:** Execute fully autonomous takeoff, transit, cave entry, 3D mapping, multi-object lantern detection/localization, and return-to-base homing in an unknown subterranean environment
+- **R&D Project:** Yes
+- **Project Tags:** Aircraft Systems, Architecture, Autonomy, C++, CONOPS, Computer Vision, Design, Git, Implementation, Integration, Payloads, ROS, Robotics, Sensors, Simulation, Software, Systems Engineering, Unity, Verification
+- **Notes:** Developed by Group 1 (Osama Atwi, Ezgi Köse, Brian Kirwa, Anas Tounsi, Joseph Gitu Waweru) for LRG6300 at TUM (Winter Semester 23/24) supervised by Prof. Markus Ryll. Personal contributions focused on authoring the mission planner FSM state machine and engineering the depth-to-octree perception/mapping pipeline
+
+**Activity 7 — What:** Depth-to-PointCloud Perception Engine & Spatial Frame Transformation
+
+**How:** Engineered the real-time depth perception pipeline (depth_to_pc_node) converting raw RealSense depth camera video streams into noise-filtered 3D point cloud topics in the global world frame. Integrated OpenCV within ROS to apply bilateral noise filtering on raw depth frames while sharpening geometric wall edges, restoring images to 16UC1 format. Processed intrinsic camera parameters (fx, fy, cx, cy) with a 0.001f depth scale factor using Point Cloud Library (PCL) pinhole projection equations. Utilized ROS tf2 spatial transformation libraries to dynamically transform point clouds from the moving camera sensor frame to the static world frame, compensating for quadrotor vibrations, pitch/roll tilt, and body oscillations
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Achieved stable, motion-compensated 3D point cloud generation at the cave entrance and interior, establishing an accurate point cloud stream free of quadrotor motion artifacts for downstream 3D mapping.
+
+**Tags:** C++, Computer Vision, Design, Implementation, Integration, Payloads, ROS, Research, Robotics, Sensors, Software, Unity, Verification
+
+**Notes:** Leveraged PCL and tf2 libraries in ROS. Math equations: pt.x = (u - cx) * z / fx; pt.y = (v - cy) * z / fy; pt.z = z.
+
+**Activity 8 — What:** OctoMap 3D Voxel Grid Mapping & Dynamic Point Cloud Updater
+
+**How:** Developed the 3D spatial mapping node (point_cloud_to_voxel_grid_node) utilizing the OctoMap library to build and update a global 3D occupancy voxel grid map of the cave environment in real time. Subscribed to world-frame point clouds and initialized an OctoMap tree with a 1.0 m voxel resolution for optimal computational efficiency. Implemented a Dynamic Updater algorithm comparing sequential point cloud frames within a 0.05 m search radius at resolution 2 to isolate newly observed environmental points into a changed_points cloud, preventing cumulative point overlap. Executed Octree tree-pruning routines, periodic binary exports (.bt format), and integrated OctoMap RViz plugins (OccupancyGrid display) for real-time 3D voxel visualization.
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Successfully generated and periodically saved a complete 3D binary OctoMap (.bt) of the subterranean cave network that was visualized and verified in Octovis and RViz
+
+**Tags:** Architecture, Autonomy, C++, Computer Vision, Design, Git, Implementation, ROS, Robotics, Software, Systems Engineering, Unity, Verification
+
+**Notes:** OctoMap binary folder export significantly reduced memory overhead and allowed standalone 3D inspection in Octovis.
+
+#### Project: Applied CFD Channel & Cavity Flow Simulation
+- **System:** Subsonic Dual-Cavity Channel Flow System
+- **Objective:** Simulate flow separation and reattachment dynamics across dual cavity geometries, evaluate shear stress transport (SST) versus Speziale, Sarkar and Gatski (SSG) Reynolds Stress Models, and analyze the impact of boundary layer mesh refinement and advection scheme order.
+- **Description:** Numerical CFD study investigating subsonic turbulent channel flow over dual cavity geometries using ANSYS ICEM CFD and ANSYS CFX to evaluate turbulence models, wall refinement (y+ approx 1), geometry modifications, and advection scheme numerical diffusion
+- **Outcome:** Completed 5 comparative CFD simulation cases in ANSYS CFX, demonstrating that non-algebraic SSG RSM accurately resolves cavity recirculation, boundary layer mesh refinement (y+ approx 1) captures wall shear, and 2nd-order advection prevents artificial numerical dissipation.
+- **R&D Project:** Yes
+- **Project Tags:** ANSYS Fluent, CFX, ICEM, Aerodynamics, CFD (Computational Fluid Dynamics), Design, Research, Simulation, Verification
+- **Notes:** Chair of Aerodynamics, TUM (MW1628 Applied CFD, Project KA3). Geometry blocking and structured mesh generated in ANSYS ICEM CFD; solver execution and post-processing completed in ANSYS CFX 2022.
+
+**Activity 9 — What:** Modeled 2D/3D dual-cavity channel geometries, built multi-block structured grids, and executed comparative subsonic CFD simulations across 5 test cases in ANSYS ICEM CFD and ANSYS CFX
+
+**How:** Applied multi-block structured grid blocking in ICEM CFD with wall boundary layer refinement (reducing cell size from 0.5 to 0.00001 m) to achieve a non-dimensional wall distance of y+ approx 1. Defined subsonic inlet boundary conditions (Mach 0.1, 34.3 m/s) and static pressure outlets in CFX. Evaluated shear-stress transport (SST) versus SSG Reynolds Stress turbulence models and 1st-Order Upwind versus 2nd-Order High Resolution advection schemes across initial and widened cavity geometries.
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Proved that the non-algebraic SSG Reynolds Stress Model accurately captured flow separation and recirculation vortices inside deep cavities where SST failed, and demonstrated that 2nd-order advection schemes eliminated artificial numerical diffusion present in 1st-order upwind calculations
+
+**Tags:** ANSYS Fluent, CFX, ICEM, Aerodynamics, CFD (Computational Fluid Dynamics), Design, Research, Simulation, Software, Verification
+
+**Notes:** Completed for MW1628 Applied CFD (Project KA3) at the Chair of Aerodynamics, TUM. Evaluated convergence residuals (RMS target 1e-6) and boundary layer y+ values across 5 distinct test cases.
+
+#### Project: Simulation of the Flowfield of a Multirotor in Axial Flight
+- **System:** Quadrotor UAV Flow Field & Actuator Disk System
+- **Objective:** Model the 3D aerodynamic flow field of a multirotor in low-rate axial descent, calculate individual rotor thrust and drag torque via Blade Element Theory, and evaluate tip vortex ring state interactions.
+- **Description:** Numerical CFD study simulating the steady, incompressible 3D flow field around a quadrotor UAV in axial descent flight using OpenFOAM. Implemented Blade Element Momentum Theory (BEMT) actuator disk source terms (rotorDiskSource in fvOptions) coupled with $k-\omega$ SST turbulence modeling to calculate aerodynamic thrust/torque and analyze induced velocity fields, axial pressure distributions, and blade tip vortex interaction
+- **Outcome:** Generated computational background domains and refined rotor disk meshes, executed parallel 4-processor steady-state solves in simpleFoam, achieved residual convergence within 410 iterations, and validated axial pressure distribution jumps and non-interacting tip vortex behavior against analytical momentum theory
+- **R&D Project:** Yes
+- **Project Tags:** Aerodynamics, C++, CFD (Computational Fluid Dynamics), Design, Git, Implementation, OpenFOAM, Python, Research, Simulation, Software, Verification
+- **Notes:** Completed for MW1277 Simulation of Thermofluids with Open Source Tools at TUM. Modeled a 2.5m x 2.5m x 4.0m domain containing 4 rotor disks (0.5m diameter, 0.01m thickness, 3 blades, -1000 RPM) using blockMesh, snappyHexMesh, and parallel decomposePar execution
+
+**Activity 10 — What:** OpenFOAM Multirotor CFD Mesh Generation & Parallel Domain Setup
+
+**How:** Built the 3D computational domain background grid and refined quadrotor rotor disk geometries using OpenFOAM mesh utilities (blockMesh and snappyHexMesh) for parallel CFD solver execution. Constructed a 2.5m x 2.5m x 4.0m bounding domain in blockMesh (25 x 25 x 40 cell grid) with velocity inlet (1.0 m/s), static pressure outlet, and slip wall boundary conditions. Extracted 4 rotor disk CAD geometries (0.5m diameter, 0.01m thickness) via surfaceFeatures and executed cell refinement using snappyHexMesh. Configured 4-processor spatial domain decomposition (decomposeParDict 2x2x1 split) for parallel execution (mpirun).
+
+**Responsibility:** OwnedArchitected
+
+**Result:** Generated a high-quality multi-region 3D mesh with fine cell resolution localized around all 4 rotor disks, enabling stable parallel solver execution in simpleFoam.
+
+**Tags:** Aerodynamics, C++, CFD (Computational Fluid Dynamics), Design, Implementation, OpenFOAM, Research, Simulation, Software
+
+**Notes:** Completed for MW1277 lab course at TUM
+
+**Activity 11 — What:** BEMT Actuator Disk Source Integration & Axial Flow Field Simulation
+
+**How:** Configured Blade Element Momentum Theory (BEMT) actuator disk source terms (rotorDiskSource in fvOptions) and solved the steady, incompressible RANS flow field in OpenFOAM. Programmed fvOptions to apply BEMT momentum source terms across 4 rotor cell zones (3 blades, -1000 RPM, 1.0 m/s axial inlet velocity) calculating lift/drag forces ($F_z$, $F_\theta$) from $C_l$ and $C_d$ dynamic pressure equations. Executed parallel simpleFoam iterations with the $k-\omega$ SST turbulence model until residual convergence ($p, k, \omega < 0.001$, $\vert{}U\vert{} < 0.0001$) at 410 iterations (762.07 s execution time). Processed axial pressure profiles, rotor thrust/torque totals, and induced velocity vector fields.
+
+**Responsibility:** OwnedArchitected
+
+**Result:** Calculated individual rotor effective lift (1061 N to 1144 N) and drag torque (-101 Nm to -110 Nm), validated axial pressure jump profiles against analytical momentum theory, and demonstrated that rotor tip vortices do not interact when inter-rotor spacing equals or exceeds disk diameter.
+
+**Tags:** Aerodynamics, C++, CFD (Computational Fluid Dynamics), Design, OpenFOAM, Propulsion, Python, Research, Simulation, Software, Validation, Verification
+
+**Notes:** Validated against Leishman (2006) helicopter aerodynamics vortex ring state literature.
+
+#### Project: Geospatial Analysis & Cartography — Nakuru County Geotourism Research
+- **System:** QGIS, EARS geological datasets, SRTM elevation rasters, Pralong/Pereira geomorphosite assessment matrices
+- **Objective:** rocess spatial datasets and produce all cartographic figures, geosite localizations, and structural overlays across four primary geosites (Hell's Gate National Park, Menengai Crater, Lake Naivasha Basin, Kariandusi Site) for academic publication
+- **Description:** End-to-end spatial data processing, QGIS modeling, geomorphosite localization, and publication-grade map production for an academic research study evaluating geotourism potential along the Gregory Rift in Nakuru County, Kenya.
+- **Outcome:** Delivered 100% of the spatial models, site localizations, and cartographic map figures co-authored in a peer-reviewed research paper.
+- **R&D Project:** Yes
+- **Project Tags:** Academic Publication, Data Processing, Design, GIS Tools, Implementation, QGIS, Research
+- **Notes:** Independent research collaboration supporting Lead Author Shalom Chemutai Maina (AGH University of Krakow). Executed without TUM faculty supervision, but authored and published under TUM institutional affiliation (brian.kirwa@tum.de). Financed in part by the UNESCO/Poland Co-Sponsored Fellowships Programme
+
+**Activity 12 — What:** Formulated the spatial data processing pipeline and generated all regional GIS figures, geosite localizations, and geological mapping overlays.
+
+**How:** Imported and structured vector/raster datasets in QGIS, generated elevation and boundary maps for four EARS geosites, integrated geomorphosite evaluation scoring into spatial layouts, and produced publication-grade figures
 
 **Responsibility:** Led
 
-**Result:** Built a fully staffed organizational structure across 8 directorates, maintained active engagement for over 70 student members, and established efficient daily operational workflows.
+**Result:** Completed 100% of the cartographic and spatial analysis deliverables required for the research publication
 
-**Tags:** Corporate Governance, International Relations, Microsoft Office, Operations, Operations, Project Management, Recruitment & Team Building, Stakeholder Engagement, Student Advocacy
+**Tags:** Academic Publication, Data Processing, GIS Tools, Implementation, QGIS, Research
 
-**Notes:** Served as the highest-ranking African student on the executive board, acting as a key advocate and liaison for African student interests.
-
-**Activity 2 — What:** Authored official event proposals, managed university approval workflows, coordinated inter-university transportation, and directed social media marketing campaigns
-
-**How:** Drafted formal proposals and navigated multi-tier signature approval pipelines (ISA President, Academic Advisor, Directorate of Social and Cultural Affairs); liaised with Near East University to arrange campus transit for 40 delegates to African Night 2016; coordinated with the Media team on promotional videos, banners, and digital flyers.
-
-**Responsibility:** Led
-
-**Result:** 100% administrative proposal sign-off, secured campus funding/logistics, and expanded digital outreach to increase international event turnouts
-
-**Tags:** Event Management, Microsoft Office, Operations, Operations, Project Management, Stakeholder Engagement, Student Advocacy
-
-**Notes:** Re-drafted proposals to strictly adhere to university compliance and administrative standards required by campus directors and advisors.
-
-**Activity 3 — What:** Ran point on campus-wide flagship events including the 10th International Food Festival, METU’s Got Talent, International Music Festival, sports tournaments, and cultural excursions
-
-**How:** Oversaw on-site event execution, stage timing, venue setup, and judge/contestant coordination; managed supply chain logistics including ingredient sourcing and allocation for international food stalls; organized sports competitions (ISA Football Tournament, Olympic Games) and historical trips (St. Hilarion Castle)
-
-**Responsibility:** Led
-
-**Result:** Successfully delivered high-attendance campus festivals and competitions, engaging hundreds of domestic and international students.
-
-**Tags:** Event Management, International Relations, Operations, Operations, Project Management, Stakeholder Engagement
-
-**Notes:** Successfully delivered high-attendance campus festivals and competitions, engaging hundreds of domestic and international students.
+**Notes:** All map figures and spatial localizations in the published paper were independently produced.
 
 ---
 
@@ -2450,6 +1985,318 @@ Hands-on MRO internship at ALS Ltd, a KCAA-certified aviation company based at W
 
 ---
 
+### HORYZN — Aerodynamics Project Engineer
+*Student Initiative | Munich, Germany | 2022-10 – 2023-06*
+
+Unpaid student initiative at TU Munich. Member of the Design Loop team responsible for the aerodynamics module of the Kolibri hybrid lift-and-cruise eVTOL UAS under Mission Pulse Phase 2. Led the aerodynamics sub-team of three engineers. Developed and maintained the aerodynamics module within a CPACS/MATLAB/PAWAT/RCE integrated design environment, contributing to aircraft configuration selection and iterative multidisciplinary design optimization concurrent with MSc studies and Amazilia working student role.
+
+**Projects under this experience (1):**
+
+#### Project: Kolibri eVTOL — Aerodynamics Module Development
+- **System:** Kolibri Hybrid Lift-and-Cruise eVTOL UAS — Lifting Surfaces and Aerodynamic Configuration
+- **Objective:** Deliver an optimized aerodynamic configuration for Kolibri meeting mission profile requirements, with particular focus on achieving successful
+- **Description:** Development, implementation and optimization of the aerodynamics module within the HORYZN multidisciplinary design loop for the Kolibri hybrid lift-and-cruise eVTOL UAS. Covered airfoil selection, lifting surface optimization, configuration trade studies and iterative cross-team design convergence using a CPACS/MATLAB/PAWAT/RCE toolchain. Concluded with design handover to CAD, structures and avionics teams
+- **Outcome:** Converged aerodynamic design handed over to downstream teams. Cessna-type fixed-wing configuration with front tractor propeller selected and validated, resolving the transition failure mode of the predecessor aircraft
+- **R&D Project:** Yes
+- **Project Tags:** Aerodynamics, Aircraft Systems, Architecture, CPACS, Design, Functional Analysis, Git, Implementation, MATLAB, Notion, OpenFOAM, PAWAT, Python, RCE (Remote Component Environment), Requirements Management, Research, Simulation, Software, Systems Engineering, Technical Documentation, Validation, Verification, XFLR5/Flow5
+- **Notes:** Part of Mission Pulse Phase 2. HORYZN student initiative — unpaid. Evidence includes aerodynamics module codebase, README, UML diagrams, I/O documentation, validation reports, results review presentations and handover document — all on Git
+
+**Activity 1 — What:** Participated in structured handover sessions with the outgoing Mission Pulse Phase 1 team to understand the design, shortcomings and failure modes of the Frankenstein prototype. Analysed the previous CPACS files, MATLAB code and PAWAT outputs to reconstruct what had been built and why transition had failed. Collaborated across the full Design Loop team to document lessons learned and define requirements list for the Phase 2 prototype — Kolibri. Requirements captured and managed in Notion.
+
+**How:** Technical handover sessions, CPACS file analysis, MATLAB code review, PAWAT output analysis, cross-team requirements workshops, Notion documentation
+
+**Responsibility:** Contributed
+
+**Result:** Comprehensive requirements list established for Kolibri Phase 2, identifying transition failure as the primary design constraint to resolve
+
+**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, CPACS, Functional Analysis, Git, MATLAB, Notion, PAWAT, Requirements Management, Research, Systems Engineering, Technical Documentation, TiGL/TiXi, eVTOL
+
+**Notes:** First substantive task upon joining HORYZN. Transition failure in Frankenstein was the central problem the entire Phase 2 programme was designed to solve. CPACS files and MATLAB code from Phase 1 reviewed as primary technical evidence of what had been built.
+
+**Activity 2 — What:** Led the aerodynamics team's contribution to the Kolibri configuration selection process. Identified the root cause of Frankenstein's transition failure as wingtip-mounted propellers creating adverse interference at the 25kg MTOW scale. Proposed a Cessna-type fixed-wing configuration with a front tractor propeller and lift motors mounted on the wing, supported by case studies from undergraduate aircraft design projects and CFD analysis in OpenFOAM demonstrating adequate glide performance during transition in the event of propulsion switching delays. Presented the configuration argument across multiple design reviews, convincing the team and securing agreement to proceed.
+
+**How:** Configuration trade studies, first-principles aerodynamic analysis, OpenFOAM CFD analysis, undergraduate case study development, design review presentations, cross-team technical debate
+
+**Responsibility:** Led
+
+**Result:** Cessna-type fixed-wing hybrid lift-and-cruise configuration adopted for Kolibri, directly resolving the transition failure mode of Frankenstein
+
+**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, Architecture, CPACS, Flight Controls, Functional Analysis, MATLAB, Notion, OpenFOAM, PAWAT, Requirements Management, Research, Simulation, Systems Engineering, Technical Documentation, TiGL/TiXi, XFLR5/Flow5, eVTOL
+
+**Notes:** Configuration argument supported by private pilot experience — glide performance analogy drawn from engine failure simulation training. Case studies from METU undergraduate aircraft design projects used as supporting evidence. This decision determined the fundamental architecture of Kolibri and directly addressed the failure mode that ended Phase 1
+
+**Activity 3 — What:** Developed and maintained the aerodynamics module within the HORYZN multidisciplinary design loop. The module interfaced with CPACS via TiGL and TiXi libraries, using PAWAT as the core aerodynamic solver within a MATLAB class-based architecture. Implemented methods covering airfoil database management, CPACS geometry parsing, aerodynamic mapping across Reynolds number and angle of attack ranges, twist optimisation, stall velocity and force calculations, neutral point calculation and results writing back to CPACS. Wrote full module documentation including README, UML class diagram, function descriptions and I/O specifications. Managed module codebase on Git.
+
+**How:** MATLAB object-oriented programming, CPACS interface via TiGL/TiXi, PAWAT integration, aerodynamic analysis implementation, Git version control, technical documentation authoring
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Fully documented functional aerodynamics module integrated into the HORYZN RCE design loop, delivering aerodynamic coefficients, forces, moments and aeromap data to downstream modules via CPACS
+
+**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, CPACS, Design, Git, Implementation, MATLAB, Notion, PAWAT, RCE (Remote Component Environment), Requirements Management, Research, Simulation, Software, Systems Engineering, Technical Documentation, TiGL/TiXi, Verification, XFLR5/Flow5, eVTOL
+
+**Notes:** Full codebase exists on Git as primary evidence — README, UML diagram, function descriptions, I/O path documentation, calculation options and Flow5 validation task documentation all produced by Brian. Module written as a MATLAB class with well-defined interface to CPACS — designed for maintainability and handover.
+
+**Activity 4 — What:** Participated in the aerodynamics team's airfoil selection process for Kolibri's lifting surfaces. Ran systematic case studies across candidate airfoils using XFLR5 and Flow5 to evaluate CL/CD performance across the expected Reynolds number range. Fed selected airfoil profiles into the CPACS aircraft definition and ran iterative optimisation of wing geometry including twist distribution, span, chord and sweep through the aerodynamics module. Coordinated with structures and geometry sub-teams within the design loop to ensure aerodynamic outputs were compatible with structural and sizing constraints.
+
+**How:** XFLR5/Flow5 airfoil analysis, CPACS geometry parameterisation, iterative wing optimisation, cross-module design loop coordination
+
+**Responsibility:** Contributed
+
+**Result:** Optimised lifting surface definition for Kolibri delivered to the design loop, meeting CL/CD, wing loading and stall requirements within structural and geometric constraints
+
+**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, CPACS, Design, Git, Implementation, MATLAB, PAWAT, Research, Simulation, Structures, Systems Engineering, Technical Documentation, TiGL/TiXi, Validation, Verification, XFLR5/Flow5, eVTOL
+
+**Notes:** Airfoil selection driven by Reynolds number range appropriate for 25kg MTOW hybrid eVTOL in cruise flight. Twist optimisation implemented directly in the aerodynamics module — elliptic and bell-shaped lift distribution options both implemented.
+
+**Activity 5 — What:** Worked intensively within the RCE-based multidisciplinary design loop alongside aerodynamics, structures, geometry, wing sizing and propulsion sub-teams to achieve design convergence for Kolibri. Ensured aerodynamics module outputs were compatible with and correctly consumed by adjacent modules. Participated in extended working sessions — frequently 18 to 20 hours — to resolve inter-module conflicts and iterate toward a stable baseline design. Contributed aerodynamics expertise to cross-team configuration discussions and design decisions throughout the convergence process
+
+**How:** RCE multidisciplinary design loop operation, cross-module interface management, iterative design convergence, cross-team technical collaboration
+
+**Responsibility:** Contributed
+
+**Result:** Converged multidisciplinary baseline design achieved for Kolibri, with aerodynamics module outputs validated against structural, geometry and propulsion module requirements
+
+**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, Architecture, CPACS, Design, Flight Controls, Git, Implementation, MATLAB, Notion, PAWAT, Payloads, Propulsion, RCE (Remote Component Environment), Research, Simulation, Software, Structures, Systems Engineering, Technical Documentation, TiGL/TiXi, Validation, Verification, XFLR5/Flow5, eVTOL
+
+**Notes:** This phase involved the highest intensity of work — September 2022 to approximately February 2023. Extended sessions of 18 to 20 hours were common during convergence sprints. Cross-module compatibility between aerodynamics, structures and geometry was the primary technical challenge. RCE environment used to chain module execution and manage data flow between teams.
+
+**Activity 6 — What:** Prepared and delivered a comprehensive handover of the aerodynamics module to the incoming team and downstream design teams. Handover package included the full codebase on Git, README documentation, UML class diagram, function descriptions, I/O path specifications, calculation options documentation, Flow5 validation task documentation and a formal handover document. Ensured the receiving team could understand, operate and extend the module without loss of design intent or technical context.
+
+**How:** Technical documentation compilation, handover document authoring, Git repository organisation, knowledge transfer sessions
+
+**Responsibility:** Contributed
+
+**Result:** Complete aerodynamics module handed over with full documentation. Codebase and documentation confirmed received and understood by incoming team.
+
+**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, CPACS, Git, MATLAB, Notion, PAWAT, RCE (Remote Component Environment), Requirements Management, Software, Systems Engineering, Technical Documentation, TiGL/TiXi, XFLR5/Flow5, eVTOL
+
+**Notes:** Handover documents uploaded as evidence — Hand-Over_Document.docx, README.md, Aero_Module_Documentation_2023.docx, Aero_I_O_Paths.docx, Aero_Calc_Options.docx, Aero_UMLDiagram.png, IO_Presentation.pptx, KolibriResultsReview-20_03_2023.pptx, DesignLoopMaster.docx all exist as personal evidence. Full Git repository also exists.
+
+---
+
+### HORYZN — Project Management - Systems & Integration
+*Student Initiative | Munich, Germany | 2023-07 – 2024-07*
+
+Appointed Project Manager for systems integration and flight testing phase of the Kolibri hybrid lift-and-cruise eVTOL UAS under Mission Pulse Phase 2. Oversaw cross-functional coordination across avionics, flight testing, CAD and structures teams. Hands-on involvement in avionics integration, PX4 flight controller setup, ground testing, flight testing and regulatory preparation. Secured TU Munich aerospace test facilities at Oberpfaffenhofen for final flight campaign. Project concluded with successful transition flight test — completing the Mission Pulse programme. Concurrent with MSc studies and Amazilia working student role. Held EU A1/A3 drone pilot licence throughout this period.
+
+**Projects under this experience (1):**
+
+#### Project: Kolibri eVTOL — Systems Integration, Flight Testing & Project Completion
+- **System:** Kolibri Hybrid Lift-and-Cruise eVTOL UAS — Full Aircraft Systems Integration and Flight Test
+- **Objective:** Drive Kolibri from detailed design through systems integration, ground testing and flight testing to achieve successful VTOL-to-cruise transition and complete Mission Pulse programme
+- **Description:** Led the systems integration and flight testing phase of the Kolibri hybrid lift-and-cruise eVTOL UAS as Project Manager. Coordinated cross-functional teams across avionics, flight testing, CAD and structures. Hands-on involvement in avionics integration, PX4 setup, ground testing and flight testing. Managed sponsor relations, team recruitment and facility coordination. Project concluded with successful transition flight test at Oberpfaffenhofen, completing Mission Pulse Phase 2
+- **Outcome:** Successful transition flight test achieved at Oberpfaffenhofen test airport. Mission Pulse Phase 2 concluded. Full aircraft development lifecycle completed from conceptual design through operational flight.
+- **R&D Project:** Yes
+- **Project Tags:** Advanced Air Mobility, Aircraft Systems, Avionics, Bill of Materials (BOM), Certification, Deployment, Electrical Systems, Flight Test, Functional Analysis, Git, Ground Control Systems, Ground Testing, Implementation, Integration, Mechanical Assembly , Mission Planning, Notion, PX4, Project Management, Recruitment & Team Building, Safety, Soldering, Stakeholder Engagement, Supplier Sourcing, Systems Engineering, Technical Documentation, eVTOL
+- **Notes:** Unpaid student initiative. Brian held EU A1/A3 drone pilot licence throughout flight testing phase. Evidence includes flight logs, test records, photographs and sponsor documentation
+
+**Activity 1 — What:** Appointed Project Manager for systems integration and flight testing phase of Kolibri by the outgoing project management team, based on demonstrated technical contribution and cross-team familiarity during the aerodynamics phase. Transitioned from aerodynamics engineering role into project leadership, taking responsibility for coordinating the avionics and flight testing team as primary focus, with secondary oversight of CAD and structures teams. Obtained EU A1/A3 drone pilot licence around this time, enabling direct participation in flight operations.
+
+**How:** Role transition, project management onboarding, cross-team coordination establishment, EU A1/A3 licence acquisition
+
+**Responsibility:** Led
+
+**Result:** Successfully assumed PM role. Clear responsibility boundaries established across teams. Drone pilot licence obtained enabling direct flight test participation.
+
+**Tags:** Advanced Air Mobility, Aircraft Systems, Notion, Project Management, Recruitment & Team Building, Requirements Management, Stakeholder Engagement, Systems Engineering, eVTOL
+
+**Notes:** Appointment was merit-based — observed performance during aerodynamics phase. EU A1/A3 licence obtained concurrent with role transition, directly enabling flight test involvement. Role was unpaid — HORYZN is a student initiative.
+
+**Activity 2 — What:** Served as the central coordination point between avionics, flight testing, CAD and structures teams during the systems integration phase of Kolibri. Identified and resolved integration conflicts — for example, where avionics and electronics sizing did not fit within the structural spaces allocated by the CAD team, requiring coordinated design iterations across CAD, structures and avionics teams. Facilitated regular cross-team meetings, tracked outstanding integration issues and ensured design decisions were communicated and implemented consistently across all teams. Coordinated with other project managers on resource allocation and scheduling.
+
+**How:** Cross-functional coordination, integration issue tracking, design review facilitation, inter-team communication management, project scheduling
+
+**Responsibility:** Contributed
+
+**Result:** Integration conflicts identified and resolved through coordinated design iterations. Systems integration progressed to hardware assembly and ground testing phase.
+
+**Tags:** Advanced Air Mobility, Aircraft Systems, Allocation, Architecture, Avionics, Electrical Systems, Embedded Systems, Flight Controls, Implementation, Integration, Interface Definition, Notion, Project Management, Requirements Management, Stakeholder Engagement, Structures, Systems Engineering, Technical Documentation, eVTOL
+
+**Notes:** Key integration challenge was physical fit of avionics and electronics within structural enclosures — required CAD and structures teams to revise designs to accommodate avionics sizing. This is a classic systems integration problem and demonstrates cross-disciplinary coordination at the hardware level
+
+**Activity 3 — What:** Worked hands-on with the avionics and flight testing team on the integration of Kolibri's avionics systems including flight controller setup on PX4, ESC configuration, sensor integration and onboard electronics wiring. Applied systems integration experience from Amazilia to support the team in solving avionics interface and communication issues. Contributed directly to soldering, wiring and bench testing of avionics components. Used knowledge of Kolibri's full design — aerodynamics, structures and avionics — to provide informed technical guidance on integration decisions.
+
+**How:** PX4 flight controller configuration, ESC setup, sensor integration, avionics wiring, bench testing, soldering, cross-system technical guidance
+
+**Responsibility:** Contributed
+
+**Result:** Kolibri avionics systems integrated and bench-tested, ready to progress to ground testing and hover trials
+
+**Tags:** Advanced Air Mobility, Aircraft Systems, Autonomy, Avionics, Communications, Electrical Systems, Embedded Systems, Flight Controls, Git, Implementation, Integration, Mechanical Assembly , Notion, PX4, Project Management, Sensors, Simulation, Soldering, Systems Engineering, Technical Documentation, Verification, Wire Harness Design, eVTOL
+
+**Notes:** Amazilia HIL and GCS experience directly applicable here — familiarity with avionics interfaces, communication protocols and wiring harness construction. PX4 used as the flight controller platform. Hands-on soldering and wiring involvement alongside the avionics team.
+
+**Activity 4 — What:** Participated in ground testing and hover trial campaign for Kolibri. Built and operated a hover test bench to validate lift motor thrust ratios against the design requirements for the 25kg MTOW aircraft. Tested the defibrillator payload delivery system to confirm correct operation with the aircraft systems. Analysed flight logs from test runs to identify issues and drive corrective actions. Managed the iterative build-test-fail-repeat development cycle — including analysis of two crashes — using data from flight logs and ground control interfaces to diagnose faults and implement fixes.
+
+**How:** Hover test bench construction and operation, thrust ratio measurement and validation, payload system testing, flight log analysis, fault diagnosis, iterative test campaign management
+
+**Responsibility:** Contributed
+
+**Result:** Lift motor thrust ratios validated against design requirements. Payload delivery system confirmed operational. Crash analyses completed and corrective actions implemented. Aircraft cleared to progress to transition flight testing.
+
+**Tags:** 3D Printing, Advanced Air Mobility, Aircraft Systems, Avionics, Electrical Systems, Flight Controls, Flight Test, Ground Control Systems, Ground Testing, Integration, Mechanical Assembly , Mission Planning, Notion, PX4, Project Management, Sensors, Software, Soldering, Structures, Systems Engineering, Technical Documentation, Validation, Verification, eVTOL
+
+**Notes:** Two crashes occurred during ground and early flight testing — both analysed using flight log data. Build-test-fail-repeat was the explicit team motto — "build fast, fail early." Thrust testing involved constructing a dedicated hover test bench. Defibrillator payload delivery system tested as part of Mission Pulse mission validation.
+
+**Activity 5 — What:** Supported preparation of regulatory documentation for Kolibri flight operations under the SORA framework. Coordinated with the team to ensure operational risk classifications and flight test documentation met the requirements for test flights at the secured facility. Contributed to safety planning and operational procedures for the flight test campaign.
+
+**How:** SORA framework application, operational risk classification, regulatory documentation preparation, safety planning
+
+**Responsibility:** Contributed
+
+**Result:** Regulatory documentation completed supporting authorised flight test operations at Oberpfaffenhofen test facility
+
+**Tags:** Advanced Air Mobility, Aircraft Systems, Certification, Flight Test, Notion, Operations, Project Management, Requirements Management, Safety, Systems Engineering, Technical Documentation, Validation, eVTOL
+
+**Notes:** SORA framework used for UAS operational risk assessment. Brian had working familiarity with SORA from Amazilia context as well. Regulatory preparation was a shared responsibility across the project management team.
+
+**Activity 6 — What:** Secured access to a TU Munich aerospace test facility for the Kolibri flight test campaign, coordinating with university contacts to establish a dedicated workspace with appropriate flight test area. Managed all logistics for the flight campaign including team transport, equipment movement, scheduling and on-site coordination. Maintained sponsor communications throughout, providing updates on project progress and test milestones. Coordinated new member recruitment and interviews for incoming semester intake alongside other project managers.
+
+**How:** Facility negotiation and coordination, flight campaign logistics management, sponsor communication, recruitment coordination, scheduling
+
+**Responsibility:** Contributed
+
+**Result:** est facility secured and operational. Flight campaign successfully executed from the facility. Sponsors kept informed and engaged. New member recruitment completed for incoming semester.
+
+**Tags:** Advanced Air Mobility, Aircraft Systems, Deployment, Flight Test, Notion, Project Management, Recruitment & Team Building, Requirements Management, Stakeholder Engagement, Systems Engineering, Technical Documentation, eVTOL
+
+**Notes:** Facility secured at TU Munich aerospace test centre — provided controlled environment for final flight campaign. Sponsor management was an ongoing responsibility throughout the PM role — HORYZN operated on external sponsorship as an unpaid student initiative. Recruitment coordination included interviews for new semester intake across multiple sub-teams.
+
+**Activity 7 — What:** Participated in the final Kolibri transition flight test campaign at Oberpfaffenhofen test airport. Contributed to pre-flight preparation, on-site coordination and post-flight analysis. Kolibri successfully completed VTOL hover, transition to forward flight and cruise phases — achieving the core Mission Pulse objective that the predecessor prototype Frankenstein had failed to reach. Mission Pulse Phase 2 concluded successfully with the completion of the transition flight test.
+
+**How:** Flight test campaign coordination, pre-flight preparation, on-site operations management, post-flight data analysis, EU A1/A3 drone pilot operations
+
+**Responsibility:** Contributed
+
+**Result:** Successful transition flight achieved at Oberpfaffenhofen. Mission Pulse Phase 2 concluded. Full aircraft development lifecycle completed from conceptual design through operational flight test.
+
+**Tags:** Advanced Air Mobility, Aerodynamics, Aircraft Systems, Avionics, Certification, Flight Controls, Flight Test, Flight Testing, Ground Testing, Notion, Project Management, Safety, Stakeholder Engagement, Systems Engineering, Technical Documentation, Validation, Verification, eVTOL
+
+**Notes:** Oberpfaffenhofen is a certified test airport in Bavaria — use of this facility reflects the seriousness of the flight test campaign. Transition achievement was the central success criterion of Mission Pulse Phase 2 — directly solving the failure mode of Frankenstein. Brian was present for the full arc of the project from Phase 2 initiation through final flight. EU A1/A3 licence held throughout flight operations.
+
+---
+
+### Technical University of Munich — Institute for Rotorcraft and Vertical Flight — Student Assistant - IFR Simulator Instructor
+*Graduate Student | Munich, Germany | 2023-04 – 2024-09*
+
+Instructed and evaluated aerospace engineering students during the MW1450 IFR Helicopter Flight Lab course across three academic semesters (Summer 2023, Winter 2023/24, Summer 2024). Conducted 8 weekly 5-hour practical training sessions per semester for student pairs, teaching IFR procedures, emergency protocols, radio telephony, and digital cockpit systems on an EC135 fixed-base simulator. Administered and evaluated 5-hour oral and practical final examinations as an official course examiner
+
+**Projects under this experience (1):**
+
+#### Project: IFR Flight Simulator Instruction & Student Assessment
+- **System:** Fixed-base EC135 Flight Simulator (X-Plane, Digital Cockpit Display, Physical Flight Controls)
+- **Objective:** Train aerospace engineering students in instrument flight rules, flight deck procedures, navigation, and radio communications, and evaluate their flight proficiency through formal examinations
+- **Description:** light simulator instruction, practical IFR coaching, and student evaluation for the MW1450 IFR Helicopter Flight Lab course
+- **Outcome:** Successfully instructed student cohorts across three academic semesters (8 weekly 5-hour sessions per semester) and evaluated final oral/practical examinations.
+- **R&D Project:** No
+- **Project Tags:** Aircraft Systems, Avionics, Flight Controls, Flight Simulation, IFR (Instrument Flight Rules), Operations, Operations, Simulation, Training Program Design, Validation, Verification
+- **Notes:** Course offered by the Institute for Rotorcraft and Vertical Flight (formerly Institute for Helicopter Technology) at TUM
+
+**Activity 1 — What:** Practical IFR Flight Instruction & Flight Deck Coordination
+
+**How:** Conducted weekly 5-hour practical flight simulator training sessions for student pairs enrolled in the MW1450 IFR Helicopter Flight Lab course across three academic semesters. Coordinated simulated flight scenarios using physical cyclic, collective, and rudder controls on an EC135 fixed-base simulator; coached students on flight deck procedures, checklist execution, hovering, taxiing, radio telephony, SID departures, NDB/VOR/DME navigation, holding entries, and ILS instrument approaches.
+
+**Responsibility:** Led
+
+**Result:** Guided multiple student cohorts to master practical helicopter IFR flight operations and instrument scanning techniques.
+
+**Tags:** Aircraft Systems, Avionics, Flight Controls, Flight Simulation, IFR (Instrument Flight Rules), Operations, Operations, Simulation, Training Program Design, Validation
+
+**Notes:** Covered 8 sessions per semester during Summer 2023, Winter 2023/24, and Summer 2024
+
+**Activity 2 — What:** Served as an official course examiner evaluating student pairs during 5-hour final oral and practical simulator examinations
+
+**How:** Administered oral questioning on EC135 cockpit systems and IFR flight rules, monitored checklist compliance, and assessed flight control accuracy during simulated instrument procedures
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Evaluated student technical competency against departmental standards using formal scorecard criteria
+
+**Tags:** Aircraft Systems, Avionics, Flight Controls, Flight Simulation, IFR (Instrument Flight Rules), Operations, Simulation, Training Program Design, Verification
+
+**Notes:** Examination duration was 5 hours per student group
+
+---
+
+### University of Cologne — LEAD! Leadership for Africa
+*DAAD Scholar | Cologne, Germany (Hybrid — online and on-campus) | 2022-02 – 2023-01*
+
+Completed the LEAD! Leadership for Africa programme at the University of Cologne, offered exclusively to DAAD Leadership for Africa scholarship holders and funded by the German Federal Foreign Office. The programme covered development-related studies (sustainable development, governance, public administration, peace & conflict studies) and career training (intercultural skills, project management, science communication, individual development planning, and presentation). Total workload: 260 units / 195 hours. Graduated with a grade of Sehr gut (A), earning 8 ECTS credits.
+
+**Projects under this experience (1):**
+
+#### Project: Design and Implementation of an Unmanned Aircraft System (UAS) using the Model Based System Engineering (MBSE) Approach for Agricultural Applications at the Galana Kulalu Irrigation Scheme
+- **System:** Integrated agricultural UAS — precision agriculture payload suite (crop health monitoring, soil analysis, chemical spraying), autonomous flight control system, mission planning and trajectory optimisation subsystems
+- **Objective:** To design an MBSE-structured UAS architecture for precision agriculture deployment at the Galana Kulalu Irrigation Scheme, addressing food insecurity through improved farm management and increased crop yields, while closing Kenya's local UAS manufacturing gap
+- **Description:** A research and systems architecture project focused on the design and development of an integrated UAS for precision agriculture at the Galana Kulalu Irrigation Scheme, Kenya. The project employed the MBSE approach to define all system components, functionalities, and architecture including flight mission planning, trajectory optimisation, real-time control, failure probability and risk assessment. The operational goal was to employ precision agriculture techniques — crop health monitoring, soil fertility and water retention analysis, and chemical spraying — for maize farming at the scheme, with full UAS integration targeted by 2030.
+- **Outcome:** Produced a comprehensive project proposal comprising an MBSE-based UAS system architecture definition, SWOT and PEST analyses, work breakdown structure, critical path and Gantt chart, project summary, and elevator pitch. Delivered and graded Sehr gut (A) as part of the LEAD! programme final submission
+- **R&D Project:** Yes
+- **Project Tags:** Aerodynamics, Aircraft Systems, Architecture, Autonomy, CONOPS, Design, Flight Controls, Functional Analysis, MBSE, Market Research, Microsoft Office, Mission Planning, Model Based Systems Engineering, Precision Agriculture, Project Management, Requirements, Research, Safety, Simulation, Stakeholder Engagement, Systems Engineering, Technical Documentation, Validation, Verification
+- **Notes:** Project timeline targets full integration of UAS technology at Galana Kulalu by 2030. Submitted as part of the LEAD! Leadership for Africa programme at the University of Cologne. Funded by the DAAD / German Federal Foreign Office. All work at this stage is architecture, planning and conceptual — no physical build undertaken.
+
+**Activity 1 — What:** UAS system architecture definition and MBSE modeling for autonomous precision agriculture operations
+
+**How:** Applied the Model Based System Engineering (MBSE) approach to define all system components and functionalities within the UAS architecture, covering flight mission planning, trajectory optimisation, real-time flight control, failure probability assessment, and operational risk assessment for agricultural applications at the Galana Kulalu Irrigation Scheme
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Produced a structured MBSE-based system architecture capturing the full functional decomposition of the agricultural UAS, forming the technical backbone of the project proposal
+
+**Tags:** Aircraft Systems, Architecture, AutoCAD, Autonomy, CONOPS, Flight Controls, Functional Analysis, Interface Definition, MATLAB, MBSE, Mission Planning, Model Based Systems Engineering, Requirements, Research, Safety, Simulation, Simulink, Systems Engineering, Technical Documentation, yEd
+
+**Notes:** Conceptual and architecture phase only — no physical implementation undertaken
+
+**Activity 2 — What:** Precision agriculture capability definition — crop health monitoring, soil fertility and water retention analysis, and chemical spraying payload architecture
+
+**How:** Defined the precision agriculture payload suite and operational capabilities required for maize farming at Galana Kulalu, specifying crop health monitoring, soil fertility and water retention analysis, and chemical spraying functions within the MBSE framework
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Produced a defined payload and capability specification integrated into the overall UAS system architecture, supporting the operational and technical justification of the project
+
+**Tags:** Agronomy, Aircraft Systems, Architecture, CONOPS, Functional Analysis, MBSE, Model Based Systems Engineering, Payloads, Precision Agriculture, Requirements, Research, Sensors, Systems Engineering, Technical Documentation
+
+**Notes:** Capability definition only — no hardware selected or procured
+
+**Activity 3 — What:** Work breakdown structure, critical path, and Gantt chart development for UAS implementation at Galana Kulalu
+
+**How:** Decomposed the project into sub-goals and key milestones across five phases — drone sector engagement, knowledge acquisition, UAS actualisation, farm case study operations, and full Galana Kulalu integration — and mapped each to a specific timeline extending to 2030
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Produced a structured WBS and Gantt chart defining all key milestones, sub-goals, and indicators for the research project from 2020 to 2030
+
+**Tags:** CONOPS, Microsoft Office, Model Based Systems Engineering, Project Management, Requirements, Research, Systems Engineering, Technical Documentation
+
+**Notes:** Planning deliverable produced as part of the LEAD! Individual Development Plan submission
+
+**Activity 4 — What:** SWOT and PEST analysis — individual strengths, weaknesses, opportunities, threats, and external risk and opportunity assessment for the UAS project
+
+**How:** Conducted a personal SWOT analysis identifying individual strengths, weaknesses, opportunities, and threats relevant to the project execution. Followed with a PEST analysis examining political, economic, socio-cultural, and technological external factors affecting UAS implementation in Kenya, including regulatory landscape, government innovation stance, funding environment, and technology adoption challenges
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Produced SWOT and PEST analysis documents forming the risk and opportunity assessment framework for the project proposal, submitted as part of the LEAD! Individual Development Plan
+
+**Tags:** CONOPS, Market Research, Microsoft Office, Precision Agriculture, Regulatory Compliance, Requirements, Research, Stakeholder Engagement, Systems Engineering, Technical Documentation
+
+**Notes:** Part of the LEAD! programme career training and individual development plan deliverables
+
+**Activity 5 — What:** Project summary write-up and elevator pitch preparation and delivery
+
+**How:** Authored a formal project summary covering the problem context, MBSE approach, precision agriculture objectives, and long-term implementation roadmap for the Galana Kulalu Irrigation Scheme. Prepared and delivered an elevator pitch communicating the project vision, technical approach, and societal impact
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Delivered project summary and elevator pitch as final LEAD! programme submissions. Graded Sehr gut (A), earning 8 ECTS credits from the University of Cologne
+
+**Tags:** CONOPS, Market Research, Microsoft Office, Precision Agriculture, Project Management, Research, Stakeholder Engagement, Systems Engineering, Technical Documentation
+
+**Notes:** Final assessed deliverables of the LEAD! Leadership for Africa programme
+
+---
+
 ### Skylink Flight Services — Private Pilot Licence (PPL) Training
 *Aviation | Wilson Airport, Nairobi, Kenya (with cross-country hours to Malindi) | 2015-01 – 2015-08*
 
@@ -2495,66 +2342,224 @@ Completed a KCAA-approved Private Pilot Licence (PPL) training programme at Skyl
 
 ---
 
+### eMobilis Technology Institute — Full Stack Software Development
+*Student | Nairobi, Kenya | 2020-01 – 2020-06*
+
+Completed a five-month full stack software development programme at eMobilis Technology Institute, Nairobi (Admission No. 01/0120/4698, January 2020 Afternoon intake, under lecturer Benjamin Wanyama). The programme covered web development (HTML, CSS, Python, MySQL) and Android mobile application development (Kotlin, Java, XML). Engaged with all curriculum streams. Completed a capstone Android carpool application (Fadhili). Also obtained Google Digital Skills certification during this period. Subsequently co-founded the Coding Collective — a peer learning group formed from the cohort for continued collaborative development work.
+
+**Projects under this experience (1):**
+
+#### Project: Fadhili — Android Carpool Application
+- **System:** Android mobile application — Firebase Authentication, Firebase Realtime Database, GeoFire real-time location engine, Google Maps SDK (driver and passenger map views), Google Play Services
+- **Objective:** To design and deliver a functional carpool Android application demonstrating end-to-end full stack mobile development competency across UI, backend, authentication, real-time location, and database integration
+- **Description:** A fully functional Android carpool application designed and developed from scratch as the programme capstone project. Fadhili connected drivers and passengers in real-time, implementing ride matching, live map tracking, user authentication, messaging, notifications, and profile management. Built using Kotlin as the primary language with Firebase as the backend infrastructure and Google Maps SDK for location and mapping services
+- **Outcome:** Delivered a working Android carpool application (API 16+, target SDK 30) with real-time driver/passenger location tracking, ride coordination, user authentication, and messaging features. Codebase archived on GitHub.
+- **R&D Project:** No
+- **Project Tags:** Design, Firebase, Firestore, Git, Implementation, Integration, Java, Kotlin, Mobile Development, MySQL, Software, Verification
+- **Notes:** Capstone project for the eMobilis Full Stack programme, January 2020 intake. Primary language Kotlin; Java also used. Built on Android SDK 30, targeting API 16+.
+
+**Activity 1 — What:** Designed and developed Fadhili — a full-stack Android carpool application — end to end
+
+**How:** Independently architected and built the full application in Kotlin and Java, implementing multi-screen UI (landing, splash, sign-in, registration, dashboard, rides, messages, notifications, profile) using XML layouts and Material Design, Firebase Authentication for user management, Firebase Realtime Database for ride coordination and messaging, GeoFire and Google Maps SDK for real-time driver/passenger location tracking, and distance computation between points
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Delivered a fully functional Android carpool application (SDK 30, API 16+) with real-time location, authentication, ride matching, messaging, and notification features. Codebase archived on GitHub
+
+**Tags:** Design, Firebase, Firestore, Git, Implementation, Integration, Java, Kotlin, Mobile Development, Software, Verification
+
+**Notes:** Capstone project for eMobilis Full Stack programme, January 2020 intake
+
+**Experience-level Activities (not tied to a specific project):**
+
+**Activity 2 — What:** Full stack web and mobile development training — HTML, CSS, Python, MySQL, Kotlin, Java, Android
+
+**How:** Completed the full eMobilis curriculum across front-end web development (HTML, CSS, Bootstrap), back-end development (Python, MySQL), and Android mobile development (Kotlin, Java, XML) over five months under lecturer Benjamin Wanyama
+Responsibility: Contributed
+
+**Responsibility:** Contributed
+
+**Result:** Successfully completed the full programme across all curriculum streams gaining practical competency in web and Android development
+
+**Tags:** HTML/CSS, Implementation, Java, Kotlin, Mobile Development, MySQL, Python, Software, Website Development
+
+**Notes:** January–May 2020, Nairobi. Admission No. 01/0120/4698, January 2020 Afternoon intake
+
+**Activity 3 — What:** Co-founded the Coding Collective — a peer collaborative development group from the eMobilis cohort
+
+**How:** Co-founded an informal coding collective with cohort members from the eMobilis afternoon MIT class, structured around collaborative projects, peer knowledge sharing, and commercialisation of development work across web and Android stacks
+
+**Responsibility:** Led
+
+**Result:** Established an active peer learning group continuing collaborative development beyond the formal programme, with intent to evolve into a commercial development organisation
+
+**Tags:** Design, Git, HTML/CSS, Implementation, Java, Kotlin, Mobile Development, MySQL, Project Management, Python, Recruitment & Team Building, Software, Stakeholder Engagement, Website Development
+
+**Notes:** Documented in the Coding Collective founding proposal
+
+---
+
+### Jasiri4Africa — Jasiri Fellow, Talent Investor Program
+*Entrepreneur | Rwanda | 2025-01 – 2025-05*
+
+Participated in the Jasiri Talent Investor program (Cohort 7 / Ntore Cohort) funded by Allan & Gill Gray Philanthropy. Completed the online Jumpstart phase and 3-month Residential Intensive in Bugesera, Rwanda, focusing on team formation, qualitative/quantitative smallholder farmer discovery, commissioning a GeoPoll research study, formulating the iCARUS business model canvas, and presenting at Jasiri Demo Day 1 before opting out prior to the venture creation phase.
+
+**Experience-level Activities (not tied to a specific project):**
+
+**Activity 1 — What:** Completed the Jasiri Jumpstart and 3-month Residential Intensive while executing field-level market discovery on smallholder agri-data adoption barriers in Kenya.
+
+**How:** Completed the Jasiri Jumpstart and 3-month Residential Intensive while executing field-level market discovery on smallholder agri-data adoption barriers in Kenya.
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Validated core market pain points around late crop stress detection, high input costs, and lack of affordable farm-specific decision support tools for smallholder farmers.
+
+**Tags:** Agronomy, Market Research, Microsoft Office, Precision Agriculture, Requirements, Research, Validation
+
+**Notes:** Field research established the foundational problem statement and user requirements for iCARUS / Kilimo Anga
+
+**Activity 2 — What:** formulated the dual-sided business model canvas and revenue architecture for the iCARUS precision agriculture concept.
+
+**How:** Structured pay-per-scan B2C smallholder services and B2B software/data subscriptions for drone operators and agricultural parastatals; mapped key value propositions, extension channels, and cost structures; evaluated strategic partnerships with regulators (KCAA), seed companies (ADC, KSC), and cloud providers.
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Produced a comprehensive Business Model Canvas establishing unit economics, market size ($5.7M TAM target), and go-to-market channels.
+
+**Tags:** Agronomy, Architecture, Business Development, CONOPS, Financial Modeling , Microsoft Office, Precision Agriculture, Venture Building
+
+**Notes:** Designed B2B and B2C value propositions tailored to smallholders in Uasin Gishu, Nandi, and Nakuru counties
+
+**Activity 3 — What:** Authored and delivered the iCARUS venture pitch deck at Jasiri Demo Day 1 in Bugesera, Rwanda
+
+**How:** Synthesized market research data, smallholder yield deficit statistics, drone/multispectral tech stack architecture, and pilot financial projections into a 9-slide investor presentation; pitched to Jasiri program directors, venture coaches, and fellow entrepreneurs
+
+**Responsibility:** IndependentlyExecuted
+
+**Result:** Successfully completed Demo Day 1 requirements on May 2, 2025, validating venture readiness prior to program exit.
+
+**Tags:** Investor Relations, Microsoft Office, Operations, Operations, Precision Agriculture, Public Speaking & Debate, Stakeholder Engagement
+
+**Notes:** Presentation highlighted the 4.4M metric ton national maize shortfall and demonstrated drone/multispectral crop health visualization software
+
+---
+
+### Young Scientists Kenya (YSK) — STEM Mentorship
+*Volunteer  | Kenya | 2020-01 – 2021-12*
+
+Technical mentorship for secondary school student research teams participating in the Young Scientists Kenya national science and technology exhibitions. Provided engineering guidance across mechanical design, embedded systems, system architecture, prototyping, and technical report editing for automotive and aviation projects
+
+**Projects under this experience (2):**
+
+#### Project: Project Mentor - Hydrogen-Hybrid Engine
+- **System:** Modified 4-stroke Honda GX160 engine (5.5 hp), custom motorized bicycle chassis with Mitsubishi Shogun tappet return spring seat suspension, 8:1 belt drive with centrifugal clutch, 750 ml plastic HHO generator cell (stainless steel plates, NaOH electrolyte), custom "Archillator" damp-cotton moisture trap, 1-inch carburetor intake bypass port, and 16V/1.68A solar panel with 12V 7Ah Li-ion buffer battery.
+- **Objective:** Integrate an onboard solar-assisted hydroxy gas generator and carburetor bypass into a small 4-stroke internal combustion engine to evaluate fuel efficiency gains (km/L) and air-fuel ratio lean-burn characteristics
+- **Description:** Mentored a 2-student team (Sifa Home School / Oaks Academy) in the design, fabrication, and testing of a solar-assisted hydroxy (HHO) gas generator integrated into a 160cc 4-stroke petrol engine on a custom motorized bicycle
+- **Outcome:** Achieved a 22.6% fuel efficiency increase (25.24 km/L baseline to 30.95 km/L with engine alternator HHO) and a 43.6% increase (to 36.25 km/L with solar-assisted HHO) during road testing at 35 km/h
+- **R&D Project:** Yes
+- **Project Tags:** AutoCAD, Design, Electrical Systems, Implementation, Mechanical Assembly , Mechanical Fabrication, Propulsion, Research, Soldering
+- **Notes:** Presenters: Archippus Kimani & Tabitha Alakara; Patron: Rev. Oscar Ekesa. Total prototype build cost: KES 34,650 (Bike & Engine: KES 21,600; HHO Cell & Power: KES 5,500; Accessories: KES 3,650). Final report edited and formatted by Brian Lembuss Kirwa
+
+**Activity 1 — What:** Advised on mechanical drivetrain integration, electrical power architecture, HHO safety bypass design, and empirical fuel consumption testing protocols
+
+**How:** Guided the sizing of the 8:1 centrifugal clutch pulley drive, implementation of the 12V 25A fused power rail, design of the "Archillator" cotton moisture trap, welding of the 1-inch intake manifold bypass port, and execution of 3-run road mileage trials
+
+**Responsibility:** Assisted
+
+**Result:** Validated lean-burn engine performance demonstrating a 43.6% fuel mileage gain (36.25 km/L vs. 25.24 km/L baseline pure gasoline).
+
+**Tags:** Electrical Systems, Ground Testing, Implementation, Mechanical Assembly , Mechanical Fabrication, Propulsion
+
+**Notes:** Mentored team through YSK virtual exhibition judging. Authored and edited final technical documentation
+
+#### Project: Project Mentor - Portable Aircraft Refueling Rig & Automated Fuel Dispenser
+- **System:** Arduino UNO R3 microcontroller, 20x4 I2C LCD screen, $4\times4$ matrix keypad, YF-S201 hall-effect pulse flow rate sensor, 12V DC fuel pump, 12V relay switch, 12V LiPo battery rail with solar charging, PTFE fuel lines, dual fuel filters, and status LEDs/buzzer.  
+- **Objective:** Eliminate manual, error-prone container volume fuel transfers at small airstrips by engineering a keypad-controlled dispensing rig that accurately converts targeted fuel mass/volume inputs into automated pump relay actuation
+- **Description:** Mentored a 3-student team (Juja Preparatory and Senior School) in designing an automated, battery-powered fuel dispensing rig for light aircraft at remote airstrips lacking fuel bowsers
+- **Outcome:** Completed circuit design (Fritzing), control logic state machine, system flowchart, and functional bench prototype capable of pulse-count volume measurement, auto-shutoff via relay, and real-time LCD status reporting
+- **R&D Project:** Yes
+- **Project Tags:** Aircraft Systems, Architecture, Arduino, Avionics, C, C++, Design, Electrical Systems, Embedded C, Embedded Systems, Implementation, Soldering, Verification
+- **Notes:** Presenters: Emmanuel Nevile Omondi, Melvin Mango, Roy Peter; Patron: Mr. Ayodo. Developed circuit schematics and state machine control logic for flow-rate pulse feedback and fuel cutoff.
+
+**Activity 2 — What:** Guided the embedded systems architecture, circuit schematic design, and control logic state machine for the automated refueling rig
+
+**How:** Designed Fritzing circuit schematics mapping the Arduino UNO R3 to the YF-S201 flow sensor interrupt pin, 12V relay pump drive, $4\times4$ keypad, 20x4 I2C LCD, status LEDs, and buzzer; structured the software flowchart for keypad input validation, start/stop/clear states, and pulse-counting target cutoff.
+
+**Responsibility:** Assisted
+
+**Result:** Delivered verified circuit layout, software state machine logic, and complete technical abstract for the YSK exhibition submission
+
+**Tags:** Aircraft Systems, Architecture, Arduino, C, C++, Design, Embedded C, Embedded Systems
+
+**Notes:** Fritzing schematic (Circuit_scheme.png) and system flowchart (PROJECT SUMMARY.pdf) produced as core evidence artifacts.
+
+---
+
+
+
+*Total activities compiled above: 163 / 163*
+
 ---
 
 ## 4. Complete Engineering & R&D Projects (All 40 Projects)
 
-*All 40 projects are compiled in full in Section 3 above, nested under their parent Experience. No project is extracted separately here to avoid duplication. Cross-reference Section 3 by organization for the complete project inventory.*
+*All 40 projects are compiled in full in Section 3 above, nested under their parent Experience, each with System, Objective, Description, Outcome, R&D flag, and full Project Tag set — per roadmap §7 execution blueprint. No project is extracted separately here to avoid duplicating the 40 project blocks; cross-reference Section 3 by organization for the complete project inventory.*
 
-**R&D-flagged projects (isRnD = true):** flagged individually per project block as `R&D Project: Yes`.
+**R&D-flagged projects (isRnD = true):** compiled inline in Section 3, flagged individually per project block as `R&D Project: Yes`.
 
 ---
 
 ## 5. Education
 
-- **LEAD! Leadership for Africa — University of Cologne**, Cologne, Germany (Hybrid — online and on-campus). 2022-02 – 2023-01. Completed the LEAD! Leadership for Africa programme at the University of Cologne, offered exclusively to DAAD Leadership for Africa scholarship holders and funded by the German Federal Foreign Office. The programme covered development-related studies (sustainable development, governance, public administration, peace & conflict studies) and career training (intercultural skills, project management, science communication, individual development planning, and presentation). Total workload: 260 units / 195 hours. Graduated with a grade of Sehr gut (A), earning 8 ECTS credits.
-- **M.Sc Aerospace — Technical University of Munich**, Munich, Germany. 2021-10 – Present. Master of Science degree program in Aerospace Engineering at the TUM School of Engineering and Design, specializing in Aircraft Systems, Control, and UAS Integration. Completed 73 ECTS of advanced coursework, research practice, and practical labs covering rotorcraft engineering, electric aircraft, flight guidance, avionics safety, autonomous systems, non-linear control, and CFD simulation. Achieved a provisional overall grade of 2.6, with supplementary requirement courses passed in Automatic Control and CAD/Machine Elements. Degree completion is pending the submission of the Master's thesis
-- **B.Sc. Aerospace Engineering — Middle East Technical University**, Turkey/Northern Cyprus. 2015-09 – 2019-06. Bachelor of Science in Aerospace Engineering at METU Northern Cyprus Campus, completed with Şeref/Honour classification (CGPA 3.12/4.00; 81.20/100). Programme delivered entirely in English over 4 years (151 METU credits, 259.5 ECTS). Coursework spanned the full aerospace engineering discipline — aerodynamics, propulsion, structures, flight mechanics, systems dynamics, thermodynamics, fluid mechanics, and numerical methods — complemented by technical electives in computational aerodynamics, helicopter aerodynamics and design, mechatronics, finite element analysis, and smart structures. Included two supervised industry placements (Summer Practice I & II) and a capstone aeronautical engineering design course (ASE451)
+- **M.Sc. Aerospace Engineering — Technical University of Munich (TUM School of Engineering and Design)**, Munich, Germany. 2021-10 – Present. Specialization: Aircraft Systems, Control, and UAS Integration. 73 ECTS completed; provisional overall grade 2.6; supplementary requirement courses passed in Automatic Control and CAD/Machine Elements. **Degree completion pending** — 17 credits and thesis remaining. Never to be represented as completed or awarded.
+- **B.Sc. Aerospace Engineering — Middle East Technical University (METU), Northern Cyprus Campus**, 2015-09 – 2019-06. Şeref/Honour classification. CGPA 3.12/4.00 (81.20/100). 151 METU credits / 259.5 ECTS. Delivered entirely in English. Included two supervised industry placements (Summer Practice I & II) and capstone course ASE451.
+- **LEAD! Leadership for Africa — University of Cologne**, DAAD Scholar, 2022-02 – 2023-01. Development studies + career training. 260 units / 195 hours. Grade: *Sehr gut* (A), 8 ECTS.
 
 ---
 
 ## 6. Research & Publications
 
-- **AIAA 2024** — Co-authored paper on Urban Air Mobility (UAM) throughput. Full activity-level detail in Section 3 under TUM MSc → Generic Modeling of Slotneutral UAM Throughput.
-- **Geotourism journal article** — activity-level detail in Section 3 under TUM MSc → Geospatial Analysis & Cartography.
-- **TUM UAM Thesis** — in progress, pending submission (see Section 5, TUM MSc status).
-- **MBSE Agricultural UAS Architecture** — graded *Sehr gut* (A), 8 ECTS. Detail in Section 3 under University of Cologne → LEAD! Leadership for Africa.
+- **AIAA 2024** — Co-authored paper on Urban Air Mobility (UAM) throughput, referenced in Pillar 3 (Deep-Tech Research). Full citation/activity-level detail compiled under the relevant Experience/Project block in Section 3.
+- **Geotourism journal article** — referenced per roadmap Section 6 (Teaching & Academic Experience mapping); activity-level detail in Section 3 under the relevant Experience.
+- **TUM UAM Thesis** — in progress, pending submission (see Education, Section 5, TUM MSc status).
+- MBSE agricultural UAS architecture — graded *Sehr gut* (A), 8 ECTS, detailed within the relevant TUM/Amazilia project blocks in Section 3.
 
-*Full narrative and citation-level detail for each publication is embedded in its source Activity/Project block in Section 3.*
+*Note: full narrative and citation-level detail for each publication is embedded in its source Activity/Project block in Section 3 (Complete Professional Experience) rather than restated here, per the roadmap's no-duplication intent for Phase 6C.*
 
 ---
 
 ## 7. Teaching & Academic Experience
 
 Consolidated cross-reference (full detail in Section 3):
-- **Technical University of Munich — Institute for Rotorcraft and Vertical Flight — Student Assistant - IFR Simulator Instructor** (2023-04 – 2024-09) — 2 activities.
-- **Young Scientists Kenya (YSK) — STEM Mentorship** (2020-01 – 2021-12) — 2 activities.
-- **Middle East Technical University — Student Assistant - ASE301 Numerical Methods for Aerospace Engineers** (2019-02 – 2019-06) — 2 activities.
-- **Middle East Technical University — SI-PASS Leader & Instructor — MAT119 & MAT120** (2018-09 – 2019-05) — 2 activities.
+- **TUM — Institute for Rotorcraft and Vertical Flight:** Student Assistant, IFR Simulator Instructor (EC135 fixed-base simulator) — 2 activities.
+- **METU — Student Assistant, ASE301 Numerical Methods for Aerospace Engineers** — 2 activities.
+- **METU — SI-PASS Leader & Instructor (MAT119/MAT120 Calculus)** — 2 activities.
+- **Young Scientists Kenya (YSK) — STEM Mentorship** — 2 activities.
 
 ---
 
 ## 8. Leadership & Mentorship
 
 Consolidated cross-reference (full detail in Section 3):
-- **HORYZN — Project Management - Systems & Integration** (2023-07 – 2024-07) — 7 activities.
-- **Middle East Technical University — Vice President, Aerospace Society** (2017-09 – 2018-06) — 4 activities.
-- **Middle East Technical University — President, Model United Nations Society** (2017-09 – 2018-06) — 3 activities.
-- **Middle East Technical University — Secretary General, International Students Association** (2016-09 – 2018-01) — 3 activities.
+- **METU — Secretary General, International Students Association** (8 directorates) — 3 activities.
+- **METU — Vice President, Aerospace Society** — 4 activities.
+- **METU — President, Model United Nations Society** (revived dormant society; 17-member delegation to MUNTR 2018) — 3 activities.
+- **HORYZN — Project Management, Systems & Integration** (Kolibri eVTOL Mission Pulse Phase 2) — 7 activities.
+- **Kipepeo Aerospace — Founding CEO & Lead Systems Engineer** (venture governance, team leadership) — activities embedded in Section 3.
 
 ---
 
 ## 9. Licences, Certifications & Full Technical Skills Taxonomy
 
-**Licences (from dev.db):**
-- Passed KCAA ground school examinations, meeting the theoretical knowledge requirements for the Private Pilot Licence
-- Accumulated the required flight hours and demonstrated pilot-in-command competency, leading to the award of KCAA Private Pilot Licence — Aeroplane (YK-9469-PL)
-- Awarded KCAA Flight Radio Telephony Operator's Licence (YK-9469-RL), valid 8 September 2015 to 7 September 2017. Also awarded English Language Proficiency Rating Level 5
-- Awarded KCAA Remote Pilot Licence — Multirotor, Licence No. YK-RPL-00013A. First logged flight: 20 January 2021
+**Licences:**
+- Private Pilot Licence — Aeroplane (YK-9469-PL), KCAA
+- Flight Radio Telephony Operator's Licence (YK-9469-RL), KCAA
+- English Language Proficiency Rating (Level 5), KCAA
+- Remote Pilot Licence (Multirotor), KCAA — Kendrone Ltd, Nov 2020 cert. UTO
+- EU A1/A3 Drone Pilot Licence (held during HORYZN Systems Integration PM role)
 
-**Full Technical Skills Taxonomy:** see Section 2 (Core Competencies) for the complete tag list.
-
+**Full Technical Skills Taxonomy (from `dev.db` Tag library, complete):** see Section 2 (Core Competencies) above for the full, unabridged tag list across Systems Engineering Lifecycle, Technical Domains, Skills & Tools, and Other (Venture/Governance/Teaching/Academic) categories.
 
 ---
 
-*End of Master Content Pool — Phase 6C. Total: 20 Experiences | 40 Projects | 3 Activities | 100% database coverage, zero pruning.*
+*End of Master Content Pool — Phase 6C. Total: 20 Experiences | 40 Projects | 163 Activities | 100% database coverage, zero pruning.*

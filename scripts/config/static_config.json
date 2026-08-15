@@ -1,0 +1,184 @@
+{
+  "_comment": "Static / manually-curated CV content that has no source-of-truth column in dev.db. Edit freely; db_to_json.py re-reads this file on every run. certifications[] is manual pending a future Certification table in the career DB (see README note in db_to_json.py header).",
+  "version": "2.0",
+  "title": "Aerospace Engineer | Technical Founder | Deep-Tech Researcher | Academic Educator",
+  "contact": {
+    "name": "Brian Lembuss",
+    "email": "brianlembuss@gmail.com",
+    "phone": "+254 705 875103",
+    "location": "Nairobi, Kenya",
+    "linkedin": "https://www.linkedin.com/in/brian-kipchumba-lembuss-kirwa/",
+    "github": "https://github.com/lembuss/"
+  },
+  "profile": "Aerospace Systems Engineer, Technical Founder and Deep-Tech Researcher with six years of progressive experience spanning manned aircraft maintenance, UAV systems engineering, eVTOL flight test management, cloud software architecture, and university instruction. Holds a B.Sc. in Aerospace Engineering with honours from METU and 73 ECTS toward an M.Sc. in Aerospace at TU Munich (degree completion pending). Career includes commercial MRO on turboprop/turbofan aircraft (ALS Ltd); GCS serial production and server-rack HIL test rig builds for commercial UAVs (Amazilia Aerospace); aerodynamic design loop engineering and successful transition flight testing on a 25kg MTOW eVTOL (HORYZN); published airspace throughput research (AIAA 2024); flight simulator instruction (TUM); and founding leadership of Kipepeo Aerospace covering platform CAD, embedded C++ software, GCP cloud microservices, and SAFE equity fundraising. Brings experience across the hardware/software boundary, combining physical aircraft systems lifecycle ownership with cloud, AI, and embedded software architectures.",
+  "tracks": {
+    "aircraft_systems_aerospace_engineering": {
+      "label": "Aircraft Systems & Aerospace Engineering",
+      "enabled": true
+    },
+    "venture_building_entrepreneurial_leadership": {
+      "label": "Venture Building & Entrepreneurial Leadership",
+      "enabled": true
+    },
+    "deep_tech_research_computational_capability": {
+      "label": "Deep-Tech Research & Computational Capability",
+      "enabled": true
+    },
+    "teaching_mentorship_academic_service": {
+      "label": "Teaching, Mentorship & Academic Service",
+      "enabled": true
+    }
+  },
+  "core_competencies": [
+    {
+      "track": "aircraft_systems_aerospace_engineering",
+      "label": "Aircraft Systems & Aerospace Engineering",
+      "items": [
+        "Systems engineering lifecycle",
+        "Requirements engineering",
+        "Functional decomposition",
+        "System architecture",
+        "Interface definition",
+        "Hardware/software integration",
+        "Avionics",
+        "Flight controls",
+        "Embedded systems",
+        "HIL testing",
+        "Verification & validation",
+        "Flight testing",
+        "MRO",
+        "UAS",
+        "eVTOL",
+        "Rotorcraft",
+        "Fixed-wing aircraft",
+        "Aircraft design",
+        "Ground control systems",
+        "MBSE"
+      ]
+    },
+    {
+      "track": "venture_building_entrepreneurial_leadership",
+      "label": "Venture Building & Entrepreneurial Leadership",
+      "items": [
+        "Technical venture creation",
+        "Company incorporation",
+        "Corporate governance",
+        "Cap Table structuring",
+        "Fundraising",
+        "SAFE financing",
+        "Grant acquisition",
+        "Commercial partnerships",
+        "MoU negotiation",
+        "Accelerator programmes",
+        "Market discovery",
+        "Product development",
+        "Technical leadership",
+        "Recruitment"
+      ]
+    },
+    {
+      "track": "deep_tech_research_computational_capability",
+      "label": "Deep-Tech Research & Computational Capability",
+      "items": [
+        "Applied aerospace research",
+        "Computational modelling",
+        "UAM simulation",
+        "Aerodynamic CFD",
+        "Embedded C++",
+        "Test-driven development",
+        "Autonomous systems",
+        "ROS",
+        "3D perception",
+        "MBSE",
+        "AI/ML",
+        "Cloud systems",
+        "Data pipelines",
+        "Photogrammetry",
+        "OpenFOAM",
+        "ANSYS CFX",
+        "MATLAB",
+        "Python",
+        "C++",
+        "TypeScript/Node.js/React"
+      ]
+    },
+    {
+      "track": "teaching_mentorship_academic_service",
+      "label": "Teaching, Mentorship & Academic Service",
+      "items": [
+        "University instruction",
+        "Flight simulator instruction",
+        "Examining",
+        "Numerical methods",
+        "SI-PASS tutoring",
+        "STEM mentorship",
+        "Curriculum support",
+        "Academic administration",
+        "Student organisation leadership"
+      ]
+    }
+  ],
+  "publications": [
+    {
+      "title": "Conceptualization and simulation of Advanced Air Mobility (AAM) operations within Controlled Airspaces of airports running independent parallel runway operations",
+      "venue": "AIAA 2024 Aviation Forum",
+      "role": "Co-Author",
+      "tracks": [
+        "deep_tech_research_computational_capability",
+        "aircraft_systems_aerospace_engineering"
+      ]
+    },
+    {
+      "title": "Geotourism Potential of Geological Resources in Selected Regions of Nakuru County, along the Gregory Rift, Kenya",
+      "venue": "Peer-reviewed journal article",
+      "role": "Co-Author",
+      "tracks": [
+        "deep_tech_research_computational_capability"
+      ]
+    }
+  ],
+  "certifications": [
+    "Private Pilot Licence - Aeroplane (YK-9469-PL) | KCAA / Skylink Flight Services (2015)",
+    "Flight Radio Telephony Operator's Licence (YK-9469-RL) | KCAA (2015)",
+    "English Language Proficiency Rating (Level 5) | KCAA (2015)",
+    "Remote Pilot Licence - Multirotor (YK-RPL-00013A) | KCAA / Kendrone Ltd (2021)",
+    "Instructor Rating | KCAA / Kendrone Ltd (2021)",
+    "EU A1/A3 Drone Pilot Licence | EASA (2023)",
+    "Full Stack Software Development Certificate | eMobilis Technology Institute (2020)"
+  ],
+  "languages": [
+    {
+      "language": "English",
+      "level": "Native / Fluent"
+    },
+    {
+      "language": "Swahili",
+      "level": "Native / Fluent"
+    },
+    {
+      "language": "German",
+      "level": "B2"
+    }
+  ],
+  "build": {
+    "default_track": "aircraft_systems_aerospace_engineering",
+    "track_order": [
+      "aircraft_systems_aerospace_engineering",
+      "venture_building_entrepreneurial_leadership",
+      "deep_tech_research_computational_capability",
+      "teaching_mentorship_academic_service"
+    ]
+  },
+  "education_overrides": {
+    "M.Sc Aerospace": {
+      "status": "Degree completion pending (73 ECTS completed; 17 credits and thesis remaining).",
+      "focus": "Aircraft Systems, Control, and UAS Integration."
+    },
+    "LEAD! Leadership for Africa": {
+      "status": "260 units / 195 hours. Grade: Sehr gut (A), 8 ECTS."
+    },
+    "B.Sc. Aerospace Engineering": {
+      "status": "Graduation Honors: Şeref / Honour Classification (CGPA: 3.12/4.00, 259.5 ECTS)."
+    }
+  }
+}

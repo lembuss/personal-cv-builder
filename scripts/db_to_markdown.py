@@ -134,15 +134,15 @@ for t in tags.values():
 
 # --- Static sections 1 & 2 ---
 STATIC_HEADER = """# MASTER CONTENT POOL — Brian Lembuss Kirwa
-## Phase 6C — Complete Un-Pruned Career Database Compilation (v3)
+## Complete Career Database Compilation
 
-*Source of truth: `dev.db` (SQLite). This document contains 100% of database content — {n_exps} Experiences, {n_projs} Projects, {n_acts} Activities — with no pruning, condensing, page-limit, or omission, per CAREER-CV-ROADMAP-HANDOVER-V3.md §0, §1, §5. It is the un-pruned Master Content Pool from which all 8 downstream application tracks (industry, UAS/eVTOL/AAM, R&D, PhD admissions, TUM MSc scholarships, further education, entrepreneurial/founder-track, and teaching/academic roles) will be derived.*
+*Source of truth: `dev.db` (SQLite). This document contains 100% of database content — {n_exps} Experiences, {n_projs} Projects, {n_acts} Activities — with no pruning, condensing, page-limit, or omission, per CAREER-CV-ROADMAP-HANDOVER-V3.md §0, §1, §5. It is the Master Content Pool from which all 8 downstream application tracks (industry, UAS/eVTOL/AAM, R&D, PhD admissions, TUM MSc scholarships, further education, entrepreneurial/founder-track, and teaching/academic roles) will be derived.*
 
 ---
 
 ## 1. Master Professional Profile (Four Equal-Priority Pillars)
 
-Brian Lembuss Kirwa is an aerospace systems engineer, technical founder, and academic instructor whose career spans four equally weighted professional pillars, per the Phase 5 locked baseline (CAREER-CV-ROADMAP-HANDOVER-V3.md §4):
+Brian Lembuss Kirwa is an aerospace systems engineer, technical founder, and academic instructor whose career spans four equally weighted professional pillars:
 
 **Pillar 1 — Aircraft Systems & Aerospace Engineering:** End-to-end systems lifecycle ownership (requirements, functional decomposition, architecture, HW/SW integration, HIL testing, V&V, MRO, flight testing) across manned aircraft (ALS Ltd), UAV OEMs (Amazilia Aerospace, Kipepeo Aerospace), and eVTOL platforms (HORYZN).
 
@@ -267,7 +267,7 @@ output = (
     footer
 )
 
-OUTPUT_PATH = os.environ.get('CV_OUTPUT_PATH') or os.path.join(os.path.dirname(os.path.abspath(__file__)), '../data/markdown/master-content-pool.md')
+OUTPUT_PATH = os.environ.get('CV_OUTPUT_PATH') or os.path.join(os.path.dirname(os.path.abspath(__file__)), '../data/markdown/master-generated-content-pool.md')
 with open(OUTPUT_PATH, 'w') as f:
     f.write(output)
 

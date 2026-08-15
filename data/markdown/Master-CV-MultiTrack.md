@@ -7,10 +7,11 @@ Nairobi, Kenya | brianlembuss@gmail.com | +254 705 875103
 ---
 
 ## PROFESSIONAL PROFILE
+
 Aerospace Systems Engineer, Technical Founder and Deep-Tech Researcher with six years of progressive experience spanning manned aircraft maintenance, UAV systems engineering, eVTOL flight test management, cloud software architecture, and university instruction. Holds a B.Sc. in Aerospace Engineering with honours from METU and 73 ECTS toward an M.Sc. in Aerospace at TU Munich (degree completion pending). Career includes commercial MRO on turboprop/turbofan aircraft (ALS Ltd); GCS serial production and server-rack HIL test rig builds for commercial UAVs (Amazilia Aerospace); aerodynamic design loop engineering and successful transition flight testing on a 25kg MTOW eVTOL (HORYZN); published airspace throughput research (AIAA 2024); flight simulator instruction (TUM); and founding leadership of Kipepeo Aerospace covering platform CAD, embedded C++ software, GCP cloud microservices, and SAFE equity fundraising. Brings experience across the hardware/software boundary, combining physical aircraft systems lifecycle ownership with cloud, AI, and embedded software architectures.
+
 ---
 
-## CORE COMPETENCIES
 ## CORE COMPETENCIES
 
 **Aircraft Systems & Aerospace Engineering:** Systems engineering lifecycle; requirements engineering; functional decomposition; system architecture; interface definition; hardware/software integration; avionics; flight controls; embedded systems; HIL testing; verification & validation; flight testing; MRO; UAS; eVTOL; rotorcraft; fixed-wing aircraft; aircraft design; GCS; MBSE.
