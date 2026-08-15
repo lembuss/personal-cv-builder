@@ -1,0 +1,4 @@
+[submodule "career-db"]
+	path = career-db
+	url = git@github.com:lembuss/personnal-career-experience-db.git
+	branch = main
