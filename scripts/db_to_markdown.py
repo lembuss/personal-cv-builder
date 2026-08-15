@@ -1,7 +1,9 @@
 import sqlite3
 from collections import defaultdict
 
-conn = sqlite3.connect('/career-db/server/prisma/dev.db')
+import os
+DB_PATH = os.environ.get('CV_DB_PATH') or os.path.join(os.path.dirname(os.path.abspath(__file__)), '../career-db/server/prisma/dev.db')
+conn = sqlite3.connect(DB_PATH)
 conn.row_factory = sqlite3.Row
 cur = conn.cursor()
 
@@ -112,10 +114,18 @@ def experience_block(e):
     return "\n".join(out)
 
 
-# Order experiences by startDate DESC — fully dynamic, no hardcoding
-ordered_ids = [r['id'] for r in cur.execute(
-    'SELECT id FROM Experience ORDER BY startDate DESC'
-)]
+# Dynamic counts from DB
+n_exps = len(exps)
+n_projs = len(projs)
+n_acts = len(acts)
+
+# Current experiences first (by startDate DESC), then closed by endDate DESC
+ordered_ids = [r['id'] for r in cur.execute('''
+    SELECT id FROM Experience
+    ORDER BY current DESC,
+             COALESCE(endDate, '9999') DESC,
+             startDate DESC
+''')]
 
 # --- Build tag competencies from DB ---
 cats = defaultdict(list)
@@ -126,7 +136,7 @@ for t in tags.values():
 STATIC_HEADER = """# MASTER CONTENT POOL — Brian Lembuss Kirwa
 ## Phase 6C — Complete Un-Pruned Career Database Compilation (v3)
 
-*Source of truth: `dev.db` (SQLite). This document contains 100% of database content — 20 Experiences, 40 Projects, 163 Activities — with no pruning, condensing, page-limit, or omission, per CAREER-CV-ROADMAP-HANDOVER-V3.md §0, §1, §5. It is the un-pruned Master Content Pool from which all 8 downstream application tracks (industry, UAS/eVTOL/AAM, R&D, PhD admissions, TUM MSc scholarships, further education, entrepreneurial/founder-track, and teaching/academic roles) will be derived.*
+*Source of truth: `dev.db` (SQLite). This document contains 100% of database content — {n_exps} Experiences, {n_projs} Projects, {n_acts} Activities — with no pruning, condensing, page-limit, or omission, per CAREER-CV-ROADMAP-HANDOVER-V3.md §0, §1, §5. It is the un-pruned Master Content Pool from which all 8 downstream application tracks (industry, UAS/eVTOL/AAM, R&D, PhD admissions, TUM MSc scholarships, further education, entrepreneurial/founder-track, and teaching/academic roles) will be derived.*
 
 ---
 
@@ -168,11 +178,11 @@ for eid in ordered_ids:
     total_acts += len(acts_by_exp[eid])
 
 # Sections 4-9 — generated from DB where possible, static cross-references otherwise
-# Section 5: Education — pulled from DB Experience descriptions
-edu_roles = {"Graduate Student", "Undergraduate Student", "DAAD Scholar"}
-edu_exps = [e for e in exps.values() if e['role'] in edu_roles and e['organization'] in
-            {"Technical University of Munich", "Middle East Technical University", "University of Cologne"}]
-edu_exps = sorted(edu_exps, key=lambda e: e['startDate'], reverse=True)
+# Section 5: Education — uses type='Academic' from DB
+edu_exps = sorted(
+    [e for e in exps.values() if e['type'] == 'Academic'],
+    key=lambda e: e['startDate'], reverse=True
+)
 
 section5 = "## 5. Education\n\n"
 for e in edu_exps:
@@ -191,11 +201,11 @@ section6 = """## 6. Research & Publications
 
 """
 
-# Section 7: Teaching — pulled from DB
-teaching_keywords = ["Instructor", "Assistant", "SI-PASS", "Mentor"]
-teaching_exps = [e for e in exps.values()
-                 if any(k in e['title'] for k in teaching_keywords)]
-teaching_exps = sorted(teaching_exps, key=lambda e: e['startDate'], reverse=True)
+# Section 7: Teaching — uses type='Teaching' from DB
+teaching_exps = sorted(
+    [e for e in exps.values() if e['type'] == 'Teaching'],
+    key=lambda e: e['startDate'], reverse=True
+)
 
 section7 = "## 7. Teaching & Academic Experience\n\nConsolidated cross-reference (full detail in Section 3):\n"
 for e in teaching_exps:
@@ -203,11 +213,11 @@ for e in teaching_exps:
     section7 += f"- **{e['organization'].strip()} — {e['title']}** ({fmt_date(e)}) — {n_acts} activities.\n"
 section7 += "\n"
 
-# Section 8: Leadership — pulled from DB
-leadership_keywords = ["President", "Secretary", "Vice President", "Project Manager", "Founding CEO"]
-leadership_exps = [e for e in exps.values()
-                   if any(k in e['title'] for k in leadership_keywords)]
-leadership_exps = sorted(leadership_exps, key=lambda e: e['startDate'], reverse=True)
+# Section 8: Leadership — uses type='Leadership' from DB
+leadership_exps = sorted(
+    [e for e in exps.values() if e['type'] == 'Leadership'],
+    key=lambda e: e['startDate'], reverse=True
+)
 
 section8 = "## 8. Leadership & Mentorship\n\nConsolidated cross-reference (full detail in Section 3):\n"
 for e in leadership_exps:
@@ -235,7 +245,7 @@ section4 = """## 4. Complete Engineering & R&D Projects (All 40 Projects)
 
 """
 
-footer = f"\n---\n\n*End of Master Content Pool — Phase 6C. Total: 20 Experiences | 40 Projects | 163 Activities | 100% database coverage, zero pruning.*\n"
+footer = f"\n---\n\n*End of Master Content Pool — Phase 6C. Total: {n_exps} Experiences | {n_projs} Projects | {n_acts} Activities | 100% database coverage, zero pruning.*\n"
 
 # Write final file
 output = (
@@ -257,7 +267,8 @@ output = (
     footer
 )
 
-with open('/data/markdown/MASTER-CONTENT-POOL-GENERATED.md', 'w') as f:
+OUTPUT_PATH = os.environ.get('CV_OUTPUT_PATH') or os.path.join(os.path.dirname(os.path.abspath(__file__)), '../data/markdown/master-content-pool.md')
+with open(OUTPUT_PATH, 'w') as f:
     f.write(output)
 
 print(f"Done. Total activities written: {total_acts}")
