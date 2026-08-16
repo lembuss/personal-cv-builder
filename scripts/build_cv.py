@@ -12,6 +12,7 @@ Reads mastercv_multitrack.json and writes a clean, single-column ATS-safe PDF.
 """
 
 import json
+import os
 import sys
 from pathlib import Path
 from reportlab.lib.pagesizes import A4
@@ -23,7 +24,14 @@ from reportlab.platypus import (
 )
 from reportlab.lib import colors
 
-DATA_FILE = "mastercv_generated_multitrack.json"
+# Resolve paths relative to this script's own location (not the shell's cwd) so the
+# script works no matter where it's invoked from — same fix applied to db_to_json.py
+# after the CV_JSON_OUTPUT_PATH mixup. Both remain overridable via env vars.
+SCRIPT_DIR = os.path.dirname(os.path.abspath(__file__))
+DATA_FILE = os.environ.get('CV_JSON_PATH') or os.path.join(
+    SCRIPT_DIR, '../data/json/mastercv_generated_multitrack.json'
+)
+OUTPUT_DIR = os.environ.get('CV_OUTPUT_DIR') or os.path.join(SCRIPT_DIR, '../output')
 
 TRACK_ALIASES = {
     "A": "aircraft_systems_aerospace_engineering",
@@ -160,7 +168,7 @@ def build_pdf(data_root, target_track, out_path):
         if meta_bits:
             story.append(Paragraph(" | ".join(meta_bits), styles["OrgDates"]))
 
-        if exp.get("summary") and target_track is None:
+        if exp.get("summary"):
             story.append(Paragraph(f"<i>{esc(exp['summary'])}</i>", styles["CVBody"]))
 
         for proj in exp.get("projects", []):
@@ -281,6 +289,8 @@ if __name__ == "__main__":
 
     suffix = f"_{raw_arg.upper()}" if raw_arg else "_Master"
     out_file = f"Brian_Lembuss_CV{suffix}.pdf"
+    os.makedirs(OUTPUT_DIR, exist_ok=True)
+    out_path = os.path.join(OUTPUT_DIR, out_file)
 
-    build_pdf(data, target_track, out_file)
-    print(f"Successfully generated PDF: {out_file} (Track: {target_track or 'ALL'})")
+    build_pdf(data, target_track, out_path)
+    print(f"Successfully generated PDF: {out_path} (Track: {target_track or 'ALL'})")
